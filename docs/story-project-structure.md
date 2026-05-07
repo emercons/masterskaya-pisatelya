@@ -21,6 +21,7 @@ private/stories/<story-slug>/00-input/author-notes.md
 private/stories/<story-slug>/01-canonical/canonical-story-state.md
 private/stories/<story-slug>/01-canonical/decisions-log.md
 
+private/stories/<story-slug>/02-handoffs/005-idea-receiver--приёмщик-идеи.md
 private/stories/<story-slug>/02-handoffs/010-idea-architect--архитектор-идеи.md
 private/stories/<story-slug>/02-handoffs/020-brutal-critic--жестокий-критик.md
 private/stories/<story-slug>/02-handoffs/030-story-engineer--инженер-сюжета.md
@@ -35,12 +36,14 @@ private/stories/<story-slug>/02-handoffs/110-ending-analyst--аналитик-к
 private/stories/<story-slug>/02-handoffs/120-ideology-stress-tester--идеологический-стресс-тестер.md
 private/stories/<story-slug>/02-handoffs/130-predictability-analyst--аналитик-предсказуемости.md
 private/stories/<story-slug>/02-handoffs/140-continuity-auditor--аудитор-непрерывности.md
+private/stories/<story-slug>/02-handoffs/150-final-editor--финальный-редактор.md
 
 private/stories/<story-slug>/03-drafts/draft-v0-raw.md
 private/stories/<story-slug>/03-drafts/draft-v1-after-070-draft-writer.md
 private/stories/<story-slug>/03-drafts/draft-v2-after-080-structural-editor.md
 private/stories/<story-slug>/03-drafts/draft-v3-after-090-style-editor.md
 private/stories/<story-slug>/03-drafts/draft-v4-final-candidate.md
+private/stories/<story-slug>/03-drafts/draft-v5-after-150-final-editor.md
 
 private/stories/<story-slug>/04-reviews/reader-notes.md
 private/stories/<story-slug>/04-reviews/ending-analysis.md
@@ -72,6 +75,8 @@ Each specialist role works in sequence. A role receives only:
 - the relevant draft fragment.
 
 The role must write a compact handoff before the next role begins.
+
+See `docs/feedback-and-session-boundaries.md` before continuing through author feedback checkpoints or high-conflict role transitions.
 
 ## Canonical story state
 

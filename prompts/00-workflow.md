@@ -29,20 +29,39 @@ Do not drag the full old context forward.
 
 ## Role order
 
-1. `010-idea-architect--архитектор-идеи.md`
-2. `020-brutal-critic--жестокий-критик.md`
-3. `030-story-engineer--инженер-сюжета.md`
-4. `040-character-psychologist--психолог-персонажей.md`
-5. `050-worldlogic-auditor--аудитор-логики-мира.md`
-6. `060-thematic-analyst--тематический-аналитик.md`
-7. `070-draft-writer--писатель-черновика.md`
-8. `080-structural-editor--структурный-редактор.md`
-9. `090-style-editor--стилевой-редактор.md`
-10. `100-reader-simulator--симулятор-читателя.md`
-11. `110-ending-analyst--аналитик-концовки.md`
-12. `120-ideology-stress-tester--идеологический-стресс-тестер.md`
-13. `130-predictability-analyst--аналитик-предсказуемости.md`
-14. `140-continuity-auditor--аудитор-непрерывности.md`
+1. `005-idea-receiver--приёмщик-идеи.md`
+2. `010-idea-architect--архитектор-идеи.md`
+3. `020-brutal-critic--жестокий-критик.md`
+4. `030-story-engineer--инженер-сюжета.md`
+5. `040-character-psychologist--психолог-персонажей.md`
+6. `050-worldlogic-auditor--аудитор-логики-мира.md`
+7. `060-thematic-analyst--тематический-аналитик.md`
+8. `070-draft-writer--писатель-черновика.md`
+9. `080-structural-editor--структурный-редактор.md`
+10. `090-style-editor--стилевой-редактор.md`
+11. `100-reader-simulator--симулятор-читателя.md`
+12. `110-ending-analyst--аналитик-концовки.md`
+13. `120-ideology-stress-tester--идеологический-стресс-тестер.md`
+14. `130-predictability-analyst--аналитик-предсказуемости.md`
+15. `140-continuity-auditor--аудитор-непрерывности.md`
+16. `150-final-editor--финальный-редактор.md`
+
+## Author feedback checkpoints
+
+Ask for human author feedback after roles `005`, `020`, `060`, `100`, `140`, and `150` unless the author has explicitly asked to continue through that checkpoint.
+
+Use `docs/feedback-and-session-boundaries.md` as the source of truth for feedback checkpoints and high-conflict role transitions.
+
+## Session boundaries
+
+Some roles deliberately contradict each other. Before crossing a high-conflict transition in a long context window, stop and ask the author to compact the window or start a fresh session.
+
+Carry forward only:
+
+- current canonical story state;
+- latest relevant handoff;
+- relevant draft fragment;
+- explicit author decisions.
 
 ## After each role
 

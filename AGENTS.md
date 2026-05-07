@@ -55,6 +55,12 @@ After every role:
 - update draft files only when prose changed;
 - carry forward a short summary, not the whole prior conversation.
 
+## Human feedback and session boundaries
+
+Use `docs/feedback-and-session-boundaries.md` for author feedback checkpoints and high-conflict role transitions.
+
+If the next role has a strongly different pressure and the context window is long, stop before switching roles and ask the author to compact the window or start a fresh session. Carry forward only canonical state, latest relevant handoff, relevant draft fragment, and explicit author decisions.
+
 ## Do not
 
 - mix roles;

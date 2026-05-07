@@ -48,6 +48,7 @@ Replaced old `stories/_template` files:
 
 ## Canonical bilingual role prompts retained
 
+- `prompts/005-idea-receiver--приёмщик-идеи.md`
 - `prompts/010-idea-architect--архитектор-идеи.md`
 - `prompts/020-brutal-critic--жестокий-критик.md`
 - `prompts/030-story-engineer--инженер-сюжета.md`
@@ -62,6 +63,7 @@ Replaced old `stories/_template` files:
 - `prompts/120-ideology-stress-tester--идеологический-стресс-тестер.md`
 - `prompts/130-predictability-analyst--аналитик-предсказуемости.md`
 - `prompts/140-continuity-auditor--аудитор-непрерывности.md`
+- `prompts/150-final-editor--финальный-редактор.md`
 
 ## Canonical workflow files retained
 
@@ -78,18 +80,24 @@ The local repository did not contain advanced reviewer prompt files `110-140` at
 - `prompts/130-predictability-analyst--аналитик-предсказуемости.md`
 - `prompts/140-continuity-auditor--аудитор-непрерывности.md`
 
+Later workflow additions:
+
+- `prompts/005-idea-receiver--приёмщик-идеи.md`
+- `prompts/150-final-editor--финальный-редактор.md`
+- `docs/feedback-and-session-boundaries.md`
+
 ## Inconsistencies fixed
 
-- `README.md` now lists canonical bilingual prompts `010-140` only.
+- `README.md` now lists canonical bilingual prompts `005-150` only.
 - `AGENTS.md` now forbids `prompts/ru/`, old single-language role prompts, and unnumbered prompt files as role definitions.
-- `prompts/00-workflow.md` now runs through roles `010-140`.
-- `docs/story-project-structure.md` now includes handoffs for `010-140` and review outputs for advanced reviewer roles.
-- `docs/role-map.md` now maps canonical bilingual prompts `010-140`.
+- `prompts/00-workflow.md` now runs through roles `005-150`.
+- `docs/story-project-structure.md` now includes handoffs for `005-150`, review outputs for advanced reviewer roles, and the final-editor draft.
+- `docs/role-map.md` now maps canonical bilingual prompts `005-150`.
+- `docs/feedback-and-session-boundaries.md` now defines author feedback checkpoints and high-conflict role transitions.
 - `stories/_template` now follows the canonical story folder layout.
-- Existing private story workspace now has placeholder handoffs/review files for roles `110-140`.
+- Existing private story workspace has completed content through role `150`.
 - Concrete story workspaces are now treated as private by default and belong under ignored `private/stories/<story-slug>/`.
 
 ## Remaining potential issues
 
-- The existing private story workspace has only actually been processed through role `100`; roles `110-140` are present as pending placeholders.
-- The repository has not been committed or pushed.
+- The inserted intake role `005` was added after the first private story had already passed through the pipeline, so existing stories may need a retrospective or pending `005` handoff if strict completeness is required.

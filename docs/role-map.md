@@ -4,6 +4,7 @@ Canonical specialist prompts use bilingual filenames and numeric ordering.
 
 | # | Prompt file | Purpose | Bilingual |
 | --- | --- | --- | --- |
+| 005 | `prompts/005-idea-receiver--приёмщик-идеи.md` | Receive raw idea, identify missing inputs, and ask numbered clarification questions. | Yes |
 | 010 | `prompts/010-idea-architect--архитектор-идеи.md` | Extract core premise, reader-facing story, second semantic layer, emotional conflict. | Yes |
 | 020 | `prompts/020-brutal-critic--жестокий-критик.md` | Attack concept risks: cliche, overload, reader exclusion, false depth. | Yes |
 | 030 | `prompts/030-story-engineer--инженер-сюжета.md` | Build causal structure, scene sequence, escalation, ending direction. | Yes |
@@ -18,12 +19,14 @@ Canonical specialist prompts use bilingual filenames and numeric ordering.
 | 120 | `prompts/120-ideology-stress-tester--идеологический-стресс-тестер.md` | Test implied ideology, blind spots, simplifications, and accidental propaganda. | Yes |
 | 130 | `prompts/130-predictability-analyst--аналитик-предсказуемости.md` | Check predictability, expected beats, and productive disruption options. | Yes |
 | 140 | `prompts/140-continuity-auditor--аудитор-непрерывности.md` | Audit factual, emotional, timeline, terminology, and world-rule continuity. | Yes |
+| 150 | `prompts/150-final-editor--финальный-редактор.md` | Apply a restrained final edit after reader notes and advanced reviews. | Yes |
 
 ## Workflow prompts
 
 - `prompts/00-workflow.md`
 - `prompts/00-handoff-template.md`
 - `prompts/00-canonical-story-state-template.md`
+- `docs/feedback-and-session-boundaries.md`
 
 ## Legacy policy
 
