@@ -1,4 +1,4 @@
-# 11 - Ending Analyst / Аналитик концовки
+# 110 - Ending Analyst / Аналитик концовки
 
 ## Role reset
 
@@ -36,7 +36,7 @@ Stress-test the ending: payoff, ambiguity, emotional residue, thematic pressure,
 ## Output
 
 ```markdown
-# Handoff: 11 - Ending Analyst / Аналитик концовки
+# Handoff: 110 - Ending Analyst / Аналитик концовки
 
 ## Ending diagnosis
 

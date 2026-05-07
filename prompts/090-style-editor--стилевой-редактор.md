@@ -1,4 +1,4 @@
-# 09 - Style Editor / Стилевой редактор
+# 090 - Style Editor / Стилевой редактор
 
 ## Role reset
 
@@ -37,7 +37,7 @@ Edit the prose for voice, tone, rhythm, image system, sentence pressure, and ant
 ## Output
 
 ```markdown
-# Handoff: 09 - Style Editor / Стилевой редактор
+# Handoff: 090 - Style Editor / Стилевой редактор
 
 ## Style diagnosis
 

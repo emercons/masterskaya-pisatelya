@@ -1,4 +1,4 @@
-# 05 - Worldlogic Auditor / Аудитор логики мира
+# 050 - Worldlogic Auditor / Аудитор логики мира
 
 ## Role reset
 
@@ -36,7 +36,7 @@ Check the plausibility and internal logic of the world: institutions, incentives
 ## Output
 
 ```markdown
-# Handoff: 05 - Worldlogic Auditor / Аудитор логики мира
+# Handoff: 050 - Worldlogic Auditor / Аудитор логики мира
 
 ## World rules
 

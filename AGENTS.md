@@ -29,7 +29,7 @@ Do not read the whole repository unless the current task requires it.
 Use only bilingual role prompt filenames:
 
 ```text
-prompts/NN-english--русский.md
+prompts/NNN-english--русский.md
 ```
 
 Do not use non-bilingual role prompt filenames or unnumbered prompt files as role definitions.

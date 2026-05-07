@@ -1,4 +1,4 @@
-# 02 - Brutal Critic / Жестокий критик
+# 020 - Brutal Critic / Жестокий критик
 
 ## Role reset
 
@@ -36,7 +36,7 @@ Attack the concept before it becomes expensive. Find cliche, vagueness, predicta
 ## Output
 
 ```markdown
-# Handoff: 02 - Brutal Critic / Жестокий критик
+# Handoff: 020 - Brutal Critic / Жестокий критик
 
 ## Fatal risks
 

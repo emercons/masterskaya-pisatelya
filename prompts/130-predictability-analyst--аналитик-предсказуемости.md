@@ -1,4 +1,4 @@
-# 13 - Predictability Analyst / Аналитик предсказуемости
+# 130 - Predictability Analyst / Аналитик предсказуемости
 
 ## Role reset
 
@@ -36,7 +36,7 @@ Check whether the story becomes too predictable, too neatly allegorical, or too 
 ## Output
 
 ```markdown
-# Handoff: 13 - Predictability Analyst / Аналитик предсказуемости
+# Handoff: 130 - Predictability Analyst / Аналитик предсказуемости
 
 ## Predictability diagnosis
 

@@ -58,22 +58,22 @@ private/stories/<story-slug>/01-canonical/canonical-story-state.md
 
 ## Canonical role prompts
 
-Все specialist prompts используют bilingual naming convention: `NN-english--русский.md`.
+Все specialist prompts используют bilingual naming convention: `NNN-english--русский.md`.
 
-1. `prompts/01-idea-architect--архитектор-идеи.md`
-2. `prompts/02-brutal-critic--жестокий-критик.md`
-3. `prompts/03-story-engineer--инженер-сюжета.md`
-4. `prompts/04-character-psychologist--психолог-персонажей.md`
-5. `prompts/05-worldlogic-auditor--аудитор-логики-мира.md`
-6. `prompts/06-thematic-analyst--тематический-аналитик.md`
-7. `prompts/07-draft-writer--писатель-черновика.md`
-8. `prompts/08-structural-editor--структурный-редактор.md`
-9. `prompts/09-style-editor--стилевой-редактор.md`
-10. `prompts/10-reader-simulator--симулятор-читателя.md`
-11. `prompts/11-ending-analyst--аналитик-концовки.md`
-12. `prompts/12-ideology-stress-tester--идеологический-стресс-тестер.md`
-13. `prompts/13-predictability-analyst--аналитик-предсказуемости.md`
-14. `prompts/14-continuity-auditor--аудитор-непрерывности.md`
+1. `prompts/010-idea-architect--архитектор-идеи.md`
+2. `prompts/020-brutal-critic--жестокий-критик.md`
+3. `prompts/030-story-engineer--инженер-сюжета.md`
+4. `prompts/040-character-psychologist--психолог-персонажей.md`
+5. `prompts/050-worldlogic-auditor--аудитор-логики-мира.md`
+6. `prompts/060-thematic-analyst--тематический-аналитик.md`
+7. `prompts/070-draft-writer--писатель-черновика.md`
+8. `prompts/080-structural-editor--структурный-редактор.md`
+9. `prompts/090-style-editor--стилевой-редактор.md`
+10. `prompts/100-reader-simulator--симулятор-читателя.md`
+11. `prompts/110-ending-analyst--аналитик-концовки.md`
+12. `prompts/120-ideology-stress-tester--идеологический-стресс-тестер.md`
+13. `prompts/130-predictability-analyst--аналитик-предсказуемости.md`
+14. `prompts/140-continuity-auditor--аудитор-непрерывности.md`
 
 ## Role reset
 

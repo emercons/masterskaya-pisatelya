@@ -1,4 +1,4 @@
-# 01 - Idea Architect / Архитектор идеи
+# 010 - Idea Architect / Архитектор идеи
 
 ## Role reset
 
@@ -38,7 +38,7 @@ Extract the strongest story seed from raw input. Turn a vague or overloaded conc
 ## Output
 
 ```markdown
-# Handoff: 01 - Idea Architect / Архитектор идеи
+# Handoff: 010 - Idea Architect / Архитектор идеи
 
 ## Core story seed
 

@@ -1,4 +1,4 @@
-# 12 - Ideology Stress Tester / Идеологический стресс-тестер
+# 120 - Ideology Stress Tester / Идеологический стресс-тестер
 
 ## Role reset
 
@@ -36,7 +36,7 @@ Test the story's implied ideology, blind spots, simplifications, and accidental 
 ## Output
 
 ```markdown
-# Handoff: 12 - Ideology Stress Tester / Идеологический стресс-тестер
+# Handoff: 120 - Ideology Stress Tester / Идеологический стресс-тестер
 
 ## Implied worldview
 

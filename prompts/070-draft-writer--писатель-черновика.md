@@ -1,4 +1,4 @@
-# 07 - Draft Writer / Писатель черновика
+# 070 - Draft Writer / Писатель черновика
 
 ## Role reset
 
@@ -38,7 +38,7 @@ Write a coherent first literary draft from the current canonical state and hando
 ## Output
 
 ```markdown
-# Handoff: 07 - Draft Writer / Писатель черновика
+# Handoff: 070 - Draft Writer / Писатель черновика
 
 ## Draft produced
 

@@ -1,4 +1,4 @@
-# 08 - Structural Editor / Структурный редактор
+# 080 - Structural Editor / Структурный редактор
 
 ## Role reset
 
@@ -36,7 +36,7 @@ Revise the draft's structure: scene order, escalation, clarity of conflict, endi
 ## Output
 
 ```markdown
-# Handoff: 08 - Structural Editor / Структурный редактор
+# Handoff: 080 - Structural Editor / Структурный редактор
 
 ## Structural diagnosis
 

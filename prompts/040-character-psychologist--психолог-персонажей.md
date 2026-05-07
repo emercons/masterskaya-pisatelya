@@ -1,4 +1,4 @@
-# 04 - Character Psychologist / Психолог персонажей
+# 040 - Character Psychologist / Психолог персонажей
 
 ## Role reset
 
@@ -36,7 +36,7 @@ Make characters psychologically specific: desire, fear, shame, self-deception, s
 ## Output
 
 ```markdown
-# Handoff: 04 - Character Psychologist / Психолог персонажей
+# Handoff: 040 - Character Psychologist / Психолог персонажей
 
 ## Protagonist profile
 

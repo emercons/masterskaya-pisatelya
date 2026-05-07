@@ -29,20 +29,20 @@ Do not drag the full old context forward.
 
 ## Role order
 
-1. `01-idea-architect--архитектор-идеи.md`
-2. `02-brutal-critic--жестокий-критик.md`
-3. `03-story-engineer--инженер-сюжета.md`
-4. `04-character-psychologist--психолог-персонажей.md`
-5. `05-worldlogic-auditor--аудитор-логики-мира.md`
-6. `06-thematic-analyst--тематический-аналитик.md`
-7. `07-draft-writer--писатель-черновика.md`
-8. `08-structural-editor--структурный-редактор.md`
-9. `09-style-editor--стилевой-редактор.md`
-10. `10-reader-simulator--симулятор-читателя.md`
-11. `11-ending-analyst--аналитик-концовки.md`
-12. `12-ideology-stress-tester--идеологический-стресс-тестер.md`
-13. `13-predictability-analyst--аналитик-предсказуемости.md`
-14. `14-continuity-auditor--аудитор-непрерывности.md`
+1. `010-idea-architect--архитектор-идеи.md`
+2. `020-brutal-critic--жестокий-критик.md`
+3. `030-story-engineer--инженер-сюжета.md`
+4. `040-character-psychologist--психолог-персонажей.md`
+5. `050-worldlogic-auditor--аудитор-логики-мира.md`
+6. `060-thematic-analyst--тематический-аналитик.md`
+7. `070-draft-writer--писатель-черновика.md`
+8. `080-structural-editor--структурный-редактор.md`
+9. `090-style-editor--стилевой-редактор.md`
+10. `100-reader-simulator--симулятор-читателя.md`
+11. `110-ending-analyst--аналитик-концовки.md`
+12. `120-ideology-stress-tester--идеологический-стресс-тестер.md`
+13. `130-predictability-analyst--аналитик-предсказуемости.md`
+14. `140-continuity-auditor--аудитор-непрерывности.md`
 
 ## After each role
 

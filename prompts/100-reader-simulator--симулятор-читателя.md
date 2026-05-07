@@ -1,4 +1,4 @@
-# 10 - Reader Simulator / Симулятор читателя
+# 100 - Reader Simulator / Симулятор читателя
 
 ## Role reset
 
@@ -36,7 +36,7 @@ Simulate reader response from two angles: ordinary reader and technically litera
 ## Output
 
 ```markdown
-# Handoff: 10 - Reader Simulator / Симулятор читателя
+# Handoff: 100 - Reader Simulator / Симулятор читателя
 
 ## Ordinary reader response
 

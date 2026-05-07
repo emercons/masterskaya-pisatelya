@@ -1,4 +1,4 @@
-# 06 - Thematic Analyst / Тематический аналитик
+# 060 - Thematic Analyst / Тематический аналитик
 
 ## Role reset
 
@@ -36,7 +36,7 @@ Clarify the story's theme and make sure it is expressed through choices, images,
 ## Output
 
 ```markdown
-# Handoff: 06 - Thematic Analyst / Тематический аналитик
+# Handoff: 060 - Thematic Analyst / Тематический аналитик
 
 ## Thematic question
 

@@ -21,25 +21,25 @@ private/stories/<story-slug>/00-input/author-notes.md
 private/stories/<story-slug>/01-canonical/canonical-story-state.md
 private/stories/<story-slug>/01-canonical/decisions-log.md
 
-private/stories/<story-slug>/02-handoffs/01-idea-architect--архитектор-идеи.md
-private/stories/<story-slug>/02-handoffs/02-brutal-critic--жестокий-критик.md
-private/stories/<story-slug>/02-handoffs/03-story-engineer--инженер-сюжета.md
-private/stories/<story-slug>/02-handoffs/04-character-psychologist--психолог-персонажей.md
-private/stories/<story-slug>/02-handoffs/05-worldlogic-auditor--аудитор-логики-мира.md
-private/stories/<story-slug>/02-handoffs/06-thematic-analyst--тематический-аналитик.md
-private/stories/<story-slug>/02-handoffs/07-draft-writer--писатель-черновика.md
-private/stories/<story-slug>/02-handoffs/08-structural-editor--структурный-редактор.md
-private/stories/<story-slug>/02-handoffs/09-style-editor--стилевой-редактор.md
-private/stories/<story-slug>/02-handoffs/10-reader-simulator--симулятор-читателя.md
-private/stories/<story-slug>/02-handoffs/11-ending-analyst--аналитик-концовки.md
-private/stories/<story-slug>/02-handoffs/12-ideology-stress-tester--идеологический-стресс-тестер.md
-private/stories/<story-slug>/02-handoffs/13-predictability-analyst--аналитик-предсказуемости.md
-private/stories/<story-slug>/02-handoffs/14-continuity-auditor--аудитор-непрерывности.md
+private/stories/<story-slug>/02-handoffs/010-idea-architect--архитектор-идеи.md
+private/stories/<story-slug>/02-handoffs/020-brutal-critic--жестокий-критик.md
+private/stories/<story-slug>/02-handoffs/030-story-engineer--инженер-сюжета.md
+private/stories/<story-slug>/02-handoffs/040-character-psychologist--психолог-персонажей.md
+private/stories/<story-slug>/02-handoffs/050-worldlogic-auditor--аудитор-логики-мира.md
+private/stories/<story-slug>/02-handoffs/060-thematic-analyst--тематический-аналитик.md
+private/stories/<story-slug>/02-handoffs/070-draft-writer--писатель-черновика.md
+private/stories/<story-slug>/02-handoffs/080-structural-editor--структурный-редактор.md
+private/stories/<story-slug>/02-handoffs/090-style-editor--стилевой-редактор.md
+private/stories/<story-slug>/02-handoffs/100-reader-simulator--симулятор-читателя.md
+private/stories/<story-slug>/02-handoffs/110-ending-analyst--аналитик-концовки.md
+private/stories/<story-slug>/02-handoffs/120-ideology-stress-tester--идеологический-стресс-тестер.md
+private/stories/<story-slug>/02-handoffs/130-predictability-analyst--аналитик-предсказуемости.md
+private/stories/<story-slug>/02-handoffs/140-continuity-auditor--аудитор-непрерывности.md
 
 private/stories/<story-slug>/03-drafts/draft-v0-raw.md
-private/stories/<story-slug>/03-drafts/draft-v1-after-07-draft-writer.md
-private/stories/<story-slug>/03-drafts/draft-v2-after-08-structural-editor.md
-private/stories/<story-slug>/03-drafts/draft-v3-after-09-style-editor.md
+private/stories/<story-slug>/03-drafts/draft-v1-after-070-draft-writer.md
+private/stories/<story-slug>/03-drafts/draft-v2-after-080-structural-editor.md
+private/stories/<story-slug>/03-drafts/draft-v3-after-090-style-editor.md
 private/stories/<story-slug>/03-drafts/draft-v4-final-candidate.md
 
 private/stories/<story-slug>/04-reviews/reader-notes.md
@@ -104,7 +104,7 @@ A good handoff contains:
 Use only canonical bilingual prompt filenames:
 
 ```text
-prompts/NN-english--русский.md
+prompts/NNN-english--русский.md
 ```
 
 Do not create alternate role prompt locations or non-bilingual role prompt filenames.

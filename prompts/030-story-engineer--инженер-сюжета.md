@@ -1,4 +1,4 @@
-# 03 - Story Engineer / Инженер сюжета
+# 030 - Story Engineer / Инженер сюжета
 
 ## Role reset
 
@@ -36,7 +36,7 @@ Convert the premise into a causal story structure: setup, pressure, turning poin
 ## Output
 
 ```markdown
-# Handoff: 03 - Story Engineer / Инженер сюжета
+# Handoff: 030 - Story Engineer / Инженер сюжета
 
 ## Dramatic question
 

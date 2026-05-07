@@ -1,4 +1,4 @@
-# 14 - Continuity Auditor / Аудитор непрерывности
+# 140 - Continuity Auditor / Аудитор непрерывности
 
 ## Role reset
 
@@ -37,7 +37,7 @@ Audit factual, emotional, timeline, terminology, and world-rule continuity.
 ## Output
 
 ```markdown
-# Handoff: 14 - Continuity Auditor / Аудитор непрерывности
+# Handoff: 140 - Continuity Auditor / Аудитор непрерывности
 
 ## Continuity findings
 
