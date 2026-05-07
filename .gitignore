@@ -1,0 +1,28 @@
+# Local writing artifacts
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp
+*.swp
+*.swo
+~$*
+
+# Private story workspaces and exports
+private/
+exports/
+
+# Prevent accidental publication of story instances.
+# Only the public template and README under stories/ should be committed.
+stories/*
+!stories/README.md
+!stories/_template/
+!stories/_template/**
+
+*.docx
+*.pdf
+
+# Tool caches
+.cache/
+.codex/
+.idea/
+.vscode/
