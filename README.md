@@ -38,6 +38,8 @@ private/stories/<story-slug>/05-exports/full-draft-v<N>-MM-DD.md
 
 Например, `full-draft-v6-05-07.md` означает полный драфт версии 6 от 7 мая.
 
+Экспорты для авторского ревью используют стабильные ID абзацев по `docs/stable-paragraph-ids.md`. Полная перенумерация ID запрещена без прямого согласия автора; если локальных числовых зазоров не хватает, используются точечные числовые суффиксы вроде `100.1`.
+
 Межсессионная очередь агентов хранится в:
 
 ```text
@@ -73,6 +75,7 @@ private/stories/<story-slug>/06-agent-queue/agent-queue.md
 - `docs/feedback-and-session-boundaries.md`
 - `docs/pipeline-optimization.md`
 - `docs/agent-queue.md`
+- `docs/stable-paragraph-ids.md`
 - `prompts/00-workflow.md`
 - `prompts/00-handoff-template.md`
 - `prompts/00-canonical-story-state-template.md`

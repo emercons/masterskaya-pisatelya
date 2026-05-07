@@ -55,7 +55,7 @@ Your scope is intentionally narrow.
 
 ## Stable paragraph IDs for review drafts
 
-When exporting or presenting a full draft for human author review, add stable paragraph IDs inline at the start of each non-empty paragraph:
+When exporting or presenting a full draft for human author review, add stable paragraph IDs inline at the start of each numbered story paragraph:
 
 ```text
 100: First paragraph text.
@@ -67,17 +67,26 @@ When exporting or presenting a full draft for human author review, add stable pa
 
 Rules:
 
-- Number paragraphs, not visual lines.
+- Number paragraphs, not visual lines. Number story prose paragraphs, including dialogue paragraphs.
+- Do not number empty spacer lines, headings, scene separators, metadata, handoff/review section labels, or other service text.
 - Use the compact inline format `100: Paragraph text`; do not put IDs on separate lines.
 - Use a base step of 100 for newly numbered drafts: `100`, `200`, `300`, etc.
 - Do not add leading zeroes.
-- Preserve existing paragraph IDs across agent passes whenever possible so author feedback remains addressable.
+- A paragraph ID is an editorial address for a semantic paragraph, not its current position in the file.
+- Preserve existing paragraph IDs across agent passes so author feedback remains addressable.
+- When a paragraph moves, keep its ID.
+- When a paragraph is deleted, retire its ID. Do not reuse deleted IDs for new text.
+- When paragraphs are merged, keep the ID of the paragraph that remains the semantic core, usually the first paragraph, and retire the absorbed ID.
+- When a paragraph is split, keep the original ID on the most continuous fragment and assign new IDs to the new fragments.
 - For inserted paragraphs, choose evenly spaced numbers inside the available interval, for example:
   - one insert between `100` and `200`: `150`;
   - three inserts between `100` and `200`: `125`, `150`, `175`.
-- Avoid global renumbering unless the structure has changed so heavily that stable references are no longer useful.
-- Do not number empty spacer lines.
+- If there is no useful numeric gap left, or if local renumbering would otherwise be tempting, add dot-number suffixes to the nearest stable numeric anchor, for example `100.1`, `100.2`, `100.3`; if suffixes already exist, continue with the next integer suffix.
+- Treat dot-number IDs as textual editorial addresses, not decimal numbers: `122.10` follows `122.9`.
+- Never do a full or global renumbering, ID refresh, or broad ID reorder without explicit author consent. If it seems necessary, stop and ask the author first; until then, use local numeric gaps or dot-number suffixes.
+- If the author explicitly approves a global renumbering, record the affected draft version and the fact of renumbering in the handoff.
 - Story-facing exports under `private/stories/<story-slug>/05-exports/` should use these IDs by default.
+- Clean publication/reader-facing copies without paragraph IDs must be separate files and must not replace the review export.
 - Agent handoffs and reviews may cite these paragraph IDs directly.
 
 ## Real child-agent policy

@@ -40,6 +40,7 @@ Apply a restrained final edit after reader notes and advanced reviews. Resolve o
 - Resolve conflicting reviewer advice conservatively.
 - Preserve the story's chosen ending direction unless the author explicitly changes it.
 - Update the versioned full-draft export file after the edited draft is produced.
+- Before completing a full-draft export for author review, verify stable paragraph IDs according to `docs/stable-paragraph-ids.md`.
 - Write a compact handoff describing exactly what changed.
 
 ## Do not
@@ -47,6 +48,7 @@ Apply a restrained final edit after reader notes and advanced reviews. Resolve o
 - Add a new premise, twist, subplot, or moral.
 - Make the text safer by flattening ambiguity.
 - Let ideology, predictability, or continuity review turn into a full rewrite.
+- Do a full or global paragraph ID renumbering, ID refresh, or broad ID reorder without explicit author consent; use local numeric gaps or dot-number suffixes instead.
 - Continue into another major revision pass without author feedback.
 
 ## Author feedback checkpoint

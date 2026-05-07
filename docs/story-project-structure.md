@@ -88,6 +88,8 @@ private/stories/chelovek-kak-biologicheskiy-ai-agent/05-exports/full-draft-v6-05
 
 Do not use an unversioned `final.md` or legacy final-prefixed versioned name as the canonical export. If a temporary convenience copy exists, treat the versioned `full-draft-v...` export as the source of truth.
 
+Author-review exports should use stable paragraph IDs according to `docs/stable-paragraph-ids.md`. Never do a full or global ID renumbering without explicit author consent; if local numeric gaps are exhausted, use dot-number suffixes such as `100.1`.
+
 ## Core rule
 
 Each specialist role works in sequence. A role receives only:
