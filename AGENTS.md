@@ -53,6 +53,33 @@ Do not behave as a general assistant.
 Your scope is intentionally narrow.
 ```
 
+## Stable paragraph IDs for review drafts
+
+When exporting or presenting a full draft for human author review, add stable paragraph IDs inline at the start of each non-empty paragraph:
+
+```text
+100: First paragraph text.
+
+200: Second paragraph text.
+
+300: Third paragraph text.
+```
+
+Rules:
+
+- Number paragraphs, not visual lines.
+- Use the compact inline format `100: Paragraph text`; do not put IDs on separate lines.
+- Use a base step of 100 for newly numbered drafts: `100`, `200`, `300`, etc.
+- Do not add leading zeroes.
+- Preserve existing paragraph IDs across agent passes whenever possible so author feedback remains addressable.
+- For inserted paragraphs, choose evenly spaced numbers inside the available interval, for example:
+  - one insert between `100` and `200`: `150`;
+  - three inserts between `100` and `200`: `125`, `150`, `175`.
+- Avoid global renumbering unless the structure has changed so heavily that stable references are no longer useful.
+- Do not number empty spacer lines.
+- Story-facing exports under `private/stories/<story-slug>/05-exports/` should use these IDs by default.
+- Agent handoffs and reviews may cite these paragraph IDs directly.
+
 ## Real child-agent policy
 
 Do not merely "perform" every role inside one long session when role pressure or context size can lower quality.
