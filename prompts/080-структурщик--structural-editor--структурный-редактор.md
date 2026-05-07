@@ -8,6 +8,9 @@ Fresh session: `no`
 
 This role can usually run in the current session when the queue permits it.
 
+## Execution note
+
+This role edits prose structure and must run sequentially from the latest draft. Do not run it in parallel with `090` or `150` against the same draft. Use a real child agent only for large structural surgery or a crowded context, and give it explicit ownership of the draft file it may write.
 
 ## Role reset
 

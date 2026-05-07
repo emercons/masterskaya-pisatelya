@@ -45,6 +45,8 @@ Each queue item should include:
 - `status`: `pending`, `in_progress`, `blocked`, `completed`, or `skipped`;
 - `session_chunk`: chunk id;
 - `fresh_session`: `required`, `recommended`, or `no`;
+- `execution_mode`: `inline`, `child_agent`, or `either`;
+- `parallel_group`: optional stable group id for diagnosis-only roles that may run at the same time;
 - `reason`: why this role is needed;
 - `allowed_inputs`: exact canonical/handoff/draft/review files the role may read;
 - `expected_outputs`: handoff, draft, review, canonical update, export, or queue update;
@@ -56,6 +58,12 @@ Interpret `fresh_session` this way:
 - `required`: do not run this role in the current session. Stop, tell the author which exact role/alias to start next, and let the next clean session run it.
 - `recommended`: stop if the context is long, emotionally biased by the previous role, or the next role has a conflicting pressure.
 - `no`: the role can continue in the current session if the allowed inputs are clear.
+
+Interpret `execution_mode` this way:
+
+- `child_agent`: run the role as a real child agent with a focused context.
+- `inline`: run the role in the current session.
+- `either`: choose based on context size, conflict pressure, and available parallel work.
 
 ## Session chunks
 
@@ -85,6 +93,29 @@ Default clean-session policy:
 | `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md` | Antagonist / ideology stress | required |
 | `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md` | Antagonist / expectation stress | required |
 | `140-сверщик--continuity-auditor--аудитор-непрерывности.md` | Formal audit | recommended |
+
+## Parallel child-agent reviews
+
+Diagnosis-only review roles may run in parallel child agents when:
+
+- they read the same stable draft;
+- they do not edit prose;
+- they write separate handoffs/review files;
+- no role's output is required before another role can start.
+
+Good parallel candidates after a stable final-candidate draft:
+
+- `100-читатель--reader-simulator--симулятор-читателя.md`;
+- `110-финалист--ending-analyst--аналитик-концовки.md`;
+- `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`;
+- `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`;
+- `140-сверщик--continuity-auditor--аудитор-непрерывности.md`.
+
+Prose-editing roles must run sequentially and should not share one parallel group:
+
+- `080-структурщик--structural-editor--структурный-редактор.md`;
+- `090-стилист--style-editor--стилевой-редактор.md`;
+- `150-финред--final-editor--финальный-редактор.md`.
 
 When stopping, use this shape:
 

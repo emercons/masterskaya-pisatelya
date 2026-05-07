@@ -8,6 +8,9 @@ Fresh session: `recommended`
 
 If the context is long or affected by a conflicting prior role, prefer a fresh session with: `работай, стилист`.
 
+## Execution note
+
+This role edits prose style and must run sequentially after the latest structural draft. Do not run it in parallel with `080` or `150` against the same draft. Use a real child agent when the style pass is large, the context is crowded, or structural-editor pressure could contaminate the voice.
 
 ## Role reset
 

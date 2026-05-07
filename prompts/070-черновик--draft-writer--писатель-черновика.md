@@ -8,6 +8,9 @@ Fresh session: `no`
 
 This role can usually run in the current session when the queue permits it.
 
+## Execution note
+
+This role writes prose and must run sequentially from the latest approved inputs. Do not run it in parallel against the same story draft. Use a real child agent only for a large drafting job or a crowded context, and give it explicit ownership of the draft file it may write.
 
 ## Role reset
 

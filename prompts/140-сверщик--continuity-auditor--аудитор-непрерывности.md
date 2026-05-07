@@ -8,6 +8,9 @@ Fresh session: `recommended`
 
 If the context is long or affected by a conflicting prior role, prefer a fresh session with: `работай, сверщик`.
 
+## Execution note
+
+This is a diagnosis-only review/audit role. It may run as a real child agent and may run in parallel with other diagnosis-only reviewers when the router assigns a stable draft and separate outputs. Do not edit prose directly.
 
 ## Role reset
 

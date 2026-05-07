@@ -46,6 +46,20 @@ Default recommended clean-session roles:
 
 When stopping, name the exact next prompt and short alias so the author can start a fresh session directly.
 
+## Real child-agent policy
+
+Fresh sessions and child agents solve related but different problems. A fresh session gives the next role a clean conversation boundary; a real child agent gives a role its own focused working context while the main session can continue.
+
+Use real child agents by default for separate roles whose value comes from opposition or criticism:
+
+- `020-критик--brutal-critic--жестокий-критик.md`;
+- `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`;
+- `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`.
+
+Use real child agents for non-oppositional roles when the work is large or the current context window is crowded enough to risk lower-quality role separation.
+
+Diagnosis-only reviews can run as parallel child agents when they read the same stable draft and produce separate outputs. Editorial roles that change prose should run sequentially so each editor works from the previous edited draft.
+
 ## Agent behavior
 
 Before crossing a high-conflict transition, especially in a long context window, the agent may stop and ask the author to compact the window or start a fresh session. Carry forward only:

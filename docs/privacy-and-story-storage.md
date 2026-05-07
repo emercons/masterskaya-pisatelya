@@ -30,7 +30,9 @@ All concrete story workspaces must live under:
 private/stories/<story-slug>/
 ```
 
-The root `.gitignore` ignores `private/`.
+The root `.gitignore` ignores `private/`. This is intentional, not an anomaly: `private/` is the local working area for real story content and should remain outside git history.
+
+Because `private/` is ignored, tools that respect `.gitignore` may not list it by default. For example, `rg --files` usually shows only the public/tracked infrastructure. When a task asks for the latest draft, author feedback, handoff, review, or export, inspect `private/stories/` explicitly.
 
 ## Safety net
 

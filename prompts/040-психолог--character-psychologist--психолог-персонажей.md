@@ -8,6 +8,9 @@ Fresh session: `no`
 
 This role can usually run in the current session when the queue permits it.
 
+## Execution note
+
+Inline execution is normally fine. Use a real child agent when the character material is large, emotionally tangled, or the current context is crowded enough to risk turning psychology into plot mechanics.
 
 ## Role reset
 

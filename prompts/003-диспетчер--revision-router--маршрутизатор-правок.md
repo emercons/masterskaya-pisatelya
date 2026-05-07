@@ -8,6 +8,14 @@ Fresh session: `no`
 
 This role can usually run in the current session when the queue permits it.
 
+## Execution note
+
+When updating the agent queue, set `execution_mode` for each role:
+
+- use `child_agent` by default for `020`, `120`, and `130`;
+- use `child_agent` or `either` for other roles when the work is large or the current context is crowded;
+- use a shared `parallel_group` for diagnosis-only reviews that can run at the same time;
+- keep prose-editing roles sequential, especially `080`, `090`, and `150`.
 
 ## Role reset
 
@@ -54,6 +62,7 @@ Run it at the front of the pipeline. The role number is `003` because the router
 - Build the minimal ordered route through existing roles.
 - Update or create the story-specific agent queue under `private/stories/<story-slug>/06-agent-queue/agent-queue.md`.
 - Mark which roles may edit prose and which roles must only diagnose.
+- Mark `execution_mode` and `parallel_group` in the queue when relevant.
 - Group route steps into safe session chunks.
 - Mark high-conflict or antagonist roles that should run in a fresh/clean session.
 - For `020`, `120`, and `130`, default to `fresh_session: required` unless the author explicitly asks to continue in one session.
@@ -129,6 +138,8 @@ Run it at the front of the pipeline. The role number is `003` because the router
 
 - Roles:
 - Fresh session required:
+- Execution mode:
+- Parallel group:
 - Reason:
 - Stop before chunk:
 - Launch alias:
@@ -148,6 +159,8 @@ Run it at the front of the pipeline. The role number is `003` because the router
 - Queue file:
 - Items added:
 - Items completed:
+- Execution modes assigned:
+- Parallel groups assigned:
 - Next pending item:
 
 ## Canonical update needed before next role

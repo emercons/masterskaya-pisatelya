@@ -8,6 +8,11 @@ Fresh session: `required`
 
 If this role is next in the queue, stop the current session and ask the author to start a fresh session with: `работай, предсказатель`.
 
+## Execution note
+
+Preferred execution: real child agent or fresh clean manual session. If the author launched this session with `работай, предсказатель`, proceed. If you are being run inline inside a long or mixed-role session, stop and request a child agent or fresh session.
+
+This is an oppositional diagnosis-only role. It may run in parallel with other diagnosis-only reviewers only when the router assigns a stable draft and separate outputs. Do not edit prose.
 
 ## Role reset
 

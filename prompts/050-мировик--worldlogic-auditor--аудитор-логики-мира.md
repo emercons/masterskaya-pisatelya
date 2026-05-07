@@ -8,6 +8,9 @@ Fresh session: `recommended`
 
 If the context is long or affected by a conflicting prior role, prefer a fresh session with: `работай, мировик`.
 
+## Execution note
+
+This is an audit role. It may run as a real child agent when the world rules, institutions, interfaces, or contract logic are large enough to benefit from isolated context. It should not edit prose.
 
 ## Role reset
 

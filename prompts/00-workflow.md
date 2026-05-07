@@ -76,6 +76,22 @@ Carry forward only:
 - relevant draft fragment;
 - explicit author decisions.
 
+## Real child-agent execution
+
+A specialist role can be run either inline in the current session or as a real child agent with its own focused context.
+
+Prefer real child agents for roles that are oppositional, adversarial, or critical. In this workflow those roles are:
+
+- `020-критик--brutal-critic--жестокий-критик.md`;
+- `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`;
+- `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`.
+
+Use real child agents for other roles when the work is large, the context window is crowded, or a clean isolated context would protect quality.
+
+Diagnosis-only review roles may run in parallel when they share a stable draft and produce disjoint handoffs/reviews. Good parallel candidates after a final-candidate draft are `100`, `110`, `120`, `130`, and `140`.
+
+Prose-editing roles must run sequentially. Do not run `080`, `090`, or `150` in parallel against the same draft; each one depends on the previous edited text.
+
 ## After each role
 
 1. Save the output to the story-specific handoff file under `private/stories/<story-slug>/02-handoffs/`.

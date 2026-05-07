@@ -10,6 +10,8 @@ Every real story lives in its own ignored local folder:
 private/stories/<story-slug>/
 ```
 
+The `private/` folder is deliberately local-only. It is expected to be absent from tracked-file listings and ordinary `rg --files` output because `.gitignore` excludes it. Agents should still look there explicitly for active story material.
+
 The public `stories/_template/` folder is only a copy source. Do not write actual story content into public `stories/<story-slug>/` folders.
 
 ## Required private story structure

@@ -8,6 +8,9 @@ Fresh session: `no`
 
 This role can usually run in the current session when the queue permits it.
 
+## Execution note
+
+This role edits final prose and must run sequentially after diagnosis-only reviews are complete. Do not run it in parallel with `080` or `090` against the same draft. Use a real child agent only for a large final edit or a crowded context, and give it explicit ownership of the draft/export files it may write.
 
 ## Role reset
 

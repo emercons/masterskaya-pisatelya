@@ -8,6 +8,9 @@ Fresh session: `no`
 
 This role can usually run in the current session when the queue permits it.
 
+## Execution note
+
+Inline execution is normally fine. Use a real child agent only if the intake is large, messy, or the current context is crowded enough to risk losing author intent.
 
 ## Role reset
 

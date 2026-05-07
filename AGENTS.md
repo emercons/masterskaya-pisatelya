@@ -6,6 +6,8 @@ This repository is a sequential AI-assisted storytelling workshop.
 
 This repository is public. Treat every concrete story idea, handoff, canonical state, draft, review, and export as private by default.
 
+The entire `private/` tree is intentionally local-only and ignored by git. It is normal that `rg --files` and tracked-file searches do not show real story workspaces there; inspect `private/` explicitly when the task concerns drafts, author feedback, handoffs, reviews, exports, or an active story.
+
 Create and read real story workspaces under:
 
 ```text
@@ -50,6 +52,20 @@ Do not continue previous analytical styles.
 Do not behave as a general assistant.
 Your scope is intentionally narrow.
 ```
+
+## Real child-agent policy
+
+Do not merely "perform" every role inside one long session when role pressure or context size can lower quality.
+
+Use real child agents by default for separate roles that are oppositional, adversarial, or critical, especially:
+
+- `020-критик--brutal-critic--жестокий-критик.md`;
+- `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`;
+- `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`.
+
+Use real child agents for other roles when the work is large, when the current context is crowded, or when a clean isolated context would protect quality.
+
+Diagnosis-only review roles may run in parallel as child agents when they read the same stable draft and write disjoint handoffs/reviews. Prose-editing roles must run sequentially, because each editor must see the previous edited draft.
 
 ## Handoff rule
 
