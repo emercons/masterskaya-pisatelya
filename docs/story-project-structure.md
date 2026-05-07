@@ -21,29 +21,30 @@ private/stories/<story-slug>/00-input/author-notes.md
 private/stories/<story-slug>/01-canonical/canonical-story-state.md
 private/stories/<story-slug>/01-canonical/decisions-log.md
 
-private/stories/<story-slug>/02-handoffs/005-idea-receiver--приёмщик-идеи.md
-private/stories/<story-slug>/02-handoffs/010-idea-architect--архитектор-идеи.md
-private/stories/<story-slug>/02-handoffs/020-brutal-critic--жестокий-критик.md
-private/stories/<story-slug>/02-handoffs/030-story-engineer--инженер-сюжета.md
-private/stories/<story-slug>/02-handoffs/040-character-psychologist--психолог-персонажей.md
-private/stories/<story-slug>/02-handoffs/050-worldlogic-auditor--аудитор-логики-мира.md
-private/stories/<story-slug>/02-handoffs/060-thematic-analyst--тематический-аналитик.md
-private/stories/<story-slug>/02-handoffs/070-draft-writer--писатель-черновика.md
-private/stories/<story-slug>/02-handoffs/080-structural-editor--структурный-редактор.md
-private/stories/<story-slug>/02-handoffs/090-style-editor--стилевой-редактор.md
-private/stories/<story-slug>/02-handoffs/100-reader-simulator--симулятор-читателя.md
-private/stories/<story-slug>/02-handoffs/110-ending-analyst--аналитик-концовки.md
-private/stories/<story-slug>/02-handoffs/120-ideology-stress-tester--идеологический-стресс-тестер.md
-private/stories/<story-slug>/02-handoffs/130-predictability-analyst--аналитик-предсказуемости.md
-private/stories/<story-slug>/02-handoffs/140-continuity-auditor--аудитор-непрерывности.md
-private/stories/<story-slug>/02-handoffs/150-final-editor--финальный-редактор.md
+private/stories/<story-slug>/02-handoffs/003-диспетчер--revision-router--маршрутизатор-правок.md
+private/stories/<story-slug>/02-handoffs/005-приёмщик--idea-receiver--приёмщик-идеи.md
+private/stories/<story-slug>/02-handoffs/010-архитектор--idea-architect--архитектор-идеи.md
+private/stories/<story-slug>/02-handoffs/020-критик--brutal-critic--жестокий-критик.md
+private/stories/<story-slug>/02-handoffs/030-сюжетник--story-engineer--инженер-сюжета.md
+private/stories/<story-slug>/02-handoffs/040-психолог--character-psychologist--психолог-персонажей.md
+private/stories/<story-slug>/02-handoffs/050-мировик--worldlogic-auditor--аудитор-логики-мира.md
+private/stories/<story-slug>/02-handoffs/060-тематик--thematic-analyst--тематический-аналитик.md
+private/stories/<story-slug>/02-handoffs/070-черновик--draft-writer--писатель-черновика.md
+private/stories/<story-slug>/02-handoffs/080-структурщик--structural-editor--структурный-редактор.md
+private/stories/<story-slug>/02-handoffs/090-стилист--style-editor--стилевой-редактор.md
+private/stories/<story-slug>/02-handoffs/100-читатель--reader-simulator--симулятор-читателя.md
+private/stories/<story-slug>/02-handoffs/110-финалист--ending-analyst--аналитик-концовки.md
+private/stories/<story-slug>/02-handoffs/120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md
+private/stories/<story-slug>/02-handoffs/130-предсказатель--predictability-analyst--аналитик-предсказуемости.md
+private/stories/<story-slug>/02-handoffs/140-сверщик--continuity-auditor--аудитор-непрерывности.md
+private/stories/<story-slug>/02-handoffs/150-финред--final-editor--финальный-редактор.md
 
 private/stories/<story-slug>/03-drafts/draft-v0-raw.md
-private/stories/<story-slug>/03-drafts/draft-v1-after-070-draft-writer.md
-private/stories/<story-slug>/03-drafts/draft-v2-after-080-structural-editor.md
-private/stories/<story-slug>/03-drafts/draft-v3-after-090-style-editor.md
+private/stories/<story-slug>/03-drafts/draft-v1-after-070-черновик.md
+private/stories/<story-slug>/03-drafts/draft-v2-after-080-структурщик.md
+private/stories/<story-slug>/03-drafts/draft-v3-after-090-стилист.md
 private/stories/<story-slug>/03-drafts/draft-v4-final-candidate.md
-private/stories/<story-slug>/03-drafts/draft-v5-after-150-final-editor.md
+private/stories/<story-slug>/03-drafts/draft-v5-after-150-финред.md
 
 private/stories/<story-slug>/04-reviews/reader-notes.md
 private/stories/<story-slug>/04-reviews/ending-analysis.md
@@ -52,7 +53,9 @@ private/stories/<story-slug>/04-reviews/predictability-analysis.md
 private/stories/<story-slug>/04-reviews/continuity-audit.md
 private/stories/<story-slug>/04-reviews/author-retrospective.md
 
-private/stories/<story-slug>/05-exports/final.md
+private/stories/<story-slug>/05-exports/final-v<N>-MM-DD.md
+
+private/stories/<story-slug>/06-agent-queue/agent-queue.md
 ```
 
 ## Why filenames do not include story title
@@ -64,6 +67,24 @@ private/stories/<story-slug>/
 ```
 
 Files inside every story folder use stable workflow names. This keeps automation simple and lets agents know exactly where to read and write each stage.
+
+## Export naming
+
+Final exports must be versioned:
+
+```text
+private/stories/<story-slug>/05-exports/final-v<N>-MM-DD.md
+```
+
+Use the same version number as the source draft or final pass. Use `MM-DD` for the calendar date, for example `05-07` for May 7.
+
+Example:
+
+```text
+private/stories/chelovek-kak-biologicheskiy-ai-agent/05-exports/final-v6-05-07.md
+```
+
+Do not use an unversioned `final.md` as the canonical export. If a temporary convenience copy exists, treat the versioned export as the source of truth.
 
 ## Core rule
 
@@ -77,6 +98,10 @@ Each specialist role works in sequence. A role receives only:
 The role must write a compact handoff before the next role begins.
 
 See `docs/feedback-and-session-boundaries.md` before continuing through author feedback checkpoints or high-conflict role transitions.
+
+Use `prompts/003-диспетчер--revision-router--маршрутизатор-правок.md` when starting or resuming a pipeline, and after complex author feedback, to sort requested changes and choose the earliest affected role before rewriting.
+
+Use `private/stories/<story-slug>/06-agent-queue/agent-queue.md` to continue work across sessions. A new session should read the queue, canonical state, the latest relevant handoff, and the relevant draft fragment, not the full old conversation.
 
 ## Canonical story state
 
@@ -109,7 +134,7 @@ A good handoff contains:
 Use only canonical bilingual prompt filenames:
 
 ```text
-prompts/NNN-english--русский.md
+prompts/NNN-короткое--english--русский.md
 ```
 
 Do not create alternate role prompt locations or non-bilingual role prompt filenames.

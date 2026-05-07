@@ -15,7 +15,7 @@ Read before cleanup:
 
 ## Legacy files removed
 
-No numbered single-language role prompt duplicates such as `prompts/010-idea-architect.md` were present at cleanup time.
+No numbered single-language role prompt duplicates were present at cleanup time.
 
 `prompts/ru/` was not present.
 
@@ -48,22 +48,23 @@ Replaced old `stories/_template` files:
 
 ## Canonical bilingual role prompts retained
 
-- `prompts/005-idea-receiver--приёмщик-идеи.md`
-- `prompts/010-idea-architect--архитектор-идеи.md`
-- `prompts/020-brutal-critic--жестокий-критик.md`
-- `prompts/030-story-engineer--инженер-сюжета.md`
-- `prompts/040-character-psychologist--психолог-персонажей.md`
-- `prompts/050-worldlogic-auditor--аудитор-логики-мира.md`
-- `prompts/060-thematic-analyst--тематический-аналитик.md`
-- `prompts/070-draft-writer--писатель-черновика.md`
-- `prompts/080-structural-editor--структурный-редактор.md`
-- `prompts/090-style-editor--стилевой-редактор.md`
-- `prompts/100-reader-simulator--симулятор-читателя.md`
-- `prompts/110-ending-analyst--аналитик-концовки.md`
-- `prompts/120-ideology-stress-tester--идеологический-стресс-тестер.md`
-- `prompts/130-predictability-analyst--аналитик-предсказуемости.md`
-- `prompts/140-continuity-auditor--аудитор-непрерывности.md`
-- `prompts/150-final-editor--финальный-редактор.md`
+- `prompts/003-диспетчер--revision-router--маршрутизатор-правок.md`
+- `prompts/005-приёмщик--idea-receiver--приёмщик-идеи.md`
+- `prompts/010-архитектор--idea-architect--архитектор-идеи.md`
+- `prompts/020-критик--brutal-critic--жестокий-критик.md`
+- `prompts/030-сюжетник--story-engineer--инженер-сюжета.md`
+- `prompts/040-психолог--character-psychologist--психолог-персонажей.md`
+- `prompts/050-мировик--worldlogic-auditor--аудитор-логики-мира.md`
+- `prompts/060-тематик--thematic-analyst--тематический-аналитик.md`
+- `prompts/070-черновик--draft-writer--писатель-черновика.md`
+- `prompts/080-структурщик--structural-editor--структурный-редактор.md`
+- `prompts/090-стилист--style-editor--стилевой-редактор.md`
+- `prompts/100-читатель--reader-simulator--симулятор-читателя.md`
+- `prompts/110-финалист--ending-analyst--аналитик-концовки.md`
+- `prompts/120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`
+- `prompts/130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`
+- `prompts/140-сверщик--continuity-auditor--аудитор-непрерывности.md`
+- `prompts/150-финред--final-editor--финальный-редактор.md`
 
 ## Canonical workflow files retained
 
@@ -75,24 +76,26 @@ Replaced old `stories/_template` files:
 
 The local repository did not contain advanced reviewer prompt files `110-140` at the start of this cleanup pass, so they were added using the same bilingual naming convention:
 
-- `prompts/110-ending-analyst--аналитик-концовки.md`
-- `prompts/120-ideology-stress-tester--идеологический-стресс-тестер.md`
-- `prompts/130-predictability-analyst--аналитик-предсказуемости.md`
-- `prompts/140-continuity-auditor--аудитор-непрерывности.md`
+- `prompts/110-финалист--ending-analyst--аналитик-концовки.md`
+- `prompts/120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`
+- `prompts/130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`
+- `prompts/140-сверщик--continuity-auditor--аудитор-непрерывности.md`
 
 Later workflow additions:
 
-- `prompts/005-idea-receiver--приёмщик-идеи.md`
-- `prompts/150-final-editor--финальный-редактор.md`
+- `prompts/003-диспетчер--revision-router--маршрутизатор-правок.md`
+- `prompts/005-приёмщик--idea-receiver--приёмщик-идеи.md`
+- `prompts/150-финред--final-editor--финальный-редактор.md`
 - `docs/feedback-and-session-boundaries.md`
+- `docs/agent-queue.md`
 
 ## Inconsistencies fixed
 
-- `README.md` now lists canonical bilingual prompts `005-150` only.
+- `README.md` now lists canonical bilingual prompts `003-150`, with `003` as the revision router.
 - `AGENTS.md` now forbids `prompts/ru/`, old single-language role prompts, and unnumbered prompt files as role definitions.
-- `prompts/00-workflow.md` now runs through roles `005-150`.
-- `docs/story-project-structure.md` now includes handoffs for `005-150`, review outputs for advanced reviewer roles, and the final-editor draft.
-- `docs/role-map.md` now maps canonical bilingual prompts `005-150`.
+- `prompts/00-workflow.md` now runs through roles `003-150`, with `003` as the revision router.
+- `docs/story-project-structure.md` now includes handoffs for `003-150`, the agent queue, review outputs for advanced reviewer roles, and the final-editor draft.
+- `docs/role-map.md` now maps canonical bilingual prompts `003-150`.
 - `docs/feedback-and-session-boundaries.md` now defines author feedback checkpoints and high-conflict role transitions.
 - `stories/_template` now follows the canonical story folder layout.
 - Existing private story workspace has completed content through role `150`.

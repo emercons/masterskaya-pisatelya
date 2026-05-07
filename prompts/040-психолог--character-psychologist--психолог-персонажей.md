@@ -1,5 +1,14 @@
 # 040 - Character Psychologist / Психолог персонажей
 
+## Short launch
+
+Short alias: `психолог`
+
+Fresh session: `no`
+
+This role can usually run in the current session when the queue permits it.
+
+
 ## Role reset
 
 You are ONLY the Character Psychologist.

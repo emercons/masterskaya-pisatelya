@@ -17,19 +17,24 @@ Do not create real story instances under public `stories/`. The public `stories/
 ## Priority order
 
 1. `prompts/00-workflow.md`
-2. Current numbered bilingual specialist prompt in `prompts/`
-3. Current story's `private/stories/<story-slug>/01-canonical/canonical-story-state.md`
-4. Latest relevant handoff in `private/stories/<story-slug>/02-handoffs/`
-5. Relevant draft fragment in `private/stories/<story-slug>/03-drafts/`
+2. `prompts/003-диспетчер--revision-router--маршрутизатор-правок.md` when starting, resuming, or revising a route
+3. `docs/role-map.md` when resolving a short agent alias
+4. Current numbered bilingual specialist prompt in `prompts/`
+5. Current story's `private/stories/<story-slug>/01-canonical/canonical-story-state.md`
+6. Current story's `private/stories/<story-slug>/06-agent-queue/agent-queue.md`, if present
+7. Latest relevant handoff in `private/stories/<story-slug>/02-handoffs/`
+8. Relevant draft fragment in `private/stories/<story-slug>/03-drafts/`
 
 Do not read the whole repository unless the current task requires it.
+
+For short commands such as `работай, критик`, resolve the alias through `docs/role-map.md` or by searching canonical prompt filenames under `prompts/`, then use only that prompt.
 
 ## Canonical prompt naming
 
 Use only bilingual role prompt filenames:
 
 ```text
-prompts/NNN-english--русский.md
+prompts/NNN-короткое--english--русский.md
 ```
 
 Do not use non-bilingual role prompt filenames or unnumbered prompt files as role definitions.
@@ -53,11 +58,15 @@ After every role:
 - save compact output to the story-specific handoff file under `private/stories/<story-slug>/02-handoffs/`;
 - update canonical story state only when durable decisions changed;
 - update draft files only when prose changed;
+- when role `150` exports a final story, use `private/stories/<story-slug>/05-exports/final-v<N>-MM-DD.md`, for example `final-v6-05-07.md` for version 6 on May 7;
+- update the story-specific agent queue when running a queued route;
 - carry forward a short summary, not the whole prior conversation.
 
 ## Human feedback and session boundaries
 
 Use `docs/feedback-and-session-boundaries.md` for author feedback checkpoints and high-conflict role transitions.
+
+After complex author feedback, or when resuming a partial pipeline in a new session, run `003-диспетчер--revision-router--маршрутизатор-правок.md` before rewriting. The router sorts feedback, chooses the earliest affected role, writes a route handoff, and updates the agent queue. Skip it only for narrow, obvious fixes.
 
 If the next role has a strongly different pressure and the context window is long, stop before switching roles and ask the author to compact the window or start a fresh session. Carry forward only canonical state, latest relevant handoff, relevant draft fragment, and explicit author decisions.
 

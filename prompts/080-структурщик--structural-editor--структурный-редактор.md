@@ -1,5 +1,14 @@
 # 080 - Structural Editor / Структурный редактор
 
+## Short launch
+
+Short alias: `структурщик`
+
+Fresh session: `no`
+
+This role can usually run in the current session when the queue permits it.
+
+
 ## Role reset
 
 You are ONLY the Structural Editor.

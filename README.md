@@ -6,7 +6,7 @@ AI-assisted storytelling repository: мультиагентная мастерс
 
 ## Главный принцип
 
-Каждый нумерованный prompt-файл в `prompts/` описывает отдельного специалиста. Роли применяются строго по порядку номеров.
+Каждый нумерованный prompt-файл в `prompts/` описывает отдельного специалиста. Прогон начинается с `003-диспетчер--revision-router--маршрутизатор-правок.md`: в простом новом случае он передает работу в `005`, а после авторского фидбека или при возобновлении сессии выбирает минимальный безопасный маршрут по уже существующим ролям.
 
 Новая история создается не в публичной `stories/`, а в локальной ignored-папке:
 
@@ -27,6 +27,22 @@ private/stories/<story-slug>/02-handoffs/
 ```text
 private/stories/<story-slug>/01-canonical/canonical-story-state.md
 ```
+
+Финальные экспорты сохраняются с номером версии и датой:
+
+```text
+private/stories/<story-slug>/05-exports/final-v<N>-MM-DD.md
+```
+
+Например, `final-v6-05-07.md` означает версию 6 от 7 мая.
+
+Межсессионная очередь агентов хранится в:
+
+```text
+private/stories/<story-slug>/06-agent-queue/agent-queue.md
+```
+
+Новая сессия берет из очереди следующий pending-агент, а не весь прошлый чат.
 
 ## Public vs private
 
@@ -53,30 +69,33 @@ private/stories/<story-slug>/01-canonical/canonical-story-state.md
 - `docs/story-project-structure.md`
 - `docs/privacy-and-story-storage.md`
 - `docs/feedback-and-session-boundaries.md`
+- `docs/pipeline-optimization.md`
+- `docs/agent-queue.md`
 - `prompts/00-workflow.md`
 - `prompts/00-handoff-template.md`
 - `prompts/00-canonical-story-state-template.md`
 
 ## Canonical role prompts
 
-Все specialist prompts используют bilingual naming convention: `NNN-english--русский.md`.
+Все specialist prompts используют naming convention: `NNN-короткое--english--русский.md`.
 
-1. `prompts/005-idea-receiver--приёмщик-идеи.md`
-2. `prompts/010-idea-architect--архитектор-идеи.md`
-3. `prompts/020-brutal-critic--жестокий-критик.md`
-4. `prompts/030-story-engineer--инженер-сюжета.md`
-5. `prompts/040-character-psychologist--психолог-персонажей.md`
-6. `prompts/050-worldlogic-auditor--аудитор-логики-мира.md`
-7. `prompts/060-thematic-analyst--тематический-аналитик.md`
-8. `prompts/070-draft-writer--писатель-черновика.md`
-9. `prompts/080-structural-editor--структурный-редактор.md`
-10. `prompts/090-style-editor--стилевой-редактор.md`
-11. `prompts/100-reader-simulator--симулятор-читателя.md`
-12. `prompts/110-ending-analyst--аналитик-концовки.md`
-13. `prompts/120-ideology-stress-tester--идеологический-стресс-тестер.md`
-14. `prompts/130-predictability-analyst--аналитик-предсказуемости.md`
-15. `prompts/140-continuity-auditor--аудитор-непрерывности.md`
-16. `prompts/150-final-editor--финальный-редактор.md`
+1. `prompts/003-диспетчер--revision-router--маршрутизатор-правок.md`
+2. `prompts/005-приёмщик--idea-receiver--приёмщик-идеи.md`
+3. `prompts/010-архитектор--idea-architect--архитектор-идеи.md`
+4. `prompts/020-критик--brutal-critic--жестокий-критик.md`
+5. `prompts/030-сюжетник--story-engineer--инженер-сюжета.md`
+6. `prompts/040-психолог--character-psychologist--психолог-персонажей.md`
+7. `prompts/050-мировик--worldlogic-auditor--аудитор-логики-мира.md`
+8. `prompts/060-тематик--thematic-analyst--тематический-аналитик.md`
+9. `prompts/070-черновик--draft-writer--писатель-черновика.md`
+10. `prompts/080-структурщик--structural-editor--структурный-редактор.md`
+11. `prompts/090-стилист--style-editor--стилевой-редактор.md`
+12. `prompts/100-читатель--reader-simulator--симулятор-читателя.md`
+13. `prompts/110-финалист--ending-analyst--аналитик-концовки.md`
+14. `prompts/120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`
+15. `prompts/130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`
+16. `prompts/140-сверщик--continuity-auditor--аудитор-непрерывности.md`
+17. `prompts/150-финред--final-editor--финальный-редактор.md`
 
 ## Role reset
 

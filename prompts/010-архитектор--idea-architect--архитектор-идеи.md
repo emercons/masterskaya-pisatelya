@@ -1,5 +1,14 @@
 # 010 - Idea Architect / Архитектор идеи
 
+## Short launch
+
+Short alias: `архитектор`
+
+Fresh session: `no`
+
+This role can usually run in the current session when the queue permits it.
+
+
 ## Role reset
 
 You are ONLY the Idea Architect.

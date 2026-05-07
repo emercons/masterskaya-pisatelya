@@ -29,22 +29,31 @@ Do not drag the full old context forward.
 
 ## Role order
 
-1. `005-idea-receiver--приёмщик-идеи.md`
-2. `010-idea-architect--архитектор-идеи.md`
-3. `020-brutal-critic--жестокий-критик.md`
-4. `030-story-engineer--инженер-сюжета.md`
-5. `040-character-psychologist--психолог-персонажей.md`
-6. `050-worldlogic-auditor--аудитор-логики-мира.md`
-7. `060-thematic-analyst--тематический-аналитик.md`
-8. `070-draft-writer--писатель-черновика.md`
-9. `080-structural-editor--структурный-редактор.md`
-10. `090-style-editor--стилевой-редактор.md`
-11. `100-reader-simulator--симулятор-читателя.md`
-12. `110-ending-analyst--аналитик-концовки.md`
-13. `120-ideology-stress-tester--идеологический-стресс-тестер.md`
-14. `130-predictability-analyst--аналитик-предсказуемости.md`
-15. `140-continuity-auditor--аудитор-непрерывности.md`
-16. `150-final-editor--финальный-редактор.md`
+1. `003-диспетчер--revision-router--маршрутизатор-правок.md` when starting, resuming, or revising a route
+2. `005-приёмщик--idea-receiver--приёмщик-идеи.md`
+3. `010-архитектор--idea-architect--архитектор-идеи.md`
+4. `020-критик--brutal-critic--жестокий-критик.md`
+5. `030-сюжетник--story-engineer--инженер-сюжета.md`
+6. `040-психолог--character-psychologist--психолог-персонажей.md`
+7. `050-мировик--worldlogic-auditor--аудитор-логики-мира.md`
+8. `060-тематик--thematic-analyst--тематический-аналитик.md`
+9. `070-черновик--draft-writer--писатель-черновика.md`
+10. `080-структурщик--structural-editor--структурный-редактор.md`
+11. `090-стилист--style-editor--стилевой-редактор.md`
+12. `100-читатель--reader-simulator--симулятор-читателя.md`
+13. `110-финалист--ending-analyst--аналитик-концовки.md`
+14. `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`
+15. `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`
+16. `140-сверщик--continuity-auditor--аудитор-непрерывности.md`
+17. `150-финред--final-editor--финальный-редактор.md`
+
+## Revision routing
+
+Use `003-диспетчер--revision-router--маршрутизатор-правок.md` when starting a new pipeline, resuming from an agent queue, or processing human author feedback that contains several kinds of changes, changes the ending/structure/world rules, or arrives after roles `100`, `140`, or `150`.
+
+The revision router does not rewrite prose. It sorts feedback, identifies the earliest affected role, builds the minimal safe route through the existing specialists, and writes/updates the story-specific agent queue.
+
+Skip `003` only when the next step is obvious and local, such as a typo fix or one narrow style correction.
 
 ## Author feedback checkpoints
 
@@ -52,9 +61,13 @@ Ask for human author feedback after roles `005`, `020`, `060`, `100`, `140`, and
 
 Use `docs/feedback-and-session-boundaries.md` as the source of truth for feedback checkpoints and high-conflict role transitions.
 
+If author feedback contains actual revision requests, run `003-диспетчер--revision-router--маршрутизатор-правок.md` before starting the next revision pass unless the requested change is narrow and obvious.
+
 ## Session boundaries
 
 Some roles deliberately contradict each other. Before crossing a high-conflict transition in a long context window, stop and ask the author to compact the window or start a fresh session.
+
+If the next pending queue item has `fresh_session: required`, stop the current session and name the exact next role and short alias. Do not run that role in the current session.
 
 Carry forward only:
 
@@ -68,8 +81,10 @@ Carry forward only:
 1. Save the output to the story-specific handoff file under `private/stories/<story-slug>/02-handoffs/`.
 2. Update canonical story state if durable decisions changed.
 3. Update draft files if prose changed.
-4. Compress the role result into a short handoff summary.
-5. Reset role identity before the next role.
+4. When role `150` produces an export, save it as `05-exports/final-v<N>-MM-DD.md`, using `MM-DD` such as `05-07` for May 7.
+5. Update `private/stories/<story-slug>/06-agent-queue/agent-queue.md` when running from a queued route.
+6. Compress the role result into a short handoff summary.
+7. Reset role identity before the next role.
 
 ## Privacy
 
