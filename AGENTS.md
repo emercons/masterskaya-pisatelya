@@ -58,7 +58,7 @@ After every role:
 - save compact output to the story-specific handoff file under `private/stories/<story-slug>/02-handoffs/`;
 - update canonical story state only when durable decisions changed;
 - update draft files only when prose changed;
-- when role `150` exports a final story, use `private/stories/<story-slug>/05-exports/final-v<N>-MM-DD.md`, for example `final-v6-05-07.md` for version 6 on May 7;
+- when role `150` exports a full draft, use `private/stories/<story-slug>/05-exports/full-draft-v<N>-MM-DD.md`, for example `full-draft-v6-05-07.md` for version 6 on May 7;
 - update the story-specific agent queue when running a queued route;
 - carry forward a short summary, not the whole prior conversation.
 

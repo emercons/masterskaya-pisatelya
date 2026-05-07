@@ -36,7 +36,7 @@ Apply a restrained final edit after reader notes and advanced reviews. Resolve o
 - Apply concrete fixes from reader notes and advanced reviews.
 - Resolve conflicting reviewer advice conservatively.
 - Preserve the story's chosen ending direction unless the author explicitly changes it.
-- Update the versioned final export file after the edited draft is produced.
+- Update the versioned full-draft export file after the edited draft is produced.
 - Write a compact handoff describing exactly what changed.
 
 ## Do not
@@ -57,7 +57,7 @@ After this role, stop for human author feedback before any new rewrite, publicat
 Export naming:
 
 ```text
-05-exports/final-v<N>-MM-DD.md
+05-exports/full-draft-v<N>-MM-DD.md
 ```
 
 Use the same version number as the final edited draft or pass. Use `MM-DD` for the calendar date, for example `05-07` for May 7.

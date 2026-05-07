@@ -8,5 +8,5 @@ Use this compact context for the next session:
 - `stories/_template` is now canonical and includes handoff placeholders for roles `003-150`, plus `06-agent-queue/agent-queue.md`.
 - Concrete stories now belong under ignored `private/stories/<story-slug>/`.
 - Existing private story workspace has completed content through role `150`; advanced reviewer roles `110-140` are filled.
-- Final exports should now use versioned filenames such as `final-v6-05-07.md`.
+- Full-draft exports should now use versioned filenames such as `full-draft-v6-05-07.md`.
 - Next useful action: human author review of the final export, or commit/push the latest infrastructure updates.

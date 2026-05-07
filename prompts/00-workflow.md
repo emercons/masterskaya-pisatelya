@@ -81,7 +81,7 @@ Carry forward only:
 1. Save the output to the story-specific handoff file under `private/stories/<story-slug>/02-handoffs/`.
 2. Update canonical story state if durable decisions changed.
 3. Update draft files if prose changed.
-4. When role `150` produces an export, save it as `05-exports/final-v<N>-MM-DD.md`, using `MM-DD` such as `05-07` for May 7.
+4. When role `150` produces an export, save it as `05-exports/full-draft-v<N>-MM-DD.md`, using `MM-DD` such as `05-07` for May 7.
 5. Update `private/stories/<story-slug>/06-agent-queue/agent-queue.md` when running from a queued route.
 6. Compress the role result into a short handoff summary.
 7. Reset role identity before the next role.

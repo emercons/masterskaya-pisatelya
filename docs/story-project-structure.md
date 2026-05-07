@@ -53,7 +53,7 @@ private/stories/<story-slug>/04-reviews/predictability-analysis.md
 private/stories/<story-slug>/04-reviews/continuity-audit.md
 private/stories/<story-slug>/04-reviews/author-retrospective.md
 
-private/stories/<story-slug>/05-exports/final-v<N>-MM-DD.md
+private/stories/<story-slug>/05-exports/full-draft-v<N>-MM-DD.md
 
 private/stories/<story-slug>/06-agent-queue/agent-queue.md
 ```
@@ -70,10 +70,10 @@ Files inside every story folder use stable workflow names. This keeps automation
 
 ## Export naming
 
-Final exports must be versioned:
+Full-draft exports must be versioned:
 
 ```text
-private/stories/<story-slug>/05-exports/final-v<N>-MM-DD.md
+private/stories/<story-slug>/05-exports/full-draft-v<N>-MM-DD.md
 ```
 
 Use the same version number as the source draft or final pass. Use `MM-DD` for the calendar date, for example `05-07` for May 7.
@@ -81,10 +81,10 @@ Use the same version number as the source draft or final pass. Use `MM-DD` for t
 Example:
 
 ```text
-private/stories/chelovek-kak-biologicheskiy-ai-agent/05-exports/final-v6-05-07.md
+private/stories/chelovek-kak-biologicheskiy-ai-agent/05-exports/full-draft-v6-05-07.md
 ```
 
-Do not use an unversioned `final.md` as the canonical export. If a temporary convenience copy exists, treat the versioned export as the source of truth.
+Do not use an unversioned `final.md` or legacy final-prefixed versioned name as the canonical export. If a temporary convenience copy exists, treat the versioned `full-draft-v...` export as the source of truth.
 
 ## Core rule
 

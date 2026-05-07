@@ -28,13 +28,13 @@ private/stories/<story-slug>/02-handoffs/
 private/stories/<story-slug>/01-canonical/canonical-story-state.md
 ```
 
-Финальные экспорты сохраняются с номером версии и датой:
+Полные экспортные драфты сохраняются с номером версии и датой:
 
 ```text
-private/stories/<story-slug>/05-exports/final-v<N>-MM-DD.md
+private/stories/<story-slug>/05-exports/full-draft-v<N>-MM-DD.md
 ```
 
-Например, `final-v6-05-07.md` означает версию 6 от 7 мая.
+Например, `full-draft-v6-05-07.md` означает полный драфт версии 6 от 7 мая.
 
 Межсессионная очередь агентов хранится в:
 
