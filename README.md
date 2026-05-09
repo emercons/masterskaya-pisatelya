@@ -76,9 +76,14 @@ private/stories/<story-slug>/06-agent-queue/agent-queue.md
 - `docs/pipeline-optimization.md`
 - `docs/agent-queue.md`
 - `docs/stable-paragraph-ids.md`
+- `docs/ai-writing-systems-map.md`
 - `prompts/00-workflow.md`
 - `prompts/00-handoff-template.md`
 - `prompts/00-canonical-story-state-template.md`
+
+## Architecture references
+
+- `docs/ai-writing-systems-map.md` — карта типов систем для AI-assisted storytelling с разделением по масштабу: небольшой рассказ, повесть/роман, серия, большая вселенная/franchise-level workflow.
 
 ## Canonical role prompts
 
