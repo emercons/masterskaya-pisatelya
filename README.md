@@ -122,3 +122,10 @@ Your scope is intentionally narrow.
 ## Infrastructure rule
 
 Use only the numbered bilingual file list above as the role prompt source of truth.
+
+<!-- emercons-account-docs:start -->
+## Account Documentation / Документация аккаунта
+
+Account-level repository inventory, rules, and agent safety boundaries for `emercons` live in the private [emercons account documentation](https://github.com/emercons/emercons-notes-private/blob/main/infrastructure/this-account-%D1%8D%D1%82%D0%BE%D1%82-%D0%B0%D0%BA%D0%BA%D0%B0%D1%83%D0%BD%D1%82-emercons/README.md).
+<!-- emercons-account-docs:end -->
+
