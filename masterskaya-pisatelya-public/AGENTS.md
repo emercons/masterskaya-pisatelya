@@ -16,6 +16,29 @@ private/stories/<story-slug>/
 
 Do not create real story instances under public `stories/`. The public `stories/_template/` folder is only a template.
 
+## Repository layout and migration safety
+
+The repository root may contain only local/private working material plus a public infrastructure subtree:
+
+```text
+masterskaya-pisatelya-public/
+private/
+```
+
+When working from the repository root, public infrastructure files live under `masterskaya-pisatelya-public/`. Interpret paths in this `AGENTS.md` relative to that subtree unless the task explicitly concerns root-level local storage.
+
+Do not assume the repository is currently public just because the workflow describes a public/private boundary. If tracked files already exist under `private/` or under concrete `stories/<story-slug>/` paths, keep them tracked and accessible unless the author explicitly asks to untrack, remove, or sanitize them. Report the mismatch, but do not silently "fix" it.
+
+Before large moves or cleanup:
+
+- run `git status --short --branch`, `git ls-files`, and `git remote -v`;
+- inspect whether apparently private paths are tracked before changing them;
+- use `git mv` for tracked files so history and rename detection stay intact;
+- if a destination is ignored by a nested `.gitignore`, use `git mv` or `git add -f` only for the exact already-known tracked paths;
+- keep root `.gitignore` minimal enough to protect local-only work, but do not let ignore rules hide files that the author wants to keep versioned;
+- after staging, run `git diff --cached --name-only` and `git diff --cached --check`;
+- before pushing, make sure git author email satisfies GitHub email privacy, for example a verified noreply address.
+
 ## Priority order
 
 1. `prompts/00-workflow.md`
