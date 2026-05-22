@@ -5,7 +5,7 @@ The agent queue is the durable execution plan for running the storytelling pipel
 It lives inside each private story workspace:
 
 ```text
-private/stories/<story-slug>/06-agent-queue/agent-queue.md
+masterskaya-pisatelya-PRIVATE/stories/<story-slug>/06-agent-queue/agent-queue.md
 ```
 
 Do not store real story queue state in public folders.
@@ -28,8 +28,8 @@ A new session should read only:
 - `prompts/00-workflow.md`;
 - `docs/agent-queue.md`;
 - the current specialist prompt;
-- `private/stories/<story-slug>/06-agent-queue/agent-queue.md`;
-- `private/stories/<story-slug>/01-canonical/canonical-story-state.md`;
+- `masterskaya-pisatelya-PRIVATE/stories/<story-slug>/06-agent-queue/agent-queue.md`;
+- `masterskaya-pisatelya-PRIVATE/stories/<story-slug>/01-canonical/canonical-story-state.md`;
 - the latest relevant handoff from `02-handoffs/`;
 - the relevant draft fragment from `03-drafts/`;
 - explicit author decisions referenced by the queue.
@@ -144,17 +144,17 @@ The queue does not replace canonical state. It only says what to run next and wh
 Canonical facts live in:
 
 ```text
-private/stories/<story-slug>/01-canonical/canonical-story-state.md
+masterskaya-pisatelya-PRIVATE/stories/<story-slug>/01-canonical/canonical-story-state.md
 ```
 
 Role memory lives in:
 
 ```text
-private/stories/<story-slug>/02-handoffs/
+masterskaya-pisatelya-PRIVATE/stories/<story-slug>/02-handoffs/
 ```
 
 Prose lives in:
 
 ```text
-private/stories/<story-slug>/03-drafts/
+masterskaya-pisatelya-PRIVATE/stories/<story-slug>/03-drafts/
 ```

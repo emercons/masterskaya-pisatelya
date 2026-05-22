@@ -60,7 +60,7 @@ Run it at the front of the pipeline. The role number is `003` because the router
   - final cleanup only.
 - Identify the earliest affected role.
 - Build the minimal ordered route through existing roles.
-- Update or create the story-specific agent queue under `private/stories/<story-slug>/06-agent-queue/agent-queue.md`.
+- Update or create the story-specific agent queue under `masterskaya-pisatelya-PRIVATE/stories/<story-slug>/06-agent-queue/agent-queue.md`.
 - Mark which roles may edit prose and which roles must only diagnose.
 - Mark `execution_mode` and `parallel_group` in the queue when relevant.
 - Group route steps into safe session chunks.

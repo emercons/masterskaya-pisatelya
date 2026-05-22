@@ -45,7 +45,7 @@
 | 1 | Drafting system | Помогает писать первичный текст сцены или рассказа | S | Да | Codex, Claude Code, локальные LLM через LM Studio/Ollama | Базовый слой. Без него всё остальное вторично. |
 | 2 | Rewrite / editing system | Переписывает, сокращает, усиливает сцену | S | Да | Prompt files + Codex; Vale/write-good как lint-подход | Для рассказа полезнее сложного worldbuilding. |
 | 3 | Role prompt registry | Хранит роли: критик, стилист, сюжетник, continuity-аудитор | S | Да | Текущий `prompts/` workflow; AGENTS.md-style правила | Нужен даже в малом рассказе, если используется несколько литературных ролей. |
-| 4 | Scene workspace | Держит вход, handoff, canonical state, exports | S | Да | Markdown folders + Git | Уже реализуется в этом repo через `private/stories/<slug>/`. |
+| 4 | Scene workspace | Держит вход, handoff, canonical state, exports | S | Да | Markdown folders + Git | Уже реализуется в этом repo через `masterskaya-pisatelya-PRIVATE/stories/<slug>/`. |
 | 5 | Simple story bible | Фиксирует базовые факты: тема, персонажи, правила мира | S | Да, но минимально | Markdown, Obsidian, Foam | Для рассказа достаточно 1-3 файлов, не нужна большая wiki. |
 | 6 | Character notes | Хранит мотивации, голос, ограничения персонажей | S | Да, минимально | Markdown/YAML character sheets | Нужно, если персонажи не одноразовые. |
 | 7 | Style guide | Фиксирует тон, регистр, запреты, желаемый язык | S | Да | Markdown style guide; Vale rules | Особенно полезно при нескольких агентских проходах. |

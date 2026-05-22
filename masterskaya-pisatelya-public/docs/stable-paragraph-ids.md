@@ -98,6 +98,6 @@ If the author explicitly approves a global renumbering, record the affected draf
 
 ## Export rule
 
-Story-facing exports under `private/stories/<story-slug>/05-exports/` should use these paragraph IDs by default when they are intended for author review.
+Story-facing exports under `masterskaya-pisatelya-PRIVATE/stories/<story-slug>/05-exports/` should use these paragraph IDs by default when they are intended for author review.
 
 Clean publication/reader-facing copies without paragraph IDs must be separate files and must not replace the review export.

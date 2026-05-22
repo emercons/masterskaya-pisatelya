@@ -69,6 +69,6 @@ Before crossing a high-conflict transition, especially in a long context window,
 - relevant draft fragment;
 - explicit author decisions.
 
-For cross-session work, carry these through `private/stories/<story-slug>/06-agent-queue/agent-queue.md`. Put antagonist or high-conflict roles in separate queue chunks when their pressure could contaminate the next role.
+For cross-session work, carry these through `masterskaya-pisatelya-PRIVATE/stories/<story-slug>/06-agent-queue/agent-queue.md`. Put antagonist or high-conflict roles in separate queue chunks when their pressure could contaminate the next role.
 
 Do not carry a full prior transcript into the next specialist role.

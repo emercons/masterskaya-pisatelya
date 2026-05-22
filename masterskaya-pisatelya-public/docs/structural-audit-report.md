@@ -99,7 +99,7 @@ Later workflow additions:
 - `docs/feedback-and-session-boundaries.md` now defines author feedback checkpoints and high-conflict role transitions.
 - `stories/_template` now follows the canonical story folder layout.
 - Existing private story workspace has completed content through role `150`.
-- Concrete story workspaces are now treated as private by default and belong under ignored `private/stories/<story-slug>/`.
+- Concrete story workspaces are treated as private by default and belong under `masterskaya-pisatelya-PRIVATE/stories/<story-slug>/`.
 
 ## Remaining potential issues
 

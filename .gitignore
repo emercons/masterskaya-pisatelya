@@ -1,5 +1,4 @@
-# Local private story workspaces and local tool/editor artifacts
-private/
+# Local tool/editor artifacts
 exports/
 .cache/
 .codex/

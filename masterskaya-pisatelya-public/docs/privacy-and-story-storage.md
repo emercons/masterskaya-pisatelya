@@ -27,12 +27,12 @@ Never commit:
 All concrete story workspaces must live under:
 
 ```text
-private/stories/<story-slug>/
+masterskaya-pisatelya-PRIVATE/stories/<story-slug>/
 ```
 
-The root `.gitignore` ignores `private/`. This is intentional, not an anomaly: `private/` is the local working area for real story content and should remain outside git history.
+`masterskaya-pisatelya-PRIVATE/` is the working area for real story content. In a private repository it may remain versioned for accessibility; before making the repository public, decide explicitly whether to untrack, export, or sanitize that tree.
 
-Because `private/` is ignored, tools that respect `.gitignore` may not list it by default. For example, `rg --files` usually shows only the public/tracked infrastructure. When a task asks for the latest draft, author feedback, handoff, review, or export, inspect `private/stories/` explicitly.
+When a task asks for the latest draft, author feedback, handoff, review, or export, inspect `masterskaya-pisatelya-PRIVATE/stories/` explicitly. Do not assume `rg --files` over the public subtree is enough.
 
 ## Safety net
 
@@ -52,7 +52,7 @@ This keeps the public template available while preventing `stories/<story-slug>/
 When the author gives a new story idea:
 
 1. Choose a short slug, for example `nochnoy-kontrakt`.
-2. Copy `stories/_template/` to `private/stories/<story-slug>/`.
+2. Copy `stories/_template/` to `masterskaya-pisatelya-PRIVATE/stories/<story-slug>/`.
 3. Save the raw idea to `00-input/raw-idea-from-chat.md`.
 4. Run roles in numeric order.
 5. Save outputs only inside that private story folder.

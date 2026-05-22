@@ -8,32 +8,32 @@ AI-assisted storytelling repository: мультиагентная мастерс
 
 Каждый нумерованный prompt-файл в `prompts/` описывает отдельного специалиста. Прогон начинается с `003-диспетчер--revision-router--маршрутизатор-правок.md`: в простом новом случае он передает работу в `005`, а после авторского фидбека или при возобновлении сессии выбирает минимальный безопасный маршрут по уже существующим ролям.
 
-Новая история создается не в публичной `stories/`, а в локальной ignored-папке:
+Новая история создается не в публичной `stories/`, а в отдельной приватной папке рядом с публичной инфраструктурой:
 
 ```text
-private/stories/<story-slug>/
+masterskaya-pisatelya-PRIVATE/stories/<story-slug>/
 ```
 
-`private/` является рабочим локальным хранилищем истории и намеренно не попадает в git. Это нормальное состояние проекта: обычный `rg --files` показывает tracked/public-инфраструктуру и может не показать реальные story workspace. Для работы с черновиками, фидбеком, handoff-файлами, ревью и экспортами проверяйте `private/` отдельно.
+`masterskaya-pisatelya-PRIVATE/` является рабочим хранилищем реальных историй. Если репозиторий приватный, эти файлы могут оставаться tracked; если репозиторий станет публичным, сначала нужно явно решить, что делать с этой папкой. Для работы с черновиками, фидбеком, handoff-файлами, ревью и экспортами проверяйте `masterskaya-pisatelya-PRIVATE/stories/` отдельно.
 
 Название истории не дублируется в каждом файле. Его роль выполняет `story-slug` в имени родительской папки.
 
 После каждой роли результат сохраняется в:
 
 ```text
-private/stories/<story-slug>/02-handoffs/
+masterskaya-pisatelya-PRIVATE/stories/<story-slug>/02-handoffs/
 ```
 
 Устойчивые решения переносятся в:
 
 ```text
-private/stories/<story-slug>/01-canonical/canonical-story-state.md
+masterskaya-pisatelya-PRIVATE/stories/<story-slug>/01-canonical/canonical-story-state.md
 ```
 
 Полные экспортные драфты сохраняются с номером версии и датой:
 
 ```text
-private/stories/<story-slug>/05-exports/full-draft-v<N>-MM-DD.md
+masterskaya-pisatelya-PRIVATE/stories/<story-slug>/05-exports/full-draft-v<N>-MM-DD.md
 ```
 
 Например, `full-draft-v6-05-07.md` означает полный драфт версии 6 от 7 мая.
@@ -43,7 +43,7 @@ private/stories/<story-slug>/05-exports/full-draft-v<N>-MM-DD.md
 Межсессионная очередь агентов хранится в:
 
 ```text
-private/stories/<story-slug>/06-agent-queue/agent-queue.md
+masterskaya-pisatelya-PRIVATE/stories/<story-slug>/06-agent-queue/agent-queue.md
 ```
 
 Новая сессия берет из очереди следующий pending-агент, а не весь прошлый чат.
@@ -59,7 +59,7 @@ private/stories/<story-slug>/06-agent-queue/agent-queue.md
 
 Не коммитится:
 
-- `private/`
+- `masterskaya-pisatelya-PRIVATE/` when the repository is meant to stay public
 - реальные story folders
 - raw ideas
 - canonical state конкретных историй
@@ -128,4 +128,3 @@ Use only the numbered bilingual file list above as the role prompt source of tru
 
 Account-level repository inventory, rules, and agent safety boundaries for `emercons` live in the private [emercons account documentation](https://github.com/emercons/emercons-notes-private/blob/main/infrastructure/this-account-%D1%8D%D1%82%D0%BE%D1%82-%D0%B0%D0%BA%D0%BA%D0%B0%D1%83%D0%BD%D1%82-emercons/README.md).
 <!-- emercons-account-docs:end -->
-

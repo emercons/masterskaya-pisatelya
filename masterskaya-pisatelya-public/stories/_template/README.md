@@ -1,6 +1,6 @@
 # Story folder template
 
-Copy this folder to `private/stories/<story-slug>/`.
+Copy this folder to `masterskaya-pisatelya-PRIVATE/stories/<story-slug>/`.
 
 The canonical workflow is defined by:
 
@@ -16,4 +16,4 @@ Do not add legacy `story-bible.md`, `outline.md`, or `draft.md` files at this le
 
 Full-draft exports belong in `05-exports/` and must use versioned names such as `full-draft-v6-05-07.md` (`MM-DD`, so `05-07` means May 7). Author-review exports use stable paragraph IDs from `docs/stable-paragraph-ids.md`; full or global ID renumbering requires explicit author consent, and tight insertions should use dot-number suffixes such as `100.1`.
 
-This copied folder is expected to be private and ignored by git when placed under `private/stories/`.
+This copied folder is expected to be private story material when placed under `masterskaya-pisatelya-PRIVATE/stories/`. Keep it tracked only when the repository itself is meant to stay private.
