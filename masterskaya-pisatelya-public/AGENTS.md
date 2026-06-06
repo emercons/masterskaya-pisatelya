@@ -2,6 +2,33 @@
 
 This repository is a sequential AI-assisted storytelling workshop.
 
+## Repository pair
+
+This repository is the public workflow repository. Treat it as software and process infrastructure: prompts, agent roles, templates, routing rules, handoff rules, and documentation.
+
+The sibling private content repository is:
+
+```text
+../knigi-content-private/
+```
+
+That repository stores real story ideas, dictated notes, drafts, canonical state, handoffs, reviews, exports, and inventories.
+
+When entering through GitHub or another connector, resolve the pair explicitly:
+
+- `masterskaya-pisatelya` / `masterskaya-pisatelya-public/` = public workflow, agents, templates, docs.
+- `knigi-content-private` = private story content.
+
+Do not save story content in this repository. Use this repository to improve the workshop algorithm itself.
+
+## Main Use Cases
+
+1. Capture a dictated idea: create or update files under `../knigi-content-private/stories/<story-slug>/`.
+2. Develop a story: read prompts, role map, templates, and workflow docs here; write outputs in `../knigi-content-private/`.
+3. Run specialist roles: use the current numbered prompt from `prompts/`, the current story state from `../knigi-content-private/`, and write compact handoffs back to the story workspace.
+4. Improve the algorithm: when author feedback reveals a workflow, prompt, template, or routing problem, edit this public repository.
+5. Apply updated workflow to private stories: after infrastructure changes are committed here, continue story work in `../knigi-content-private/`.
+
 ## Privacy boundary
 
 This repository is public. Treat every concrete story idea, handoff, canonical state, draft, review, and export as private by default.

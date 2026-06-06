@@ -4,6 +4,32 @@ AI-assisted storytelling repository: мультиагентная мастерс
 
 Это публичный репозиторий для инфраструктуры: canonical bilingual prompt-файлы, правила handoff, шаблон story workspace и документация. Сами идеи, handoff-файлы, черновики, ревью и финальные тексты считаются приватными.
 
+## Модель двух репозиториев
+
+`masterskaya-pisatelya` — это публичная мастерская: софт, агенты, prompts, шаблоны, правила маршрутизации, правила handoff и документация workflow.
+
+`knigi-content-private` — это приватный контентный репозиторий: идеи, голосовые наброски, raw notes, story workspaces, canonical state, handoffs, drafts, reviews, exports и инвентаризации.
+
+Они работают как пара:
+
+```text
+../masterskaya-pisatelya/masterskaya-pisatelya-public/  # public workflow / agents / templates
+../knigi-content-private/                               # private story content
+```
+
+Если агент входит через GitHub connector и видит только этот репозиторий, он должен понимать: здесь нельзя хранить реальные рассказы. Для реального контента нужно открыть соседний private repo `knigi-content-private`.
+
+## Основной цикл работы
+
+1. Автор на ходу диктует идею в ChatGPT.
+2. ChatGPT подключает GitHub и находит два репозитория: `masterskaya-pisatelya` и `knigi-content-private`.
+3. Черновик, идея или story workspace сохраняется в `../knigi-content-private/stories/<story-slug>/`.
+4. Workflow, prompts, role map, шаблоны и правила берутся из `masterskaya-pisatelya`.
+5. Рассказ проходит через роли мастерской: приёмщик, архитектор, критик, сюжетник, психолог, мировик, тематик, черновик, редакторы и review-роли.
+6. Все handoffs, drafts, reviews и exports остаются в `knigi-content-private`.
+7. Если в процессе становится понятно, что сам алгоритм мастерской надо улучшить, правка вносится сюда, в public repo `masterskaya-pisatelya`.
+8. После этого обновлённая публичная инфраструктура применяется к приватным рассказам.
+
 ## Главный принцип
 
 Каждый нумерованный prompt-файл в `prompts/` описывает отдельного специалиста. Прогон начинается с `003-диспетчер--revision-router--маршрутизатор-правок.md`: в простом новом случае он передает работу в `005`, а после авторского фидбека или при возобновлении сессии выбирает минимальный безопасный маршрут по уже существующим ролям.
