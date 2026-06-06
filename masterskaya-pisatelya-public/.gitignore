@@ -9,6 +9,8 @@ Thumbs.db
 
 # Private story workspaces and exports
 private/
+masterskaya-pisatelya-PRIVATE/
+knigi-content-private/
 exports/
 
 # Prevent accidental publication of story instances.
