@@ -8,32 +8,32 @@ AI-assisted storytelling repository: мультиагентная мастерс
 
 Каждый нумерованный prompt-файл в `prompts/` описывает отдельного специалиста. Прогон начинается с `003-диспетчер--revision-router--маршрутизатор-правок.md`: в простом новом случае он передает работу в `005`, а после авторского фидбека или при возобновлении сессии выбирает минимальный безопасный маршрут по уже существующим ролям.
 
-Новая история создается не в публичной `stories/`, а в отдельной приватной папке рядом с публичной инфраструктурой:
+Новая история создается не в публичной `stories/`, а в соседнем приватном репозитории:
 
 ```text
-masterskaya-pisatelya-PRIVATE/stories/<story-slug>/
+../knigi-content-private/stories/<story-slug>/
 ```
 
-`masterskaya-pisatelya-PRIVATE/` является рабочим хранилищем реальных историй. Если репозиторий приватный, эти файлы могут оставаться tracked; если репозиторий станет публичным, сначала нужно явно решить, что делать с этой папкой. Для работы с черновиками, фидбеком, handoff-файлами, ревью и экспортами проверяйте `masterskaya-pisatelya-PRIVATE/stories/` отдельно.
+`../knigi-content-private/` является приватным git-репозиторием для реальных историй. Для работы с черновиками, фидбеком, handoff-файлами, ревью и экспортами проверяйте `../knigi-content-private/stories/` отдельно.
 
 Название истории не дублируется в каждом файле. Его роль выполняет `story-slug` в имени родительской папки.
 
 После каждой роли результат сохраняется в:
 
 ```text
-masterskaya-pisatelya-PRIVATE/stories/<story-slug>/02-handoffs/
+../knigi-content-private/stories/<story-slug>/02-handoffs/
 ```
 
 Устойчивые решения переносятся в:
 
 ```text
-masterskaya-pisatelya-PRIVATE/stories/<story-slug>/01-canonical/canonical-story-state.md
+../knigi-content-private/stories/<story-slug>/01-canonical/canonical-story-state.md
 ```
 
 Полные экспортные драфты сохраняются с номером версии и датой:
 
 ```text
-masterskaya-pisatelya-PRIVATE/stories/<story-slug>/05-exports/full-draft-v<N>-MM-DD.md
+../knigi-content-private/stories/<story-slug>/05-exports/full-draft-v<N>-MM-DD.md
 ```
 
 Например, `full-draft-v6-05-07.md` означает полный драфт версии 6 от 7 мая.
@@ -43,7 +43,7 @@ masterskaya-pisatelya-PRIVATE/stories/<story-slug>/05-exports/full-draft-v<N>-MM
 Межсессионная очередь агентов хранится в:
 
 ```text
-masterskaya-pisatelya-PRIVATE/stories/<story-slug>/06-agent-queue/agent-queue.md
+../knigi-content-private/stories/<story-slug>/06-agent-queue/agent-queue.md
 ```
 
 Новая сессия берет из очереди следующий pending-агент, а не весь прошлый чат.
@@ -59,7 +59,7 @@ masterskaya-pisatelya-PRIVATE/stories/<story-slug>/06-agent-queue/agent-queue.md
 
 Не коммитится:
 
-- `masterskaya-pisatelya-PRIVATE/` when the repository is meant to stay public
+- story content in `../knigi-content-private/`
 - реальные story folders
 - raw ideas
 - canonical state конкретных историй

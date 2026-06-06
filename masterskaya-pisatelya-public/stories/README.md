@@ -9,7 +9,7 @@ Use only:
 Real story folders belong in:
 
 ```text
-masterskaya-pisatelya-PRIVATE/stories/<story-slug>/
+../knigi-content-private/stories/<story-slug>/
 ```
 
 The root `.gitignore` prevents accidental commits of `stories/<story-slug>/`.

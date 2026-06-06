@@ -1,4 +1,7 @@
 # Local tool/editor artifacts
+private/
+masterskaya-pisatelya-PRIVATE/
+knigi-content-private/
 exports/
 .cache/
 .codex/

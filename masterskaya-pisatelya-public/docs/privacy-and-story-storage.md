@@ -27,12 +27,12 @@ Never commit:
 All concrete story workspaces must live under:
 
 ```text
-masterskaya-pisatelya-PRIVATE/stories/<story-slug>/
+../knigi-content-private/stories/<story-slug>/
 ```
 
-`masterskaya-pisatelya-PRIVATE/` is the working area for real story content. In a private repository it may remain versioned for accessibility; before making the repository public, decide explicitly whether to untrack, export, or sanitize that tree.
+`../knigi-content-private/` is the sibling private repository for real story content. Story content may be tracked there, but should not be committed to this public infrastructure repository.
 
-When a task asks for the latest draft, author feedback, handoff, review, or export, inspect `masterskaya-pisatelya-PRIVATE/stories/` explicitly. Do not assume `rg --files` over the public subtree is enough.
+When a task asks for the latest draft, author feedback, handoff, review, or export, inspect `../knigi-content-private/stories/` explicitly. Do not assume `rg --files` over the public subtree is enough.
 
 ## Safety net
 
@@ -52,7 +52,7 @@ This keeps the public template available while preventing `stories/<story-slug>/
 When the author gives a new story idea:
 
 1. Choose a short slug, for example `nochnoy-kontrakt`.
-2. Copy `stories/_template/` to `masterskaya-pisatelya-PRIVATE/stories/<story-slug>/`.
+2. Copy `stories/_template/` to `../knigi-content-private/stories/<story-slug>/`.
 3. Save the raw idea to `00-input/raw-idea-from-chat.md`.
 4. Run roles in numeric order.
 5. Save outputs only inside that private story folder.

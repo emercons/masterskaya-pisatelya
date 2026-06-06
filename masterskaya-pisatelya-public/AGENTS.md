@@ -6,28 +6,33 @@ This repository is a sequential AI-assisted storytelling workshop.
 
 This repository is public. Treat every concrete story idea, handoff, canonical state, draft, review, and export as private by default.
 
-Real story workspaces live outside the public infrastructure subtree, under root-level `masterskaya-pisatelya-PRIVATE/`. This repository may be private, so story workspaces can remain tracked when the author wants them accessible in git.
+Real story workspaces live outside this public infrastructure repository, in the sibling private repository `knigi-content-private`.
 
 Create and read real story workspaces under:
 
 ```text
-masterskaya-pisatelya-PRIVATE/stories/<story-slug>/
+../knigi-content-private/stories/<story-slug>/
 ```
 
 Do not create real story instances under public `stories/`. The public `stories/_template/` folder is only a template.
 
 ## Repository layout and migration safety
 
-The repository root may contain only local/private working material plus a public infrastructure subtree:
+The public repository root should contain only local tool artifacts plus the public infrastructure subtree:
 
 ```text
 masterskaya-pisatelya-public/
-masterskaya-pisatelya-PRIVATE/
 ```
 
-When working from the repository root, public infrastructure files live under `masterskaya-pisatelya-public/`. Interpret paths in this `AGENTS.md` relative to that subtree unless the task explicitly concerns root-level local storage.
+Private content is stored in a separate sibling repository:
 
-Do not assume the repository is currently public just because the workflow describes a public/private boundary. If tracked story files already exist under `masterskaya-pisatelya-PRIVATE/`, old `private/`, or concrete `stories/<story-slug>/` paths, keep them tracked and accessible unless the author explicitly asks to untrack, remove, or sanitize them. Report the mismatch, but do not silently "fix" it.
+```text
+../knigi-content-private/
+```
+
+When working from the repository root, public infrastructure files live under `masterskaya-pisatelya-public/`. Interpret public workflow paths in this `AGENTS.md` relative to that subtree. Interpret story-content paths under `../knigi-content-private/` unless the task explicitly names another content repository.
+
+Do not assume private content belongs in this public repository just because old paths or history mention `private/`, `masterskaya-pisatelya-PRIVATE/`, or concrete `stories/<story-slug>/` paths. Move or create real story content in `../knigi-content-private/` unless the author explicitly instructs otherwise.
 
 Before large moves or cleanup:
 
@@ -45,10 +50,10 @@ Before large moves or cleanup:
 2. `prompts/003-диспетчер--revision-router--маршрутизатор-правок.md` when starting, resuming, or revising a route
 3. `docs/role-map.md` when resolving a short agent alias
 4. Current numbered bilingual specialist prompt in `prompts/`
-5. Current story's `masterskaya-pisatelya-PRIVATE/stories/<story-slug>/01-canonical/canonical-story-state.md`
-6. Current story's `masterskaya-pisatelya-PRIVATE/stories/<story-slug>/06-agent-queue/agent-queue.md`, if present
-7. Latest relevant handoff in `masterskaya-pisatelya-PRIVATE/stories/<story-slug>/02-handoffs/`
-8. Relevant draft fragment in `masterskaya-pisatelya-PRIVATE/stories/<story-slug>/03-drafts/`
+5. Current story's `../knigi-content-private/stories/<story-slug>/01-canonical/canonical-story-state.md`
+6. Current story's `../knigi-content-private/stories/<story-slug>/06-agent-queue/agent-queue.md`, if present
+7. Latest relevant handoff in `../knigi-content-private/stories/<story-slug>/02-handoffs/`
+8. Relevant draft fragment in `../knigi-content-private/stories/<story-slug>/03-drafts/`
 
 Do not read the whole repository unless the current task requires it.
 
@@ -108,7 +113,7 @@ Rules:
 - Treat dot-number IDs as textual editorial addresses, not decimal numbers: `122.10` follows `122.9`.
 - Never do a full or global renumbering, ID refresh, or broad ID reorder without explicit author consent. If it seems necessary, stop and ask the author first; until then, use local numeric gaps or dot-number suffixes.
 - If the author explicitly approves a global renumbering, record the affected draft version and the fact of renumbering in the handoff.
-- Story-facing exports under `masterskaya-pisatelya-PRIVATE/stories/<story-slug>/05-exports/` should use these IDs by default.
+- Story-facing exports under `../knigi-content-private/stories/<story-slug>/05-exports/` should use these IDs by default.
 - Clean publication/reader-facing copies without paragraph IDs must be separate files and must not replace the review export.
 - Agent handoffs and reviews may cite these paragraph IDs directly.
 
@@ -130,10 +135,10 @@ Diagnosis-only review roles may run in parallel as child agents when they read t
 
 After every role:
 
-- save compact output to the story-specific handoff file under `masterskaya-pisatelya-PRIVATE/stories/<story-slug>/02-handoffs/`;
+- save compact output to the story-specific handoff file under `../knigi-content-private/stories/<story-slug>/02-handoffs/`;
 - update canonical story state only when durable decisions changed;
 - update draft files only when prose changed;
-- when role `150` exports a full draft, use `masterskaya-pisatelya-PRIVATE/stories/<story-slug>/05-exports/full-draft-v<N>-MM-DD.md`, for example `full-draft-v6-05-07.md` for version 6 on May 7;
+- when role `150` exports a full draft, use `../knigi-content-private/stories/<story-slug>/05-exports/full-draft-v<N>-MM-DD.md`, for example `full-draft-v6-05-07.md` for version 6 on May 7;
 - update the story-specific agent queue when running a queued route;
 - carry forward a short summary, not the whole prior conversation.
 
