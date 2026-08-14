@@ -32,20 +32,23 @@ Do not drag the full old context forward.
 1. `003-диспетчер--revision-router--маршрутизатор-правок.md` when starting, resuming, or revising a route
 2. `005-приёмщик--idea-receiver--приёмщик-идеи.md`
 3. `010-архитектор--idea-architect--архитектор-идеи.md`
-4. `020-критик--brutal-critic--жестокий-критик.md`
-5. `030-сюжетник--story-engineer--инженер-сюжета.md`
-6. `040-психолог--character-psychologist--психолог-персонажей.md`
-7. `050-мировик--worldlogic-auditor--аудитор-логики-мира.md`
-8. `060-тематик--thematic-analyst--тематический-аналитик.md`
-9. `070-черновик--draft-writer--писатель-черновика.md`
-10. `080-структурщик--structural-editor--структурный-редактор.md`
-11. `090-стилист--style-editor--стилевой-редактор.md`
-12. `100-читатель--reader-simulator--симулятор-читателя.md`
-13. `110-финалист--ending-analyst--аналитик-концовки.md`
-14. `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`
-15. `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`
-16. `140-сверщик--continuity-auditor--аудитор-непрерывности.md`
-17. `150-финред--final-editor--финальный-редактор.md`
+4. `015-тестер--criterion-stress-tester--тестер-критериев.md` when the premise depends on a rule, criterion, contract, optimization target, or ethical constraint that can be adversarially broken
+5. `020-критик--brutal-critic--жестокий-критик.md`
+6. `030-сюжетник--story-engineer--инженер-сюжета.md`
+7. `040-психолог--character-psychologist--психолог-персонажей.md`
+8. `050-мировик--worldlogic-auditor--аудитор-логики-мира.md`
+9. `060-тематик--thematic-analyst--тематический-аналитик.md`
+10. `070-черновик--draft-writer--писатель-черновика.md`
+11. `080-структурщик--structural-editor--структурный-редактор.md`
+12. `090-стилист--style-editor--стилевой-редактор.md`
+13. `100-читатель--reader-simulator--симулятор-читателя.md`
+14. `110-финалист--ending-analyst--аналитик-концовки.md`
+15. `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`
+16. `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`
+17. `140-сверщик--continuity-auditor--аудитор-непрерывности.md`
+18. `150-финред--final-editor--финальный-редактор.md`
+
+`015` is conditional rather than mandatory for every story. Use it when a premise-defining rule has several plausible formulations, when an obvious loophole could collapse the story, or when the author wants systematic comparison across alternative criteria. It is diagnosis-only and does not replace `050`: `015` attacks the rule itself; `050` later audits how the selected rule behaves inside the complete world and institutions.
 
 ## Revision routing
 
@@ -58,6 +61,8 @@ Skip `003` only when the next step is obvious and local, such as a typo fix or o
 ## Author feedback checkpoints
 
 Ask for human author feedback after roles `005`, `020`, `060`, `100`, `140`, and `150` unless the author has explicitly asked to continue through that checkpoint.
+
+For `015`, stop for author selection when the stress test produces several materially different surviving criteria and no criterion has already been explicitly selected. Do not silently promote a winner to canon.
 
 Use `docs/feedback-and-session-boundaries.md` as the source of truth for feedback checkpoints and high-conflict role transitions.
 
@@ -82,6 +87,7 @@ A specialist role can be run either inline in the current session or as a real c
 
 Prefer real child agents for roles that are oppositional, adversarial, or critical. In this workflow those roles are:
 
+- `015-тестер--criterion-stress-tester--тестер-критериев.md` when the candidate/test matrix is large;
 - `020-критик--brutal-critic--жестокий-критик.md`;
 - `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`;
 - `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`.
