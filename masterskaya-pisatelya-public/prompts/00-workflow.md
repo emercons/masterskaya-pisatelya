@@ -45,10 +45,13 @@ Do not drag the full old context forward.
 14. `110-финалист--ending-analyst--аналитик-концовки.md`
 15. `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`
 16. `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`
-17. `140-сверщик--continuity-auditor--аудитор-непрерывности.md`
-18. `150-финред--final-editor--финальный-редактор.md`
+17. `135-оригинальность--similarity-ip-auditor--аудитор-сходства-и-ip.md`
+18. `140-сверщик--continuity-auditor--аудитор-непрерывности.md`
+19. `150-финред--final-editor--финальный-редактор.md`
 
 `015` is conditional rather than mandatory for every story. Use it when a premise-defining rule has several plausible formulations, when an obvious loophole could collapse the story, or when the author wants systematic comparison across alternative criteria. It is diagnosis-only and does not replace `050`: `015` attacks the rule itself; `050` later audits how the selected rule behaves inside the complete world and institutions.
+
+`135` is a late diagnosis-only audit. Use it when the story has named inspirations, when a recent or well-known external work has potentially similar plot machinery, or when the author wants an originality/IP-risk check before finalization. It distinguishes broad ideas/tropes from distinctive expressive combinations and **cannot guarantee legal clearance**. It should use current public research for external comparison works and recommend targeted distancing when needed.
 
 ## Revision routing
 
@@ -63,6 +66,8 @@ Skip `003` only when the next step is obvious and local, such as a typo fix or o
 Ask for human author feedback after roles `005`, `020`, `060`, `100`, `140`, and `150` unless the author has explicitly asked to continue through that checkpoint.
 
 For `015`, stop for author selection when the stress test produces several materially different surviving criteria and no criterion has already been explicitly selected. Do not silently promote a winner to canon.
+
+For `135`, stop only if the audit finds a high-risk similarity cluster that would require changing premise-level or ending-level material; otherwise route its targeted notes into `140`/`150` or back through `003` as appropriate.
 
 Use `docs/feedback-and-session-boundaries.md` as the source of truth for feedback checkpoints and high-conflict role transitions.
 
@@ -90,11 +95,12 @@ Prefer real child agents for roles that are oppositional, adversarial, or critic
 - `015-тестер--criterion-stress-tester--тестер-критериев.md` when the candidate/test matrix is large;
 - `020-критик--brutal-critic--жестокий-критик.md`;
 - `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`;
-- `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`.
+- `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`;
+- `135-оригинальность--similarity-ip-auditor--аудитор-сходства-и-ip.md`.
 
 Use real child agents for other roles when the work is large, the context window is crowded, or a clean isolated context would protect quality.
 
-Diagnosis-only review roles may run in parallel when they share a stable draft and produce disjoint handoffs/reviews. Good parallel candidates after a final-candidate draft are `100`, `110`, `120`, `130`, and `140`.
+Diagnosis-only review roles may run in parallel when they share a stable draft and produce disjoint handoffs/reviews. Good parallel candidates after a final-candidate draft are `100`, `110`, `120`, `130`, `135`, and `140`.
 
 Prose-editing roles must run sequentially. Do not run `080`, `090`, or `150` in parallel against the same draft; each one depends on the previous edited text.
 
