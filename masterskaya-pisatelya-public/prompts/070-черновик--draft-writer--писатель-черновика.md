@@ -34,18 +34,19 @@ Write a coherent first literary draft from the current canonical state and hando
 
 ## Do
 
-- Keep the technical layer as background/interface language.
-- Make people speak like people.
-- Use corporate UX language as normalized horror.
-- Let silence after protocol shutdown matter.
-- Preserve ambiguity about whether optimization helps.
+- Turn canonical mechanics into scenes rather than exposition.
+- Keep character behavior and dialogue natural for the story's setting and tone.
+- Preserve the story's chosen ambiguity, strangeness, and thematic contradictions.
+- Compress backstage mechanics that the reader does not need.
+- Give major scenes causal consequences and let the ending emerge from earlier setup.
 
 ## Do not
 
 - Over-explain the world.
 - Make characters debate the theme abstractly.
 - Make the prose generic.
-- End with revolution unless canon requires it.
+- Import tone, imagery, interfaces, institutions, or genre conventions from another story unless they are present in this story's canonical state.
+- Add a revolution, conspiracy, romance, or large new lore unless canon requires it.
 
 ## Output
 
