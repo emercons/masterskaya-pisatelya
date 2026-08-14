@@ -1,107 +1,154 @@
 # Pipeline optimization notes
 
-The base pipeline is effective for a first full pass because each role has a narrow pressure and writes a compact handoff. Its weak point is author feedback after a complete draft: feedback often mixes worldbuilding, structure, style, ending, and continuity in one message, so starting with the nearest obvious editor can miss the earliest affected layer.
+`docs/workflow-manifest.md` is authoritative for the current role inventory/runtime semantics. This file explains why conditional/routing roles exist and how to avoid overprocessing.
 
-A second identified weak point is premise-defining rules that can be adversarially broken before plotting begins: ethical criteria, contracts, scoring systems, optimization targets, magical rules, or similar constraints. General concept criticism and later worldlogic auditing do not provide a stable same-corpus comparison across multiple candidate formulations.
+## Base principle
 
-## Conclusion
+The base pipeline is effective because each role has a narrow pressure and writes a compact handoff. Its recurring weak points are:
 
-Keep the established specialist numbers and do not renumber existing roles.
+1. mixed author feedback after a developed draft;
+2. premise-defining rules that can be adversarially broken before plotting;
+3. late originality/similarity concerns that require current external comparison rather than generic literary criticism;
+4. context contamination between strongly opposed roles;
+5. resuming work from ordinary ChatGPT/mobile without a persistent agent runtime.
 
-Use gaps for a genuinely distinct recurring pressure only when author feedback demonstrates that no current role cleanly covers it. The current conditional addition is:
+## Keep established specialist numbers
+
+Do not renumber existing roles.
+
+Use numeric gaps for a genuinely distinct recurring pressure only when retrospectives show no existing role cleanly owns it.
+
+Current conditional specialist additions:
 
 ```text
-prompts/015-тестер--criterion-stress-tester--тестер-критериев.md
+015-тестер--criterion-stress-tester--тестер-критериев.md
+135-оригинальность--similarity-ip-auditor--аудитор-сходства-и-ip.md
 ```
 
-`015` is diagnosis-only. It is not mandatory for every story. It runs when the premise depends on a selectable rule/criterion that must survive adversarial comparison before later roles can safely build on it.
-
-The existing lightweight routing role remains:
+The lightweight routing role remains:
 
 ```text
-prompts/003-диспетчер--revision-router--маршрутизатор-правок.md
+003-диспетчер--revision-router--маршрутизатор-правок.md
 ```
 
-The router is not a prose editor. It sorts author feedback, identifies the earliest affected role, produces the minimal safe route through the existing specialists, and updates the story-specific agent queue.
+## 003 — router
 
-## When to run 003
-
-Run `003-диспетчер--revision-router--маршрутизатор-правок.md` when:
+Run `003` when:
 
 - starting a new pipeline;
-- resuming a partial pipeline in a new session;
+- resuming a partial pipeline/new chat;
 - feedback contains several kinds of changes;
 - feedback arrives after `100`, `140`, or `150`;
-- feedback changes the ending, structure, world rules, or tone contract;
-- the next role is not obvious;
-- multiple specialist pressures might conflict.
+- feedback changes ending, structure, world rules, tone contract, or premise criterion;
+- next role is not obvious;
+- specialist pressures conflict.
 
-Skip `003` only when the author asks for a narrow, obvious change, such as a pure typo fix or one clearly local style correction.
+Skip it only for narrow obvious local fixes.
 
-## When to run 015
+The router creates/updates:
 
-Run `015-тестер--criterion-stress-tester--тестер-критериев.md` when:
+- sorted change map;
+- earliest affected role;
+- minimal ordered route;
+- safe chat/session chunks;
+- quality-gate requirements;
+- author choices;
+- `06-agent-queue/agent-queue.md`;
+- `06-agent-queue/story-status.md`.
 
-- several premise-defining criteria or rules are being compared;
+It does not rewrite prose.
+
+## 015 — criterion stress tester
+
+Run `015` when:
+
+- several premise-defining criteria/rules are compared;
 - an obvious loophole could collapse the story;
-- readers are likely to ask «why didn't they simply do X?»;
-- the author wants the same adversarial test corpus applied to different formulations;
-- a rule has been patched and needs regression testing against earlier attacks;
-- a metric, consent rule, contract, magical law, or optimization target must remain simple in prose while behaving non-trivially.
+- readers are likely to ask `why didn't they simply do X?`;
+- a patched rule needs regression testing;
+- metric/consent/contract/magical/optimization rules must remain simple in prose but non-trivial under attack;
+- long-horizon consequences matter.
 
-Do not run `015` merely because a story has worldbuilding. Ordinary plausibility belongs to `050-мировик`.
+Do not run `015` merely because a story has worldbuilding. Ordinary plausibility belongs to `050`.
 
-## Separation between 015 and 050
+Separation:
 
-- `015` attacks the **rule itself** across alternative formulations.
-- `050` audits the **selected rule inside the wider world**: institutions, incentives, interfaces, compliance, side effects, and plausibility.
+- `015` attacks the **rule itself** across candidate formulations.
+- `050` audits the **selected rule inside the wider world**: institutions, incentives, interfaces, adoption, abuse, fallback, side effects.
 
-When both are needed, run `015` first, obtain author selection/provisional approval, then let later story development proceed; `050` remains an independent downstream audit.
+## 135 — similarity / IP auditor
 
-## How 003 changes the workflow
+Run `135` when:
 
-Instead of sending all feedback to every later role, the router creates:
+- the author names an inspiration that may be close;
+- a draft/premise has a distinctive combination strongly associated with a known external work;
+- plagiarism/adaptation/originality perception is a concern;
+- a pre-publication risk-reduction pass is warranted.
 
-- a sorted change map;
-- the earliest affected role;
-- an ordered route;
-- session chunks;
-- a list of roles allowed to edit prose;
-- a list of diagnosis-only roles;
-- author choices that must be resolved before rewriting;
-- an updated `06-agent-queue/agent-queue.md`.
+`135` is diagnosis-only and uses current public research when needed. It distinguishes broad ideas/tropes from distinctive expressive combinations and cannot guarantee legal clearance.
 
-Example:
+If `135` finds a structural overlap, do not let it silently rewrite the story. Route the required literary changes back through `003` to the earliest affected role, then rerun `135` on the repaired draft when needed.
 
-```text
-Author feedback after final draft
--> 003 Revision Router
--> 080 Structural Editor
--> 090 Style Editor
--> 100 Reader Simulator
--> 110 Ending Analyst
--> 140 Continuity Auditor
--> 150 Final Editor
--> author review
-```
+## Mobile-first session optimization
 
-Premise-rule example:
+The canonical baseline is ordinary ChatGPT/mobile:
 
-```text
-Author proposes several alternative governing criteria
--> 003 Revision Router
--> 015 Criterion Stress Tester
--> author selects/provisionally approves survivor
--> earliest affected story role (often 010/030/050)
-```
+- one chat is one session;
+- `fresh_chat_required` means start a new ordinary chat;
+- GitHub status/queue/canon/handoffs carry state;
+- real child agents/parallelism are optional acceleration only.
 
-## Guardrails
+Do not optimize the pipeline in a way that makes mobile execution impossible.
 
-- The router must not rewrite prose.
-- The router must not invent new roles when an existing specialist can handle the issue.
+See `docs/mobile-chatgpt-runtime.md`.
+
+## Quality gate optimization
+
+Do not send work downstream merely because a role emitted a handoff. Use `docs/quality-gates.md`.
+
+A blocking `015`, `020`, `050`, `100`, `135`, or `140` finding should stop/reroute the pipeline early enough to avoid expensive prose churn.
+
+## Framework-change guardrails
+
+- Router must not invent new roles.
 - New public roles must not renumber established roles.
-- `015` must not silently choose canon; surviving alternatives go back to the author when materially different.
-- The router must not convert uncertain author brainstorming into canon.
-- If alternatives are needed, the router assigns stable option IDs for author selection.
-- If feedback changes premise, world rules, or ending direction, the route starts at the earliest affected role even if the current draft had already reached `150`.
-- If a role is high-conflict or antagonistic, the router should put it in its own queue chunk or mark a fresh session boundary before/after it.
+- `015` must not silently choose canon.
+- `135` must not pretend to grant legal clearance.
+- Uncertain author brainstorming must not become canon.
+- Use stable option IDs for author choices.
+- Start revisions at the earliest affected layer.
+- Follow `docs/framework-retrospective.md` before treating a one-story problem as permanent architecture.
+- After changing role/runtime semantics, run `docs/workflow-integrity-check.md`.
+
+## Example routes
+
+Mixed post-draft feedback:
+
+```text
+Author feedback
+-> 003
+-> earliest affected literary role
+-> required downstream edits/reviews
+-> author checkpoint
+```
+
+Premise-rule repair:
+
+```text
+Author proposes/repairs criterion
+-> 003
+-> 015
+-> author choice if needed
+-> 010/030/050 as affected
+```
+
+Similarity repair:
+
+```text
+Named close external work / high-risk resemblance
+-> 003
+-> 135 on concrete structure/draft
+-> if structural repair needed: 003 -> earliest affected role(s)
+-> 135 regression pass
+-> 140 -> 150
+```
