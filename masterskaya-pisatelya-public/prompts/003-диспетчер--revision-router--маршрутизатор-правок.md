@@ -13,6 +13,7 @@ This role can usually run in the current session when the queue permits it.
 When updating the agent queue, set `execution_mode` for each role:
 
 - use `child_agent` by default for `020`, `120`, and `130`;
+- use `child_agent` or `either` for `015` when the candidate/test matrix is large;
 - use `child_agent` or `either` for other roles when the work is large or the current context is crowded;
 - use a shared `parallel_group` for diagnosis-only reviews that can run at the same time;
 - keep prose-editing roles sequential, especially `080`, `090`, and `150`.
@@ -50,6 +51,7 @@ Run it at the front of the pipeline. The role number is `003` because the router
 
 - Separate author feedback into concrete categories:
   - durable canon changes;
+  - premise-rule / criterion changes;
   - structural changes;
   - style/voice/rhythm changes;
   - reader-confusion checks;
@@ -66,7 +68,7 @@ Run it at the front of the pipeline. The role number is `003` because the router
 - Group route steps into safe session chunks.
 - Mark high-conflict or antagonist roles that should run in a fresh/clean session.
 - For `020`, `120`, and `130`, default to `fresh_session: required` unless the author explicitly asks to continue in one session.
-- For `050`, `090`, `100`, `110`, and `140`, default to `fresh_session: recommended`.
+- For `015`, `050`, `090`, `100`, `110`, and `140`, default to `fresh_session: recommended` when context is long or the role pressure conflicts with the prior role.
 - Mark decisions that require author choice before rewriting.
 - Preserve author wording when it is a concrete decision.
 - Convert uncertain author comments into open questions, not canon.
@@ -85,8 +87,9 @@ Run it at the front of the pipeline. The role number is `003` because the router
 ## Routing rules
 
 - If feedback changes premise, protagonist, core conflict, or reader-facing story, route back to `010` or `030` as needed.
+- If the story depends on a selectable rule/criterion/contract/optimization target and feedback asks to compare alternatives, break loopholes, answer «why not simply X?», or repair a premise-defining rule, route through `015` before general criticism or drafting.
 - If feedback attacks concept viability or cliche, route through `020`.
-- If feedback changes world mechanics, institutions, interfaces, or plausibility, route through `050` before drafting/editing.
+- If feedback changes world mechanics, institutions, interfaces, or plausibility, route through `050` before drafting/editing; when the changed mechanic is itself a premise-defining criterion with alternatives, run `015` first and `050` later on the selected rule.
 - If feedback changes theme, motifs, tone contract, or forbidden flattening, route through `060`.
 - If feedback requires new prose from canonical state rather than edits to an existing draft, route through `070`.
 - If feedback changes scene order, escalation, call architecture, reveal placement, or ending setup, route through `080`.
@@ -109,6 +112,8 @@ Run it at the front of the pipeline. The role number is `003` because the router
 ## Sorted change map
 
 ### Canon / durable decisions
+
+### Premise-rule / criterion changes
 
 ### Structural changes
 
