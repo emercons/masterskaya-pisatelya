@@ -4,7 +4,7 @@ This repository is a sequential AI-assisted storytelling workshop.
 
 ## Repository pair
 
-This repository is the public workflow repository. Treat it as software and process infrastructure: prompts, agent roles, templates, routing rules, handoff rules, and documentation.
+This repository is the public workflow repository. Treat it as process infrastructure: prompts, agent roles, templates, routing rules, handoff rules, and documentation.
 
 The sibling private content repository is:
 
@@ -16,32 +16,87 @@ That repository stores real story ideas, dictated notes, drafts, canonical state
 
 When entering through GitHub or another connector, resolve the pair explicitly:
 
-- `masterskaya-pisatelya` / `masterskaya-pisatelya-public/` = public workflow, agents, templates, docs.
+- `masterskaya-pisatelya` / `masterskaya-pisatelya-public/` = public workflow, agents-as-markdown, templates, docs.
 - `knigi-content-private` = private story content.
 
 Do not save story content in this repository. Use this repository to improve the workshop algorithm itself.
 
-## Main Use Cases
+## Canonical sources
+
+Role/runtime inventory source of truth:
+
+```text
+docs/workflow-manifest.md
+```
+
+Primary runtime contract:
+
+```text
+docs/mobile-chatgpt-runtime.md
+```
+
+Story isolation contract:
+
+```text
+docs/story-isolation-contract.md
+```
+
+Quality gates:
+
+```text
+docs/quality-gates.md
+```
+
+After changing role/runtime semantics, use:
+
+```text
+docs/workflow-integrity-check.md
+```
+
+## Primary runtime: ordinary ChatGPT
+
+The workflow must be executable from a normal ChatGPT conversation, including the mobile app.
+
+Assume no terminal, VM, local filesystem, background worker, real child-agent runtime, or parallel executor is available.
+
+A new ChatGPT conversation is the baseline clean-context mechanism. Real child agents or parallel execution are optional enhancements only when the environment actually exposes them.
+
+Never block normal mobile use merely because a richer runtime would be convenient.
+
+## Main use cases
 
 1. Capture a dictated idea: create or update files under `../knigi-content-private/stories/<story-slug>/`.
 2. Develop a story: read prompts, role map, templates, and workflow docs here; write outputs in `../knigi-content-private/`.
-3. Run specialist roles: use the current numbered prompt from `prompts/`, the current story state from `../knigi-content-private/`, and write compact handoffs back to the story workspace.
-4. Improve the algorithm: when author feedback reveals a workflow, prompt, template, or routing problem, edit this public repository.
-5. Apply updated workflow to private stories: after infrastructure changes are committed here, continue story work in `../knigi-content-private/`.
+3. Run specialist roles: use the current numbered prompt, current story state, queue/status, and focused inputs; write compact handoffs back to the story workspace.
+4. Improve the algorithm: when author feedback reveals a recurring workflow, prompt, template, routing, state, or runtime problem, use `docs/framework-retrospective.md` and edit this public repository.
+5. Apply updated workflow to private stories opportunistically when they are resumed.
 
 ## Privacy boundary
 
 This repository is public. Treat every concrete story idea, handoff, canonical state, draft, review, and export as private by default.
 
-Real story workspaces live outside this public infrastructure repository, in the sibling private repository `knigi-content-private`.
-
-Create and read real story workspaces under:
+Real story workspaces live under:
 
 ```text
 ../knigi-content-private/stories/<story-slug>/
 ```
 
 Do not create real story instances under public `stories/`. The public `stories/_template/` folder is only a template.
+
+## Story isolation preflight
+
+Before substantive specialist work, resolve:
+
+- workflow repository;
+- content repository;
+- exact `story-slug`;
+- exact specialist role/prompt.
+
+Then verify queue/status/canonical state refer to the same workspace and keep story-specific reads/writes inside it unless the task explicitly requires cross-story work.
+
+If project context already resolves these facts, do not make the author repeat them.
+
+See `docs/story-isolation-contract.md`.
 
 ## Repository layout and migration safety
 
@@ -57,44 +112,45 @@ Private content is stored in a separate sibling repository:
 ../knigi-content-private/
 ```
 
-When working from the repository root, public infrastructure files live under `masterskaya-pisatelya-public/`. Interpret public workflow paths in this `AGENTS.md` relative to that subtree. Interpret story-content paths under `../knigi-content-private/` unless the task explicitly names another content repository.
+When working from the repository root, public infrastructure files live under `masterskaya-pisatelya-public/`. Interpret public workflow paths relative to that subtree. Interpret story-content paths under `../knigi-content-private/` unless the task explicitly names another content repository.
 
-Do not assume private content belongs in this public repository just because old paths or history mention `private/`, `masterskaya-pisatelya-PRIVATE/`, or concrete `stories/<story-slug>/` paths. Move or create real story content in `../knigi-content-private/` unless the author explicitly instructs otherwise.
+Do not assume private content belongs in this public repository because old paths/history mention `private/`, `masterskaya-pisatelya-PRIVATE/`, or concrete `stories/<story-slug>/` paths.
 
-Before large moves or cleanup:
+Before large moves or cleanup in a runtime that actually has git/local-shell capabilities:
 
-- run `git status --short --branch`, `git ls-files`, and `git remote -v`;
-- inspect whether apparently private paths are tracked before changing them;
-- use `git mv` for tracked files so history and rename detection stay intact;
-- if a destination is ignored by a nested `.gitignore`, use `git mv` or `git add -f` only for the exact already-known tracked paths;
-- keep root `.gitignore` minimal enough to protect local-only work, but do not let ignore rules hide files that the author wants to keep versioned;
-- after staging, run `git diff --cached --name-only` and `git diff --cached --check`;
-- before pushing, make sure git author email satisfies GitHub email privacy, for example a verified noreply address.
+- inspect git status/tracked paths/remotes;
+- preserve history for tracked files;
+- verify staged paths and diffs;
+- preserve GitHub email privacy.
+
+These shell checks are optional-runtime safety advice, not requirements for mobile ChatGPT operation.
 
 ## Priority order
 
-1. `prompts/00-workflow.md`
-2. `prompts/003-диспетчер--revision-router--маршрутизатор-правок.md` when starting, resuming, or revising a route
-3. `docs/role-map.md` when resolving a short agent alias
-4. Current numbered bilingual specialist prompt in `prompts/`
-5. Current story's `../knigi-content-private/stories/<story-slug>/01-canonical/canonical-story-state.md`
-6. Current story's `../knigi-content-private/stories/<story-slug>/06-agent-queue/agent-queue.md`, if present
-7. Latest relevant handoff in `../knigi-content-private/stories/<story-slug>/02-handoffs/`
-8. Relevant draft fragment in `../knigi-content-private/stories/<story-slug>/03-drafts/`
+1. `docs/workflow-manifest.md`
+2. `prompts/00-workflow.md`
+3. `prompts/003-диспетчер--revision-router--маршрутизатор-правок.md` when starting, resuming, or revising a route
+4. `docs/role-map.md` when resolving a short agent alias
+5. Current numbered bilingual specialist prompt in `prompts/`
+6. Current story's `../knigi-content-private/stories/<story-slug>/06-agent-queue/story-status.md`, if present
+7. Current story's `../knigi-content-private/stories/<story-slug>/06-agent-queue/agent-queue.md`, if present
+8. Current story's `../knigi-content-private/stories/<story-slug>/01-canonical/canonical-story-state.md`
+9. Latest relevant handoff in `02-handoffs/`
+10. Relevant draft/review fragment
 
 Do not read the whole repository unless the current task requires it.
 
-For short commands such as `работай, критик`, resolve the alias through `docs/role-map.md` or by searching canonical prompt filenames under `prompts/`, then use only that prompt.
+For short commands such as `работай, критик`, resolve the alias through the manifest/role map and use only that prompt plus the focused story recovery set.
 
 ## Canonical prompt naming
 
-Use only bilingual role prompt filenames:
+Use only bilingual role prompt filenames registered in `docs/workflow-manifest.md`:
 
 ```text
 prompts/NNN-короткое--english--русский.md
 ```
 
-Do not use non-bilingual role prompt filenames or unnumbered prompt files as role definitions.
+Do not use non-bilingual role prompt filenames or unregistered prompt files as canonical story-role definitions.
 
 ## Role reset
 
@@ -108,6 +164,26 @@ Do not behave as a general assistant.
 Your scope is intentionally narrow.
 ```
 
+## Fresh-chat isolation
+
+For roles marked `fresh_chat_required` by the manifest, a new ordinary ChatGPT conversation is the canonical baseline.
+
+If such a role is next and the current session is not already a clean launch of that role, stop at the boundary and give the exact alias/filename for the next chat.
+
+For `fresh_chat_recommended`, continue in the same chat only when context is short, focused, and not biased by a conflicting role.
+
+A real child agent may substitute for a fresh manual chat only when the environment actually supports it.
+
+## Optional enhanced execution
+
+Environments with real child agents may use them for oppositional/diagnosis roles, especially `015`, `020`, `120`, `130`, and `135`, or for large isolated audits.
+
+Diagnosis-only reviews may run in parallel only when they read the same stable draft and write disjoint outputs.
+
+Prose-editing roles must remain sequential because each editor must see the previous edited draft.
+
+None of this enhanced execution is required for normal ChatGPT/mobile use.
+
 ## Stable paragraph IDs for review drafts
 
 When exporting or presenting a full draft for human author review, add stable paragraph IDs inline at the start of each numbered story paragraph:
@@ -116,66 +192,61 @@ When exporting or presenting a full draft for human author review, add stable pa
 100: First paragraph text.
 
 200: Second paragraph text.
-
-300: Third paragraph text.
 ```
 
 Rules:
 
-- Number paragraphs, not visual lines. Number story prose paragraphs, including dialogue paragraphs.
-- Do not number empty spacer lines, headings, scene separators, metadata, handoff/review section labels, or other service text.
-- Use the compact inline format `100: Paragraph text`; do not put IDs on separate lines.
-- Use a base step of 100 for newly numbered drafts: `100`, `200`, `300`, etc.
-- Do not add leading zeroes.
-- A paragraph ID is an editorial address for a semantic paragraph, not its current position in the file.
-- Preserve existing paragraph IDs across agent passes so author feedback remains addressable.
+- Number paragraphs, not visual lines.
+- Preserve existing IDs across agent passes.
 - When a paragraph moves, keep its ID.
-- When a paragraph is deleted, retire its ID. Do not reuse deleted IDs for new text.
-- When paragraphs are merged, keep the ID of the paragraph that remains the semantic core, usually the first paragraph, and retire the absorbed ID.
-- When a paragraph is split, keep the original ID on the most continuous fragment and assign new IDs to the new fragments.
-- For inserted paragraphs, choose evenly spaced numbers inside the available interval, for example:
-  - one insert between `100` and `200`: `150`;
-  - three inserts between `100` and `200`: `125`, `150`, `175`.
-- If there is no useful numeric gap left, or if local renumbering would otherwise be tempting, add dot-number suffixes to the nearest stable numeric anchor, for example `100.1`, `100.2`, `100.3`; if suffixes already exist, continue with the next integer suffix.
-- Treat dot-number IDs as textual editorial addresses, not decimal numbers: `122.10` follows `122.9`.
-- Never do a full or global renumbering, ID refresh, or broad ID reorder without explicit author consent. If it seems necessary, stop and ask the author first; until then, use local numeric gaps or dot-number suffixes.
-- If the author explicitly approves a global renumbering, record the affected draft version and the fact of renumbering in the handoff.
-- Story-facing exports under `../knigi-content-private/stories/<story-slug>/05-exports/` should use these IDs by default.
-- Clean publication/reader-facing copies without paragraph IDs must be separate files and must not replace the review export.
-- Agent handoffs and reviews may cite these paragraph IDs directly.
+- When deleted, retire its ID.
+- When merged, keep the semantic-core ID and retire absorbed IDs.
+- When split, keep the original ID on the most continuous fragment and assign new IDs to new fragments.
+- Insert within numeric gaps when possible (`150` between `100` and `200`).
+- If gaps are exhausted, use textual dot suffixes such as `100.1`, `100.2`.
+- Never globally renumber without explicit author consent.
+- Clean publication/reader-facing copies without paragraph IDs must be separate files.
 
-## Real child-agent policy
+See `docs/stable-paragraph-ids.md`.
 
-Do not merely "perform" every role inside one long session when role pressure or context size can lower quality.
-
-Use real child agents by default for separate roles that are oppositional, adversarial, or critical, especially:
-
-- `020-критик--brutal-critic--жестокий-критик.md`;
-- `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`;
-- `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`.
-
-Use real child agents for other roles when the work is large, when the current context is crowded, or when a clean isolated context would protect quality.
-
-Diagnosis-only review roles may run in parallel as child agents when they read the same stable draft and write disjoint handoffs/reviews. Prose-editing roles must run sequentially, because each editor must see the previous edited draft.
-
-## Handoff rule
+## Handoff and status rule
 
 After every role:
 
-- save compact output to the story-specific handoff file under `../knigi-content-private/stories/<story-slug>/02-handoffs/`;
+- save compact output under `../knigi-content-private/stories/<story-slug>/02-handoffs/`;
 - update canonical story state only when durable decisions changed;
-- update draft files only when prose changed;
-- when role `150` exports a full draft, use `../knigi-content-private/stories/<story-slug>/05-exports/full-draft-v<N>-MM-DD.md`, for example `full-draft-v6-05-07.md` for version 6 on May 7;
+- update draft/review files only when the role is allowed to;
 - update the story-specific agent queue when running a queued route;
+- update `06-agent-queue/story-status.md` when current/next role, checkpoint, latest draft/review, fresh-chat requirement, or manuscript state changed;
 - carry forward a short summary, not the whole prior conversation.
+
+## Quality gates
+
+A role is not complete merely because it produced a handoff.
+
+Use `docs/quality-gates.md`. Record `PASS`, `PASS_WITH_KNOWN_RISKS`, `BLOCKED`, or `AUTHOR_DECISION_REQUIRED` when the role has a defined gate.
+
+Blocking failures must reroute or stop downstream work rather than being buried in prose.
 
 ## Human feedback and session boundaries
 
-Use `docs/feedback-and-session-boundaries.md` for author feedback checkpoints and high-conflict role transitions.
+Use `docs/feedback-and-session-boundaries.md` for author checkpoints and high-conflict transitions.
 
-After complex author feedback, or when resuming a partial pipeline in a new session, run `003-диспетчер--revision-router--маршрутизатор-правок.md` before rewriting. The router sorts feedback, chooses the earliest affected role, writes a route handoff, and updates the agent queue. Skip it only for narrow, obvious fixes.
+After complex author feedback, or when resuming a partial pipeline in a new session, run `003` before rewriting. Skip it only for narrow obvious fixes.
 
-If the next role has a strongly different pressure and the context window is long, stop before switching roles and ask the author to compact the window or start a fresh session. Carry forward only canonical state, latest relevant handoff, relevant draft fragment, and explicit author decisions.
+## Framework feedback loop
+
+When repeated story work exposes a workflow defect, use `docs/framework-retrospective.md` to distinguish story-specific repair from a public framework change.
+
+Do not add a new permanent specialist merely because one story produced one unusual problem if an existing role can own it.
+
+## Manuscript vs publication
+
+`150` ends the literary editing pipeline. After author review and required quality gates, the result may be marked `manuscript_complete`.
+
+Do not treat that as route-specific `publication_ready`.
+
+Publishing/submission and promotion are future sibling frameworks described in `docs/post-manuscript-frameworks.md`. If those workflows later require literary change, route it back through `003`.
 
 ## Do not
 
@@ -184,5 +255,8 @@ If the next role has a strongly different pressure and the context window is lon
 - silently invent missing prompt files;
 - rewrite artistic prose without role-specific need;
 - place story content in public tracked folders;
-- flatten strange, conflicting, or ambiguous elements into generic LLM prose;
-- make AI jargon the whole story.
+- read sibling stories without a task-specific reason;
+- flatten strange/conflicting elements into generic LLM prose;
+- make AI jargon the whole story;
+- require unavailable child agents/VMs/background execution for baseline operation;
+- equate `manuscript_complete` with publication readiness.
