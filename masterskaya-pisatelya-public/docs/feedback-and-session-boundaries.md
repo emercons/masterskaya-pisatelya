@@ -1,74 +1,87 @@
 # Feedback and session boundaries
 
-This workflow is sequential, but not every role transition should be automatic. Some transitions need human author feedback; others benefit from a fresh or compacted session because the next role has an intentionally different pressure.
+This workflow is sequential, but not every role transition should be automatic. Some transitions need human author feedback; others benefit from a fresh ChatGPT conversation because the next role has intentionally different pressure.
+
+`docs/workflow-manifest.md` is authoritative for current role/checkpoint/isolation semantics.
 
 ## Human feedback checkpoints
 
-Ask for author feedback at these points unless the author has already given an explicit instruction to continue:
+Ask for author feedback at these points unless the author already explicitly asked to continue:
 
-- After `005-приёмщик--idea-receiver--приёмщик-идеи.md`: answer essential intake questions, or explicitly allow the next roles to continue with marked assumptions.
-- After `020-критик--brutal-critic--жестокий-критик.md`: confirm which risks matter and whether the premise should survive.
-- After `060-тематик--thematic-analyst--тематический-аналитик.md`: confirm premise, structure direction, theme, tone, and forbidden flattening before prose drafting.
-- After `100-читатель--reader-simulator--симулятор-читателя.md`: decide whether to revise immediately, run advanced reviews, or accept the candidate.
-- After `140-сверщик--continuity-auditor--аудитор-непрерывности.md`: choose which advanced-review pressures win before final editing.
-- After `150-финред--final-editor--финальный-редактор.md`: stop for author review before publication, another major rewrite, or a second final pass.
+- After `005-приёмщик`: answer essential intake questions or explicitly allow marked assumptions.
+- After `020-критик`: confirm which risks matter and whether the premise should survive.
+- After `060-тематик`: confirm premise, structure direction, theme, tone, and forbidden flattening before prose drafting.
+- After `100-читатель`: decide whether to revise immediately, run advanced reviews, or accept the candidate.
+- After `140-сверщик`: choose which review pressures win before final editing.
+- After `150-финред`: stop for author review before marking `manuscript_complete` or starting another major rewrite.
 
-If the author's feedback contains mixed revision requests, run `003-диспетчер--revision-router--маршрутизатор-правок.md` before rewriting. It should sort feedback, identify the earliest affected role, update the agent queue, and decide whether author choices are required before the next pass.
+Conditional checkpoints:
 
-## High-conflict role transitions
+- `015-тестер`: stop when materially different surviving criteria/rules require author choice.
+- `135-оригинальность`: stop when a high-risk similarity cluster requires premise-, structure-, or ending-level change.
+- `003-диспетчер`: stop when conflicting route options need author preference.
 
-These role pressures can contaminate each other if run in one long, uncompressed session:
+If author feedback contains mixed revision requests, run `003` before rewriting.
 
-- `005` Idea Receiver vs `010` Idea Architect: intake questions and uncertainty tracking vs premise shaping.
-- `010` Idea Architect vs `020` Brutal Critic: expansion and protection of strangeness vs attack and risk removal.
-- `020` Brutal Critic vs `070` Draft Writer: harsh diagnosis should not become the drafting voice.
-- `080` Structural Editor vs `090` Style Editor: scene surgery and clarity vs rhythm, texture, and productive discomfort.
-- `100` Reader Simulator vs `120` Ideology Stress Tester: reader accessibility vs preserving ideological complexity and discomfort.
-- `110` Ending Analyst vs `130` Predictability Analyst vs `140` Continuity Auditor: emotional payoff, disruption, and consistency can pull the ending in different directions.
+## High-conflict transitions
 
-## Mandatory clean-session stops
+These role pressures can contaminate each other in one long chat:
 
-If the next ordinary pipeline step is an antagonist or hard stress role, stop the current session before running it when the queue marks `fresh_session: required`.
+- `005` intake vs `010` premise shaping;
+- `010` architecture vs `020` hostile criticism;
+- `020` criticism vs `070` drafting voice;
+- `080` structural surgery vs `090` style recalibration;
+- `100` reader accessibility vs `120` ideology pressure;
+- `110` ending payoff vs `130` disruption vs `140` consistency;
+- any named-work inspiration discussion vs `135` adversarial originality/IP review.
 
-Default required clean-session roles:
+## Fresh-chat rule
 
-- `020-критик--brutal-critic--жестокий-критик.md`
-- `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`
-- `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`
+The mobile-safe baseline is a **new ordinary ChatGPT conversation**, not a required child-agent system.
 
-Default recommended clean-session roles:
+Default `fresh_chat_required` roles from the manifest:
 
-- `050-мировик--worldlogic-auditor--аудитор-логики-мира.md`
-- `090-стилист--style-editor--стилевой-редактор.md`
-- `100-читатель--reader-simulator--симулятор-читателя.md`
-- `110-финалист--ending-analyst--аналитик-концовки.md`
-- `140-сверщик--continuity-auditor--аудитор-непрерывности.md`
+- `020-критик`;
+- `120-идеолог`;
+- `130-предсказатель`;
+- `135-оригинальность`.
 
-When stopping, name the exact next prompt and short alias so the author can start a fresh session directly.
+Default `fresh_chat_recommended` roles:
 
-## Real child-agent policy
+- `015-тестер`;
+- `050-мировик`;
+- `090-стилист`;
+- `100-читатель`;
+- `110-финалист`;
+- `140-сверщик`.
 
-Fresh sessions and child agents solve related but different problems. A fresh session gives the next role a clean conversation boundary; a real child agent gives a role its own focused working context while the main session can continue.
+When a required boundary is reached, stop and name the exact next alias/prompt. The author can open a normal new mobile chat and paste the short launch.
 
-Use real child agents by default for separate roles whose value comes from opposition or criticism:
+## What the next chat reads
 
-- `020-критик--brutal-critic--жестокий-критик.md`;
-- `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`;
-- `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`.
+Carry forward through GitHub, not transcript memory:
 
-Use real child agents for non-oppositional roles when the work is large or the current context window is crowded enough to risk lower-quality role separation.
+- `06-agent-queue/story-status.md`;
+- `06-agent-queue/agent-queue.md`;
+- current canonical story state;
+- latest relevant handoff;
+- relevant draft/review fragment;
+- explicit author decisions referenced there.
 
-Diagnosis-only reviews can run as parallel child agents when they read the same stable draft and produce separate outputs. Editorial roles that change prose should run sequentially so each editor works from the previous edited draft.
+Do not require the full prior transcript.
+
+## Optional enhanced runtime
+
+A real child agent may substitute for a fresh manual chat only when the environment actually supports it.
+
+Diagnosis-only reviews may optionally run in parallel when they read the same stable draft and write separate outputs. Prose-editing roles remain sequential.
+
+The resulting files/queue/status must remain resumable from ordinary mobile ChatGPT afterward.
 
 ## Agent behavior
 
-Before crossing a high-conflict transition, especially in a long context window, the agent may stop and ask the author to compact the window or start a fresh session. Carry forward only:
+Before crossing a required high-conflict boundary, stop instead of pretending a role-reset instruction fully cleans a long biased context.
 
-- current canonical story state;
-- latest relevant handoff;
-- relevant draft fragment;
-- explicit author decisions.
+For recommended boundaries, use judgment based on context length and pressure conflict.
 
-For cross-session work, carry these through `../knigi-content-private/stories/<story-slug>/06-agent-queue/agent-queue.md`. Put antagonist or high-conflict roles in separate queue chunks when their pressure could contaminate the next role.
-
-Do not carry a full prior transcript into the next specialist role.
+Update `story-status.md` so the next chat has an explicit `Next launch` command.
