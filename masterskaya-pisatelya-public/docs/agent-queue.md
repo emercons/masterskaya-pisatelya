@@ -1,6 +1,6 @@
 # Agent queue
 
-The agent queue is the durable execution plan for running the storytelling pipeline across multiple sessions.
+The agent queue is the durable execution plan for running the storytelling pipeline across multiple ChatGPT sessions.
 
 It lives inside each private story workspace:
 
@@ -8,153 +8,133 @@ It lives inside each private story workspace:
 ../knigi-content-private/stories/<story-slug>/06-agent-queue/agent-queue.md
 ```
 
-Do not store real story queue state in public folders.
+A concise derived status snapshot lives beside it:
+
+```text
+../knigi-content-private/stories/<story-slug>/06-agent-queue/story-status.md
+```
+
+Do not store real story queue/status state in public folders.
 
 ## Purpose
 
-Use the queue when the pipeline should be run in pieces, when a new session should continue work without reading the whole old chat, or when high-conflict roles should be isolated.
+Use the queue when the pipeline runs in pieces, when a new chat should continue without reading the whole old conversation, or when high-conflict roles should be isolated.
 
-The queue is created or updated by:
+The queue is created/updated by `003-диспетчер`.
 
-```text
-prompts/003-диспетчер--revision-router--маршрутизатор-правок.md
-```
+## Baseline runtime
 
-## What a new session reads
+The queue must be executable from ordinary ChatGPT/mobile.
+
+Canonical execution/isolation values:
+
+- `chat_mode`: `same_chat`, `fresh_chat_recommended`, `fresh_chat_required`;
+- `execution_mode`: `manual_chat` as baseline, optionally `child_agent` or `either` only in richer runtimes;
+- `parallel_group`: optional and never required for baseline mobile use.
+
+For portability, a queue should never require a real child agent to make progress.
+
+## What a new chat reads
 
 A new session should read only:
 
-- `AGENTS.md`;
-- `prompts/00-workflow.md`;
-- `docs/agent-queue.md`;
-- the current specialist prompt;
-- `../knigi-content-private/stories/<story-slug>/06-agent-queue/agent-queue.md`;
-- `../knigi-content-private/stories/<story-slug>/01-canonical/canonical-story-state.md`;
-- the latest relevant handoff from `02-handoffs/`;
-- the relevant draft fragment from `03-drafts/`;
-- explicit author decisions referenced by the queue.
+- public `AGENTS.md`;
+- `docs/workflow-manifest.md`;
+- `docs/mobile-chatgpt-runtime.md`;
+- current specialist prompt;
+- private `story-status.md`;
+- private `agent-queue.md`;
+- current canonical story state;
+- latest relevant handoff;
+- relevant draft/review fragment;
+- explicit author decisions referenced by those files.
 
-Do not carry the full prior conversation into the next specialist role.
+Do not carry the full prior conversation.
 
 ## Queue item fields
 
 Each queue item should include:
 
-- `id`: stable item id, for example `Q-2026-05-07-001`;
-- `role`: prompt filename;
+- `id`: stable item id;
+- `role`: canonical prompt filename;
 - `status`: `pending`, `in_progress`, `blocked`, `completed`, or `skipped`;
 - `session_chunk`: chunk id;
-- `fresh_session`: `required`, `recommended`, or `no`;
-- `execution_mode`: `inline`, `child_agent`, or `either`;
-- `parallel_group`: optional stable group id for diagnosis-only roles that may run at the same time;
-- `reason`: why this role is needed;
-- `allowed_inputs`: exact canonical/handoff/draft/review files the role may read;
-- `expected_outputs`: handoff, draft, review, canonical update, export, or queue update;
+- `chat_mode`: `same_chat`, `fresh_chat_recommended`, or `fresh_chat_required`;
+- `execution_mode`: normally `manual_chat`; optionally `child_agent`/`either` only when available;
+- `parallel_group`: optional group id for diagnosis-only optional parallelism;
+- `reason`;
+- `allowed_inputs`: exact files/data the role may read;
+- `expected_outputs`;
 - `prose_editing`: `yes` or `no`;
-- `stop_after`: whether to stop for author feedback or session boundary.
+- `quality_gate`: relevant gate or `none`;
+- `stop_after`: `no`, `author_feedback`, `fresh_chat_boundary`, or another explicit stop.
 
-Interpret `fresh_session` this way:
+Legacy queues using `fresh_session` remain readable. Interpret:
 
-- `required`: do not run this role in the current session. Stop, tell the author which exact role/alias to start next, and let the next clean session run it.
-- `recommended`: stop if the context is long, emotionally biased by the previous role, or the next role has a conflicting pressure.
-- `no`: the role can continue in the current session if the allowed inputs are clear.
+- `fresh_session: required` as `chat_mode: fresh_chat_required`;
+- `fresh_session: recommended` as `chat_mode: fresh_chat_recommended`;
+- `fresh_session: no` as `chat_mode: same_chat`.
 
-Interpret `execution_mode` this way:
-
-- `child_agent`: run the role as a real child agent with a focused context.
-- `inline`: run the role in the current session.
-- `either`: choose based on context size, conflict pressure, and available parallel work.
+Do not bulk-rewrite old private queues solely to rename this field.
 
 ## Session chunks
 
-The router should group compatible roles into chunks. A chunk can be run in one session if their pressures do not contaminate each other.
+Group compatible roles into chunks. A chunk can run in one chat if pressures do not contaminate each other and the manifest permits it.
 
-Use fresh sessions for:
+Use/recommend fresh chats for:
 
-- `020` Brutal Critic when moving from protective idea expansion into attack mode;
-- transitions from `020` into prose-writing roles such as `070`;
-- `080` to `090` if structural surgery is likely to dominate style;
-- `100` to `120` when reader accessibility and ideological pressure conflict;
-- `110`, `130`, and `140` when ending payoff, disruption, and continuity pull against one another.
+- `015` when rule testing is large/adversarial;
+- `020` after protective idea architecture;
+- transition out of `020` before prose-heavy work;
+- `090` when structural editing has dominated the context;
+- `100` when a clean reader simulation matters;
+- `120`, `130`, `135` as intentionally adversarial late reviews;
+- `140` when a clean formal audit helps.
 
-## Antagonist / clean-session roles
+## Fresh-chat defaults
 
-Some roles are intentionally adversarial or strongly diagnostic. If one of these is the next pending queue item and `fresh_session` is `required`, stop the current session and ask the author to start a clean one with the exact alias.
+Follow `docs/workflow-manifest.md` rather than duplicating a separate stale table here.
 
-Default clean-session policy:
-
-| Role | Pressure | Default fresh session |
-| --- | --- | --- |
-| `020-критик--brutal-critic--жестокий-критик.md` | Antagonist / attack | required |
-| `050-мировик--worldlogic-auditor--аудитор-логики-мира.md` | World-rule and institution audit | recommended |
-| `090-стилист--style-editor--стилевой-редактор.md` | Voice and rhythm recalibration | recommended |
-| `100-читатель--reader-simulator--симулятор-читателя.md` | External reader diagnosis | recommended |
-| `110-финалист--ending-analyst--аналитик-концовки.md` | Ending stress test | recommended |
-| `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md` | Antagonist / ideology stress | required |
-| `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md` | Antagonist / expectation stress | required |
-| `140-сверщик--continuity-auditor--аудитор-непрерывности.md` | Formal audit | recommended |
-
-## Parallel child-agent reviews
-
-Diagnosis-only review roles may run in parallel child agents when:
-
-- they read the same stable draft;
-- they do not edit prose;
-- they write separate handoffs/review files;
-- no role's output is required before another role can start.
-
-Good parallel candidates after a stable final-candidate draft:
-
-- `100-читатель--reader-simulator--симулятор-читателя.md`;
-- `110-финалист--ending-analyst--аналитик-концовки.md`;
-- `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`;
-- `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`;
-- `140-сверщик--continuity-auditor--аудитор-непрерывности.md`.
-
-Prose-editing roles must run sequentially and should not share one parallel group:
-
-- `080-структурщик--structural-editor--структурный-редактор.md`;
-- `090-стилист--style-editor--стилевой-редактор.md`;
-- `150-финред--final-editor--финальный-редактор.md`.
-
-When stopping, use this shape:
+When stopping, use:
 
 ```text
-Stop here. Next role should run in a fresh session:
+Stop here. Next role should run in a fresh ChatGPT chat:
 <short alias> -> <canonical prompt filename>
 
-New session should read: agent queue, canonical state, latest relevant handoff, relevant draft fragment.
+New chat should read: story status, agent queue, canonical state, latest relevant handoff, relevant draft/review fragment.
 ```
+
+## Optional parallel execution
+
+Diagnosis-only review roles may optionally run in parallel child agents when the environment supports it and they:
+
+- read the same stable draft;
+- do not edit prose;
+- write separate outputs;
+- do not depend on one another.
+
+This is an optimization only. On mobile, run them as separate chats sequentially and merge pressures later through the queue/router.
+
+Prose-editing roles remain sequential.
 
 ## Completion rule
 
 After each role:
 
 1. Write the role handoff under `02-handoffs/`.
-2. Update canonical state only for durable decisions.
-3. Update draft/review/export files only if the role is allowed to.
-4. Mark the queue item `completed`.
-5. Mark the next safe item `pending` or `blocked`.
-6. Stop when the queue says `stop_after: author_feedback` or the next pending item says `fresh_session: required`.
+2. Apply `docs/quality-gates.md` when the role has a gate.
+3. Update canonical state only for durable decisions.
+4. Update draft/review/export files only if allowed.
+5. Mark the queue item completed only if its gate permits; otherwise block/reroute/ask the author.
+6. Update `story-status.md` with current/next role, block/checkpoint, latest files, and next launch.
+7. Stop on `author_feedback` or `fresh_chat_required` boundary.
 
-## Queue source of truth
+## Queue vs status vs canon
 
-The queue does not replace canonical state. It only says what to run next and what files are allowed as inputs.
+- queue = execution plan;
+- status = concise derived resume snapshot;
+- canonical state = durable story facts/decisions;
+- handoffs = specialist memory;
+- drafts = prose.
 
-Canonical facts live in:
-
-```text
-../knigi-content-private/stories/<story-slug>/01-canonical/canonical-story-state.md
-```
-
-Role memory lives in:
-
-```text
-../knigi-content-private/stories/<story-slug>/02-handoffs/
-```
-
-Prose lives in:
-
-```text
-../knigi-content-private/stories/<story-slug>/03-drafts/
-```
+If status conflicts with queue/canon, recompute status. Do not change canon to match a stale status file.
