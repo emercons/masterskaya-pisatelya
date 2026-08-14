@@ -12,7 +12,7 @@ This role can usually run in the current session when the queue permits it.
 
 When updating the agent queue, set `execution_mode` for each role:
 
-- use `child_agent` by default for `020`, `120`, and `130`;
+- use `child_agent` by default for `020`, `120`, `130`, and `135`;
 - use `child_agent` or `either` for `015` when the candidate/test matrix is large;
 - use `child_agent` or `either` for other roles when the work is large or the current context is crowded;
 - use a shared `parallel_group` for diagnosis-only reviews that can run at the same time;
@@ -58,6 +58,7 @@ Run it at the front of the pipeline. The role number is `003` because the router
   - ending/payoff changes;
   - ideology/meaning pressure;
   - predictability risks;
+  - external-work similarity / originality / IP-risk concerns;
   - continuity/world-rule risks;
   - final cleanup only.
 - Identify the earliest affected role.
@@ -67,7 +68,7 @@ Run it at the front of the pipeline. The role number is `003` because the router
 - Mark `execution_mode` and `parallel_group` in the queue when relevant.
 - Group route steps into safe session chunks.
 - Mark high-conflict or antagonist roles that should run in a fresh/clean session.
-- For `020`, `120`, and `130`, default to `fresh_session: required` unless the author explicitly asks to continue in one session.
+- For `020`, `120`, `130`, and `135`, default to `fresh_session: required` unless the author explicitly asks to continue in one session.
 - For `015`, `050`, `090`, `100`, `110`, and `140`, default to `fresh_session: recommended` when context is long or the role pressure conflicts with the prior role.
 - Mark decisions that require author choice before rewriting.
 - Preserve author wording when it is a concrete decision.
@@ -98,6 +99,7 @@ Run it at the front of the pipeline. The role number is `003` because the router
 - If feedback changes final image, payoff, ambiguity, or emotional residue, route through `110`.
 - If feedback changes implied moral, power relation, or accidental propaganda risk, route through `120`.
 - If feedback says a beat is too expected or too neat, route through `130`.
+- If feedback names a potentially similar external work, worries about borrowing/plagiarism/adaptation, or asks for originality/IP-risk review, route through `135` once a sufficiently concrete structure or draft exists. If the concern affects a premise-defining mechanism before drafting, first route to the earliest structural role needed to create distance, then schedule `135` again on the actual draft.
 - If feedback raises contradiction, timeline, terminology, identity, or world-rule consistency, route through `140`.
 - If all upstream decisions are stable and only cleanup remains, route directly to `150`.
 - If there is no prior story state and the input is a new raw idea, route to `005`.
@@ -126,6 +128,8 @@ Run it at the front of the pipeline. The role number is `003` because the router
 ### Ideology / meaning checks
 
 ### Predictability checks
+
+### Similarity / originality / IP-risk checks
 
 ### Continuity checks
 
