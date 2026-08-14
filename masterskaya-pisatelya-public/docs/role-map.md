@@ -20,6 +20,7 @@ Canonical specialist prompts use numeric ordering and include a short launch ali
 | 110 | `финалист` | `prompts/110-финалист--ending-analyst--аналитик-концовки.md` | Stress-test payoff, ambiguity, final image, and emotional residue. | recommended | parallel diagnosis |
 | 120 | `идеолог` | `prompts/120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md` | Test implied ideology, blind spots, simplifications, and accidental propaganda. | required | child_agent opposition |
 | 130 | `предсказатель` | `prompts/130-предсказатель--predictability-analyst--аналитик-предсказуемости.md` | Check predictability, expected beats, and productive disruption options. | required | child_agent opposition |
+| 135 | `оригинальность` | `prompts/135-оригинальность--similarity-ip-auditor--аудитор-сходства-и-ip.md` | Compare the current story/draft with relevant external works for distinctive-expression, adaptation, plagiarism-perception, and IP-risk signals; recommend targeted distancing without pretending to guarantee legal clearance. | required | child_agent/web diagnosis |
 | 140 | `сверщик` | `prompts/140-сверщик--continuity-auditor--аудитор-непрерывности.md` | Audit factual, emotional, timeline, terminology, and world-rule continuity. | recommended | parallel diagnosis |
 | 150 | `финред` | `prompts/150-финред--final-editor--финальный-редактор.md` | Apply a restrained final edit after reader notes and advanced reviews. | no | sequential prose |
 
