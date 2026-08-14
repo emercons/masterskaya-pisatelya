@@ -1,8 +1,27 @@
 # 00 - Workflow / Рабочий процесс
 
-This repository is a sequential multi-agent storytelling workshop.
+This repository is a sequential multi-agent storytelling workshop where the baseline agents are markdown role prompts executed in ordinary ChatGPT chats.
 
-Это последовательная мультиагентная мастерская для рассказа.
+## Source of truth
+
+Canonical role/runtime semantics:
+
+```text
+docs/workflow-manifest.md
+```
+
+If this file and the manifest disagree, the manifest wins and this file must be repaired.
+
+## Supported baseline runtime
+
+The workflow must work in ordinary ChatGPT, including the mobile app.
+
+- one chat = one session;
+- new chat = baseline clean-context isolation;
+- GitHub queue/status/canonical/handoffs = durable memory;
+- real child agents, VM, terminal, and parallel execution are optional enhancements only.
+
+See `docs/mobile-chatgpt-runtime.md`.
 
 ## Non-negotiable operating rule
 
@@ -16,16 +35,25 @@ Do not behave as a general assistant.
 Your scope is intentionally narrow.
 ```
 
+## Story isolation
+
+Before substantive work, resolve workflow repo, content repo, exact story slug, and exact role. Keep story-specific reads/writes inside the resolved private workspace unless the task explicitly requires cross-story analysis.
+
+See `docs/story-isolation-contract.md`.
+
 ## Inputs allowed for each role
 
 Use only:
 
 - current specialist prompt;
+- current story status/queue as needed for routing;
 - current canonical story state;
 - latest relevant handoff;
-- relevant draft fragment.
+- relevant draft/review fragment;
+- explicit author decisions;
+- external research only when the role explicitly requires it.
 
-Do not drag the full old context forward.
+Do not drag the full old conversation forward.
 
 ## Role order
 
@@ -49,74 +77,78 @@ Do not drag the full old context forward.
 18. `140-сверщик--continuity-auditor--аудитор-непрерывности.md`
 19. `150-финред--final-editor--финальный-редактор.md`
 
-`015` is conditional rather than mandatory for every story. Use it when a premise-defining rule has several plausible formulations, when an obvious loophole could collapse the story, or when the author wants systematic comparison across alternative criteria. It is diagnosis-only and does not replace `050`: `015` attacks the rule itself; `050` later audits how the selected rule behaves inside the complete world and institutions.
+`015` is conditional rather than mandatory. It attacks a premise-defining rule itself before later worldlogic work.
 
-`135` is a late diagnosis-only audit. Use it when the story has named inspirations, when a recent or well-known external work has potentially similar plot machinery, or when the author wants an originality/IP-risk check before finalization. It distinguishes broad ideas/tropes from distinctive expressive combinations and **cannot guarantee legal clearance**. It should use current public research for external comparison works and recommend targeted distancing when needed.
+`135` is a conditional late diagnosis-only audit. Use it for named/likely close external works or when originality/IP-risk review is needed before finalization. It cannot guarantee legal clearance.
 
 ## Revision routing
 
-Use `003-диспетчер--revision-router--маршрутизатор-правок.md` when starting a new pipeline, resuming from an agent queue, or processing human author feedback that contains several kinds of changes, changes the ending/structure/world rules, or arrives after roles `100`, `140`, or `150`.
+Use `003` when starting a new pipeline, resuming from an agent queue, or processing mixed/structural author feedback.
 
-The revision router does not rewrite prose. It sorts feedback, identifies the earliest affected role, builds the minimal safe route through the existing specialists, and writes/updates the story-specific agent queue.
+The router does not rewrite prose. It sorts feedback, identifies the earliest affected role, builds the minimal safe route, updates the story-specific queue, and maintains the story-status snapshot.
 
-Skip `003` only when the next step is obvious and local, such as a typo fix or one narrow style correction.
+Skip `003` only for narrow obvious local fixes.
 
 ## Author feedback checkpoints
 
-Ask for human author feedback after roles `005`, `020`, `060`, `100`, `140`, and `150` unless the author has explicitly asked to continue through that checkpoint.
+Ask for human author feedback after roles `005`, `020`, `060`, `100`, `140`, and `150` unless the author explicitly asked to continue through that checkpoint.
 
-For `015`, stop for author selection when the stress test produces several materially different surviving criteria and no criterion has already been explicitly selected. Do not silently promote a winner to canon.
+For `015`, stop when materially different surviving criteria require author selection.
 
-For `135`, stop only if the audit finds a high-risk similarity cluster that would require changing premise-level or ending-level material; otherwise route its targeted notes into `140`/`150` or back through `003` as appropriate.
+For `135`, stop when a high-risk similarity cluster requires premise-, structure-, or ending-level change.
 
-Use `docs/feedback-and-session-boundaries.md` as the source of truth for feedback checkpoints and high-conflict role transitions.
+Use `docs/feedback-and-session-boundaries.md`.
 
-If author feedback contains actual revision requests, run `003-диспетчер--revision-router--маршрутизатор-правок.md` before starting the next revision pass unless the requested change is narrow and obvious.
+## Session isolation
 
-## Session boundaries
+Follow the manifest:
 
-Some roles deliberately contradict each other. Before crossing a high-conflict transition in a long context window, stop and ask the author to compact the window or start a fresh session.
+- `fresh_chat_required`: start the role in a new ordinary ChatGPT conversation unless the current chat itself is already a clean launch of that role;
+- `fresh_chat_recommended`: prefer a new chat when context is long or biased;
+- `same_chat`: may continue when queue and context permit.
 
-If the next pending queue item has `fresh_session: required`, stop the current session and name the exact next role and short alias. Do not run that role in the current session.
+A real child agent may substitute only in environments that actually support it. It is never required for baseline use.
 
-Carry forward only:
+## Optional enhanced execution
 
-- current canonical story state;
-- latest relevant handoff;
-- relevant draft fragment;
-- explicit author decisions.
+When real child agents/parallel execution exist, diagnosis-only roles may run in isolated/parallel contexts if they read the same stable draft and write disjoint outputs.
 
-## Real child-agent execution
+Good optional parallel review candidates after a stable final-candidate draft: `100`, `110`, `120`, `130`, `135`, `140`.
 
-A specialist role can be run either inline in the current session or as a real child agent with its own focused context.
+Prose-editing roles `080`, `090`, and `150` must remain sequential.
 
-Prefer real child agents for roles that are oppositional, adversarial, or critical. In this workflow those roles are:
+## Quality gates
 
-- `015-тестер--criterion-stress-tester--тестер-критериев.md` when the candidate/test matrix is large;
-- `020-критик--brutal-critic--жестокий-критик.md`;
-- `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`;
-- `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`;
-- `135-оригинальность--similarity-ip-auditor--аудитор-сходства-и-ip.md`.
+Use `docs/quality-gates.md`.
 
-Use real child agents for other roles when the work is large, the context window is crowded, or a clean isolated context would protect quality.
+A role with a defined gate ends as `PASS`, `PASS_WITH_KNOWN_RISKS`, `BLOCKED`, or `AUTHOR_DECISION_REQUIRED`. Do not mark a role complete merely because a handoff was generated.
 
-Diagnosis-only review roles may run in parallel when they share a stable draft and produce disjoint handoffs/reviews. Good parallel candidates after a final-candidate draft are `100`, `110`, `120`, `130`, `135`, and `140`.
-
-Prose-editing roles must run sequentially. Do not run `080`, `090`, or `150` in parallel against the same draft; each one depends on the previous edited text.
+Blocking findings must reroute or stop downstream work.
 
 ## After each role
 
 1. Save the output to the story-specific handoff file under `../knigi-content-private/stories/<story-slug>/02-handoffs/`.
 2. Update canonical story state if durable decisions changed.
-3. Update draft files if prose changed.
-4. When role `150` produces an export, save it as `05-exports/full-draft-v<N>-MM-DD.md`, using `MM-DD` such as `05-07` for May 7. For author review, apply stable paragraph IDs according to `docs/stable-paragraph-ids.md`; never do a full or global ID renumbering without explicit author consent, and use local numeric gaps or dot-number suffixes instead.
-5. Update `../knigi-content-private/stories/<story-slug>/06-agent-queue/agent-queue.md` when running from a queued route.
-6. Compress the role result into a short handoff summary.
-7. Reset role identity before the next role.
+3. Update draft/review files if prose/review output changed and the role is allowed to do so.
+4. When role `150` produces an export, save it as `05-exports/full-draft-v<N>-MM-DD.md`; author-review copies use stable paragraph IDs from `docs/stable-paragraph-ids.md`.
+5. Update `06-agent-queue/agent-queue.md` when running from a queued route.
+6. Update `06-agent-queue/story-status.md` when phase, last/current/next role, checkpoint, latest draft/review, fresh-chat requirement, or manuscript state changed.
+7. Compress the role result into a short handoff summary.
+8. Reset role identity before the next compatible role or stop at the fresh-chat boundary.
+
+## Framework feedback loop
+
+When recurring friction reveals a workshop defect, use `docs/framework-retrospective.md`. Prefer strengthening an existing role/routing/state contract before adding a new permanent specialist.
+
+## Manuscript completion boundary
+
+After `150` and its author checkpoint/quality gates, the story may become `manuscript_complete`.
+
+Do not equate this with `publication_ready`. Publishing/submission and promotion belong to future sibling frameworks described in `docs/post-manuscript-frameworks.md`.
 
 ## Privacy
 
-Concrete story workspaces are private by default and must live under:
+Concrete story workspaces are private by default and live under:
 
 ```text
 ../knigi-content-private/stories/<story-slug>/
@@ -126,12 +158,10 @@ Do not save raw ideas, handoffs, drafts, reviews, or final story exports into pu
 
 ## Do not
 
-- Mix roles.
-- Do a general literary analysis when a specific role is active.
-- Rewrite prose unless the current role requires it.
-- Convert strange or conflicted elements into generic polished prose.
-- Treat AI-industry jargon as the whole story; it is the second semantic layer.
-
-## Priority
-
-Only numbered bilingual prompt filenames are authoritative.
+- mix roles;
+- do general literary analysis when a specific role is active;
+- rewrite prose unless the current role requires it;
+- convert strange/conflicted elements into generic polished prose;
+- require unavailable child agents/VM/background execution;
+- read neighboring story workspaces without a task-specific reason;
+- treat `150` as publishing/marketing workflow.
