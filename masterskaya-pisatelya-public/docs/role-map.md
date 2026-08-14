@@ -7,6 +7,7 @@ Canonical specialist prompts use numeric ordering and include a short launch ali
 | 003 | `диспетчер` | `prompts/003-диспетчер--revision-router--маршрутизатор-правок.md` | Route new starts, resumes, and author feedback into the correct specialist queue. | no | inline/either |
 | 005 | `приёмщик` | `prompts/005-приёмщик--idea-receiver--приёмщик-идеи.md` | Receive raw idea, identify missing inputs, and ask numbered clarification questions. | no | inline/either |
 | 010 | `архитектор` | `prompts/010-архитектор--idea-architect--архитектор-идеи.md` | Extract core premise, reader-facing story, second semantic layer, emotional conflict. | no | inline/either |
+| 015 | `тестер` | `prompts/015-тестер--criterion-stress-tester--тестер-критериев.md` | Adversarially compare premise-defining criteria/rules against a stable attack corpus and expose loopholes, trivial solutions, and overstrict variants. | recommended | diagnosis/either |
 | 020 | `критик` | `prompts/020-критик--brutal-critic--жестокий-критик.md` | Attack concept risks: cliche, overload, reader exclusion, false depth. | required | child_agent opposition |
 | 030 | `сюжетник` | `prompts/030-сюжетник--story-engineer--инженер-сюжета.md` | Build causal structure, scene sequence, escalation, ending direction. | no | inline/either |
 | 040 | `психолог` | `prompts/040-психолог--character-psychologist--психолог-персонажей.md` | Define character desire, fear, shame, shared past, pressure. | no | inline/either |
