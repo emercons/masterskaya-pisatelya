@@ -23,7 +23,8 @@ Goal: stop workflow drift between README, role map, templates, and prompts.
 - [x] Create `docs/workflow-manifest.md` as the canonical role/runtime manifest.
 - [x] Create a ChatGPT-runnable integrity check in `docs/workflow-integrity-check.md`.
 - [x] Register conditional roles `015` and `135` everywhere that describes the canonical pipeline.
-- [ ] Periodically run the integrity check after adding/removing/changing a role.
+- [x] Run the initial integrity pass and record `docs/workflow-integrity-report-2026-08-14.md`.
+- [ ] Re-run the integrity check after future role/runtime changes.
 
 ## Phase 2 — Mobile-first execution
 
@@ -39,10 +40,11 @@ Goal: make the workshop fully usable from normal ChatGPT chats.
 Goal: prevent cross-story contamination and make current progress obvious.
 
 - [x] Add `docs/story-isolation-contract.md`.
-- [x] Add `story-status.md` beside the agent queue in each story workspace.
+- [x] Add `story-status.md` beside the agent queue in each story workspace model.
 - [x] Require the router to maintain a concise status snapshot.
 - [x] Add a template status file for new stories.
-- [ ] Backfill status files into active private stories when they are next touched.
+- [x] Backfill status snapshots for the two currently active private stories used during this refactor.
+- [ ] Backfill other older stories opportunistically when they are resumed; do not bulk-rewrite them solely for this migration.
 
 ## Phase 4 — Quality gates
 
@@ -61,7 +63,8 @@ Goal: let real story work improve the workshop without overfitting to one story.
 - [x] Add `docs/framework-retrospective.md`.
 - [x] Separate story-specific fixes from recurring workflow defects.
 - [x] Require evidence from repeated friction before adding a permanent specialist role, except for clear safety/integrity gaps.
-- [ ] Run retrospectives after major story milestones and after publication-ready completion.
+- [x] Record an initial generalized retrospective in `docs/retrospective-2026-08-14-mobile-chat-workflow.md`.
+- [ ] Run further retrospectives after major story milestones and after manuscript completion.
 
 ## Phase 6 — Manuscript completion boundary
 
@@ -74,8 +77,9 @@ Goal: keep literary production separate from publishing and promotion operations
 
 ## Near-term maintenance
 
-1. Run the integrity check whenever a canonical role changes.
+1. Run the integrity check whenever a canonical role/runtime contract changes.
 2. Backfill `story-status.md` opportunistically, not by bulk rewriting private stories.
 3. Use active story retrospectives to tune quality gates.
 4. Do not add automation that makes mobile ChatGPT a second-class runtime.
 5. Do not require infrastructure that the author cannot invoke from an ordinary chat.
+6. Before implementing Publishing/Promotion Workshops, run a current-market research pass rather than designing roles from memory.
