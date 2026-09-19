@@ -59,6 +59,14 @@ After changing role/runtime semantics, use:
 docs/workflow-integrity-check.md
 ```
 
+Optional Gas Town execution must follow:
+
+```text
+docs/gastown-rig-contract.md
+```
+
+Gas Town may maintain this public workflow repository as an isolated rig, but it is not part of the baseline literary runtime and does not authorize access to private story content.
+
 ## Primary runtime: ordinary ChatGPT
 
 The workflow must be executable from a normal ChatGPT conversation, including the mobile app.
@@ -270,3 +278,4 @@ Publishing/submission and promotion are future sibling frameworks described in `
 - make AI jargon the whole story;
 - require unavailable child agents/VMs/background execution for baseline operation;
 - equate `manuscript_complete` with publication readiness.
+- let an external orchestrator replace the manifest, story queue, status, canonical state, or human checkpoints.

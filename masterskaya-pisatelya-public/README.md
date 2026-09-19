@@ -16,6 +16,12 @@ The primary supported runtime is an ordinary ChatGPT conversation, including the
 
 See `docs/mobile-chatgpt-runtime.md`.
 
+## Optional Gas Town rig
+
+This public repository may be attached to the account-level Gas Town as an optional rig for maintaining prompts, templates, contracts, documentation, and deterministic checks.
+
+Gas Town is not required for story work and must not replace the mobile ChatGPT runtime, author checkpoints, or private story state. The public-rig safety and eligibility rules live in `docs/gastown-rig-contract.md`.
+
 ## Модель двух репозиториев
 
 `masterskaya-pisatelya` — это публичная мастерская: софт/процесс, agents-as-markdown, prompts, templates, routing rules, handoff rules и документация workflow.
@@ -125,6 +131,7 @@ docs/workflow-integrity-check.md
 
 - `docs/workflow-manifest.md`
 - `docs/workflow-integrity-check.md`
+- `docs/gastown-rig-contract.md`
 - `docs/mobile-chatgpt-runtime.md`
 - `docs/story-isolation-contract.md`
 - `docs/story-inventory-index.md`
