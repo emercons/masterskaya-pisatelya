@@ -59,13 +59,13 @@ After changing role/runtime semantics, use:
 docs/workflow-integrity-check.md
 ```
 
-Optional Gas Town execution must follow:
+Optional Gas City execution (with the Gastown pack) must follow:
 
 ```text
 docs/gastown-rig-contract.md
 ```
 
-Gas Town may maintain this public workflow repository as an isolated rig, but it is not part of the baseline literary runtime and does not authorize access to private story content.
+Gas City may maintain this public workflow repository as an isolated RIG, but it is not part of the baseline literary runtime and does not authorize access to private story content. Proposed private-story artels have additional, review-only preparation rules in `docs/gas-city-story-rig-preparation.md`; that document does not authorize execution.
 
 ## Primary runtime: ordinary ChatGPT
 

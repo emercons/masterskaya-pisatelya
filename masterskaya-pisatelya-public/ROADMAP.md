@@ -75,16 +75,17 @@ Goal: keep literary production separate from publishing and promotion operations
 - [x] Define future sibling frameworks: Publishing Workshop and Promotion Workshop.
 - [ ] Research current submission markets, first-publication rights, AI-assistance policies, translation strategy, self-publishing channels, and promotion practices before implementing those frameworks.
 
-## Phase 7 — Optional Gas Town execution
+## Phase 7 — Optional Gas City execution
 
 Goal: allow unattended maintenance of public workflow infrastructure without making orchestration part of the literary runtime.
 
-- [x] Define the public-rig boundary and eligible autonomous work in `docs/gastown-rig-contract.md`.
+- [x] Define the public-RIG boundary and eligible autonomous work in `docs/gastown-rig-contract.md`.
 - [x] Keep private story content and story execution outside the first pilot.
 - [x] Require isolated branches/worktrees, validation evidence, and human review before integration.
-- [ ] Add the repository as a rig on the Ubuntu Gas Town host.
+- [x] Prepare a separate private-story RIG/artel design in `docs/gas-city-story-rig-preparation.md`; it requires review, a synthetic fixture, and explicit data-handling routes before any launch.
+- [ ] Add the repository as a RIG on the Ubuntu Gas City host.
 - [ ] Run several narrowly scoped infrastructure work items and record pilot evidence.
-- [ ] Evaluate `knigi-content-private` as a separate second rig only after the public-rig exit criteria pass.
+- [ ] Review/approve the private-story RIG design, then evaluate `knigi-content-private` as a separate second RIG only after the public-RIG exit criteria pass.
 
 ## Near-term maintenance
 
@@ -94,4 +95,4 @@ Goal: allow unattended maintenance of public workflow infrastructure without mak
 4. Do not add automation that makes mobile ChatGPT a second-class runtime.
 5. Do not require infrastructure that the author cannot invoke from an ordinary chat.
 6. Before implementing Publishing/Promotion Workshops, run a current-market research pass rather than designing roles from memory.
-7. Treat Gas Town as optional maintenance infrastructure; never make it a prerequisite for ordinary story work.
+7. Treat Gas City as optional maintenance infrastructure; never make it a prerequisite for ordinary story work.

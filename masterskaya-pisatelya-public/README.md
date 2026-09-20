@@ -16,11 +16,11 @@ The primary supported runtime is an ordinary ChatGPT conversation, including the
 
 See `docs/mobile-chatgpt-runtime.md`.
 
-## Optional Gas Town rig
+## Optional Gas City RIG
 
-This public repository may be attached to the account-level Gas Town as an optional rig for maintaining prompts, templates, contracts, documentation, and deterministic checks.
+This public repository may be attached to account-level Gas City (with the Gastown pack) as an optional RIG for maintaining prompts, templates, contracts, documentation, and deterministic checks.
 
-Gas Town is not required for story work and must not replace the mobile ChatGPT runtime, author checkpoints, or private story state. The public-rig safety and eligibility rules live in `docs/gastown-rig-contract.md`.
+Gas City is not required for story work and must not replace the mobile ChatGPT runtime, author checkpoints, or private story state. The public-RIG safety and eligibility rules live in `docs/gastown-rig-contract.md`. The prepared, not-yet-authorized private story RIG/artel design is in `docs/gas-city-story-rig-preparation.md`.
 
 ## Модель двух репозиториев
 
@@ -132,6 +132,7 @@ docs/workflow-integrity-check.md
 - `docs/workflow-manifest.md`
 - `docs/workflow-integrity-check.md`
 - `docs/gastown-rig-contract.md`
+- `docs/gas-city-story-rig-preparation.md`
 - `docs/mobile-chatgpt-runtime.md`
 - `docs/story-isolation-contract.md`
 - `docs/story-inventory-index.md`

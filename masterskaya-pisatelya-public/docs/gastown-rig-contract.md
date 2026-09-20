@@ -1,12 +1,17 @@
-# Gas Town rig contract
+# Gas City public RIG contract
 
-Status: pilot contract for the public workflow repository.
+Status: pilot contract for the public workflow repository. The filename is
+retained for compatibility; the deployed platform is **Gas City** with the
+Gastown pack.
 
 ## Purpose
 
-Gas Town may operate this repository as one rig inside the account-level Town. The rig exists to maintain the Writer's Workshop infrastructure: prompts, templates, contracts, documentation, and integrity checks.
+Gas City may operate this repository as one RIG inside the account-level City.
+The RIG exists to maintain the Writer's Workshop infrastructure: prompts,
+templates, contracts, documentation, and integrity checks.
 
-Gas Town is an optional execution layer. It must not become a dependency of the ordinary ChatGPT/mobile runtime described in `docs/mobile-chatgpt-runtime.md`.
+Gas City is an optional execution layer. It must not become a dependency of
+the ordinary ChatGPT/mobile runtime described in `docs/mobile-chatgpt-runtime.md`.
 
 ## Repository boundary
 
@@ -47,7 +52,7 @@ Do not autonomously:
 - weaken privacy, isolation, quality-gate, or human-checkpoint rules;
 - add, remove, rename, or materially redefine a canonical role without explicit approval;
 - merge or push directly to `main`;
-- turn Gas Town, Beads, a background worker, or child agents into a required runtime.
+- turn Gas City, Beads, a background worker, or child agents into a required runtime.
 
 If a task reaches one of these boundaries, preserve the branch and evidence, mark the work blocked for human review, and state the exact decision required.
 
@@ -90,11 +95,11 @@ Validation evidence belongs in the work item or review, not as invented story st
 
 ## Mapping to workshop concepts
 
-Gas Town scheduling must not replace workshop state:
+Gas City scheduling must not replace workshop state:
 
 | Workshop concept | Orchestration use |
 | --- | --- |
-| public repository | one Gas Town rig |
+| public repository | one Gas City RIG |
 | infrastructure issue | one schedulable work item/bead |
 | isolated branch/worktree | worker-owned implementation workspace |
 | pull request or branch review | human integration checkpoint |
@@ -114,4 +119,6 @@ The public-rig pilot is successful only after several narrowly scoped work items
 5. produce repeatable validation evidence;
 6. resume after interruption without making mobile ChatGPT dependent on the orchestrator.
 
-Only after those criteria pass should `knigi-content-private` be evaluated as a second rig.
+Only after those criteria pass should `knigi-content-private` be evaluated as
+a second RIG. Its proposed artel model and extra safety gates are in
+`docs/gas-city-story-rig-preparation.md`.
