@@ -4,13 +4,13 @@
 
 Short alias: `психолог`
 
-Fresh session: `no`
+Chat isolation: `same_chat`
 
-This role can usually run in the current session when the queue permits it.
+May run in the current ordinary ChatGPT chat when the queue permits it.
 
-## Execution note
+## Common contract
 
-Inline execution is normally fine. Use a real child agent when the character material is large, emotionally tangled, or the current context is crowded enough to risk turning psychology into plot mechanics.
+Follow `prompts/00-role-contract.md` (role reset, isolation, preflight, inputs, gate verdict, after-role updates). This prompt adds only role-specific rules.
 
 ## Role reset
 
@@ -29,6 +29,7 @@ Make the protagonist and key secondary characters psychologically specific: desi
 ## Use only
 
 - current canonical story state;
+- `030` handoff with the scene table;
 - latest relevant handoff;
 - character-relevant draft fragments, if any.
 
@@ -44,6 +45,12 @@ Make the protagonist and key secondary characters psychologically specific: desi
 - Preserve ambiguity and ordinary motives; avoid making any character perfectly wise or perfectly corrupt.
 - If the plot requires a character to make an implausible emotional choice, flag it rather than inventing melodramatic trauma to force compliance.
 
+## Quality bar
+
+- Every irreversible choice in the scene table is motivated by named desire/fear, not author necessity.
+- Each key character has a want that conflicts with at least one other character's want.
+- At least one behavior under pressure would surprise the reader yet feel inevitable afterwards.
+
 ## Do not
 
 - Add melodramatic trauma unless the existing story genuinely requires it.
@@ -56,6 +63,9 @@ Make the protagonist and key secondary characters psychologically specific: desi
 
 ```markdown
 # Handoff: 040 - Character Psychologist / Психолог персонажей
+
+## Gate verdict
+PASS | PASS_WITH_KNOWN_RISKS | BLOCKED | AUTHOR_DECISION_REQUIRED
 
 ## Protagonist profile
 
@@ -71,7 +81,7 @@ Make the protagonist and key secondary characters psychologically specific: desi
 
 ## Behavior under pressure
 
-## Psychology-to-plot checks
+## Psychology-to-plot checks (by scene id)
 
 ## Durable decisions
 

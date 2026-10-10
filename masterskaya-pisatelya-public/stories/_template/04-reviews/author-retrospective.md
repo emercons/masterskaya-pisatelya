@@ -1,3 +1,0 @@
-# Author retrospective
-
-Pending.

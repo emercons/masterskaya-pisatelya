@@ -47,15 +47,18 @@ A new chat must recover from story files, not from the previous chat transcript.
 
 Minimum recovery set:
 
-1. public `AGENTS.md`;
-2. `docs/workflow-manifest.md`;
-3. current specialist prompt;
+1. public `START.md` (launch card);
+2. the role's row in `docs/workflow-manifest.md`;
+3. `prompts/00-role-contract.md` and the current specialist prompt;
 4. private `06-agent-queue/story-status.md` if present;
 5. private `06-agent-queue/agent-queue.md`;
-6. private `01-canonical/canonical-story-state.md`;
+6. private `01-canonical/canonical-story-state.md` (and `pre-draft-brief.md` for `070` onward);
 7. latest relevant handoff;
 8. relevant draft/review fragment;
-9. explicit author decisions referenced by those files.
+9. explicit author decisions referenced by those files;
+10. private `author/author-profile.md` for prose/voice roles.
+
+`AGENTS.md` is the full rulebook for maintenance work; a story chat does not need to read it in full.
 
 Do not require the author to paste the whole previous conversation.
 

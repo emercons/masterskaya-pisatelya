@@ -4,13 +4,13 @@
 
 Short alias: `сюжетник`
 
-Fresh session: `no`
+Chat isolation: `same_chat`
 
-This role can usually run in the current session when the queue permits it.
+May run in the current ordinary ChatGPT chat when the queue permits it.
 
-## Execution note
+## Common contract
 
-Inline execution is normally fine. Use a real child agent when the story structure is large, has many competing options, or the current context is crowded enough to risk carrying the wrong pressure forward.
+Follow `prompts/00-role-contract.md` (role reset, isolation, preflight, inputs, gate verdict, after-role updates). This prompt adds only role-specific rules.
 
 ## Role reset
 
@@ -24,41 +24,58 @@ Forget previous specialist roles. Do not behave as critic or stylist.
 
 Convert the premise into a causal story structure: setup, pressure, turning point, irreversible choice, ending.
 
-Построй причинный каркас рассказа, где сцены меняют положение героя.
+Построй причинный каркас рассказа, где каждая сцена меняет положение героя.
 
 ## Use only
 
 - canonical story state;
-- latest relevant handoff;
+- `010` handoff and, when present, `015`/`020` handoffs with the author's checkpoint decisions;
 - draft only if it already exists.
 
 ## Do
 
-- Define the dramatic question.
-- Build a compact sequence of scenes.
-- Clarify escalation.
-- Make the ending earn the premise.
+- Define the dramatic question and the moment it is answered.
+- Build a **scene table**: every scene has an ID, a function, and a value change (what is different at the end of the scene). A scene with no change is cut or merged.
+- Connect scenes causally ("therefore / but"), not sequentially ("and then").
+- Place the turning point and the irreversible choice; the choice must cost the protagonist something named in `010`.
+- Make the ending follow from setup: list which earlier scenes plant what the ending pays off.
+- Fit the target length: estimate words per scene and flag overruns.
+- Address `020` risks that are structural; say which ones remain for later roles.
+
+## Quality bar
+
+- No scene exists only to deliver information.
+- The protagonist's own action, not coincidence, drives the turning point.
+- The ending cannot be swapped for a generic one without breaking earlier scenes.
 
 ## Do not
 
 - Write final prose.
-- Add a revolution, conspiracy, or large lore unless required.
-- Make the corporation cartoon evil.
+- Add a revolution, conspiracy, romance, or large lore unless canon requires it.
+- Turn any antagonist, institution, or group into a cartoon; opposition needs its own reasons.
 
 ## Output
 
 ```markdown
 # Handoff: 030 - Story Engineer / Инженер сюжета
 
+## Gate verdict
+PASS | PASS_WITH_KNOWN_RISKS | BLOCKED | AUTHOR_DECISION_REQUIRED
+
 ## Dramatic question
 
-## Proposed structure
+## Scene table
 
-## Scene sequence
+| scene id | function | value change (start → end) | causal link to next | POV / location | approx. length |
+| --- | --- | --- | --- | --- | --- |
 
-## Escalation logic
+## Turning point and irreversible choice
 
-## Ending direction
+## Ending direction and its setups
+
+## Length budget vs target
+
+## 020 risks addressed / remaining
 
 ## Durable decisions
 

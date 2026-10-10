@@ -1,3 +1,0 @@
-# Predictability analysis
-
-Pending.

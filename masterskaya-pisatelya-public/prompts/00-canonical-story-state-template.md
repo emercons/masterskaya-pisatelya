@@ -12,6 +12,12 @@
 ## Genre
 
 
+## Format
+
+- Target length (words or characters, range):
+- Form:
+- Target venue/reader, if known:
+
 ## Core premise
 
 
@@ -51,6 +57,8 @@ Technical, philosophical, or industry-specific layer.
 
 ## Tone
 
+Short summary; the detailed voice contract lives in `01-canonical/pre-draft-brief.md`.
+
 
 ## Required motifs
 
@@ -62,7 +70,10 @@ What must not be simplified into generic prose.
 
 ## Current structure
 
-1.
+Scene table (ids stable across revisions; source: latest `030`/`080` handoff).
+
+| scene id | function | value change | status |
+| --- | --- | --- | --- |
 
 ## Current draft state
 

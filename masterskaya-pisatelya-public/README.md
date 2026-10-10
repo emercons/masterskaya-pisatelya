@@ -18,9 +18,7 @@ See `docs/mobile-chatgpt-runtime.md`.
 
 ## Optional Gas City RIG
 
-This public repository may be attached to account-level Gas City (with the Gastown pack) as an optional RIG for maintaining prompts, templates, contracts, documentation, and deterministic checks.
-
-Gas City is not required for story work and must not replace the mobile ChatGPT runtime, author checkpoints, or private story state. The public-RIG safety and eligibility rules live in `docs/gastown-rig-contract.md`. The prepared, not-yet-authorized private story RIG/artel design is in `docs/gas-city-story-rig-preparation.md`.
+Optional maintenance runtime for this public repo only; never required for story work. See `docs/gastown-rig-contract.md` and `docs/gas-city-story-rig-preparation.md`.
 
 ## Модель двух репозиториев
 
@@ -47,7 +45,7 @@ docs/workflow-manifest.md
 
 README, role map, workflow docs, templates, and prompt references must agree with that manifest.
 
-After role/runtime changes, run the ChatGPT-runnable validator:
+After role/runtime changes, run `python3 scripts/check_integrity.py` (also runs in CI) and the ChatGPT-runnable semantic validator:
 
 ```text
 docs/workflow-integrity-check.md
@@ -59,7 +57,7 @@ docs/workflow-integrity-check.md
 2. ChatGPT подключает GitHub и находит два репозитория: `masterskaya-pisatelya` и `knigi-content-private`.
 3. Черновик, идея или story workspace сохраняется в `../knigi-content-private/stories/<story-slug>/`.
 4. Workflow, prompts, role map, шаблоны и правила берутся из `masterskaya-pisatelya`.
-5. Рассказ проходит через нужные роли мастерской; `003` маршрутизирует normal/revision route, а `015` и `135` подключаются условно.
+5. Рассказ проходит через нужные роли мастерской; `003` маршрутизирует normal/revision route, а `015` и `135` подключаются условно. Перед прозой `060` собирает `pre-draft-brief.md` (сцены, объём, голос), а `070` сначала согласует с автором голос на пробных абзацах.
 6. Все handoffs, drafts, reviews и exports остаются в `knigi-content-private`.
 7. `06-agent-queue/story-status.md` дает короткий снимок состояния для автора и нового чата.
 8. Если в процессе становится понятно, что сам алгоритм мастерской надо улучшить, проблема обобщается через `docs/framework-retrospective.md`, а правка вносится сюда, в public repo.
@@ -129,6 +127,12 @@ docs/workflow-integrity-check.md
 
 ## Обязательные файлы workflow
 
+- `START.md`
+- `prompts/00-role-contract.md`
+- `prompts/00-pre-draft-brief-template.md`
+- `prompts/00-author-profile-template.md`
+- `docs/anti-llm-prose-checklist.md`
+- `scripts/check_integrity.py`
 - `docs/workflow-manifest.md`
 - `docs/workflow-integrity-check.md`
 - `docs/gastown-rig-contract.md`
@@ -153,41 +157,11 @@ docs/workflow-integrity-check.md
 
 ## Canonical story roles
 
-The manifest is authoritative. Current role inventory:
+The role inventory, order, aliases, isolation, and checkpoints live only in `docs/workflow-manifest.md` (human-friendly alias map: `docs/role-map.md`). They are not repeated here to avoid drift.
 
-1. `003-диспетчер--revision-router--маршрутизатор-правок.md`
-2. `005-приёмщик--idea-receiver--приёмщик-идеи.md`
-3. `010-архитектор--idea-architect--архитектор-идеи.md`
-4. `015-тестер--criterion-stress-tester--тестер-критериев.md` — conditional
-5. `020-критик--brutal-critic--жестокий-критик.md`
-6. `030-сюжетник--story-engineer--инженер-сюжета.md`
-7. `040-психолог--character-psychologist--психолог-персонажей.md`
-8. `050-мировик--worldlogic-auditor--аудитор-логики-мира.md`
-9. `060-тематик--thematic-analyst--тематический-аналитик.md`
-10. `070-черновик--draft-writer--писатель-черновика.md`
-11. `080-структурщик--structural-editor--структурный-редактор.md`
-12. `090-стилист--style-editor--стилевой-редактор.md`
-13. `100-читатель--reader-simulator--симулятор-читателя.md`
-14. `110-финалист--ending-analyst--аналитик-концовки.md`
-15. `120-идеолог--ideology-stress-tester--идеологический-стресс-тестер.md`
-16. `130-предсказатель--predictability-analyst--аналитик-предсказуемости.md`
-17. `135-оригинальность--similarity-ip-auditor--аудитор-сходства-и-ip.md` — conditional/late
-18. `140-сверщик--continuity-auditor--аудитор-непрерывности.md`
-19. `150-финред--final-editor--финальный-редактор.md`
+## Role reset and shared rules
 
-## Role reset
-
-Перед каждым specialist prompt:
-
-```text
-You are ONLY the currently assigned specialist.
-Forget previous specialist roles.
-Do not continue previous analytical styles.
-Do not behave as a general assistant.
-Your scope is intentionally narrow.
-```
-
-For roles marked `fresh_chat_required` in the manifest, a new ordinary ChatGPT conversation is the canonical baseline. A real child agent is only an optional substitute in environments that expose one.
+Rules common to every role (reset, isolation, preflight, gate verdict, after-role updates) live in `prompts/00-role-contract.md`. A new chat boots from `START.md`.
 
 ## Story isolation
 

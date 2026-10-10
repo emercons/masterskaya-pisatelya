@@ -87,6 +87,20 @@ Goal: allow unattended maintenance of public workflow infrastructure without mak
 - [ ] Run several narrowly scoped infrastructure work items and record pilot evidence.
 - [ ] Review/approve the private-story RIG design, then evaluate `knigi-content-private` as a separate second RIG only after the public-RIG exit criteria pass.
 
+## Phase 8 — Consistency and craft (2026-10)
+
+Goal: remove documentation drift and strengthen the literary core rather than the process layer.
+
+- [x] Common role contract `prompts/00-role-contract.md`; every prompt uses manifest `Chat isolation` vocabulary and ends with a gate verdict.
+- [x] Compact quality gates for every role, including prose roles `070`/`080`/`090`.
+- [x] Remove story-specific leakage from generic prompts; drop empty template placeholders.
+- [x] Launch card `START.md`; AGENTS/README no longer duplicate the role list or role reset.
+- [x] Deterministic `scripts/check_integrity.py` + GitHub Actions.
+- [x] Pre-draft brief compiled by `060`; voice calibration step in `070`; scene table in `030`/`080`; target length in canon.
+- [x] Author profile template and anti-LLM prose checklist.
+- [ ] Validate the new craft steps on real stories in `knigi-content-private`; tune `030`/`070`/`090` from evidence.
+- [ ] Seed `knigi-content-private/author/author-profile.md` from existing story feedback (author confirms entries).
+
 ## Near-term maintenance
 
 1. Run the integrity check whenever a canonical role/runtime contract changes.
