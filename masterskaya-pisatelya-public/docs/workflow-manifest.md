@@ -4,6 +4,10 @@ This file is the **single human-and-agent source of truth** for the canonical st
 
 Other documents may explain the workflow, but they must not contradict this manifest. When a role is added, removed, renamed, or changes runtime/checkpoint semantics, update this file first, then run `docs/workflow-integrity-check.md`.
 
+## Shared role rules
+
+Rules common to every role live in `prompts/00-role-contract.md`. New chats boot from `START.md`.
+
 ## Runtime vocabulary
 
 - `same_chat` — may run in the current ChatGPT conversation when context is clean enough.
@@ -25,8 +29,8 @@ Other documents may explain the workflow, but they must not contradict this mani
 | 030 | `сюжетник` | `prompts/030-сюжетник--story-engineer--инженер-сюжета.md` | normal | same_chat | design | no default |
 | 040 | `психолог` | `prompts/040-психолог--character-psychologist--психолог-персонажей.md` | normal | same_chat | diagnosis/design | no default |
 | 050 | `мировик` | `prompts/050-мировик--worldlogic-auditor--аудитор-логики-мира.md` | normal | fresh_chat_recommended | diagnosis/audit | no default |
-| 060 | `тематик` | `prompts/060-тематик--thematic-analyst--тематический-аналитик.md` | normal | same_chat | diagnosis | yes |
-| 070 | `черновик` | `prompts/070-черновик--draft-writer--писатель-черновика.md` | after pre-draft checkpoint | same_chat | sequential_prose | no default |
+| 060 | `тематик` | `prompts/060-тематик--thematic-analyst--тематический-аналитик.md` | normal | same_chat | diagnosis/brief | yes (approves pre-draft brief) |
+| 070 | `черновик` | `prompts/070-черновик--draft-writer--писатель-черновика.md` | after pre-draft checkpoint | same_chat | sequential_prose | voice calibration unless voice contract approved |
 | 080 | `структурщик` | `prompts/080-структурщик--structural-editor--структурный-редактор.md` | normal after draft | same_chat | sequential_prose | no default |
 | 090 | `стилист` | `prompts/090-стилист--style-editor--стилевой-редактор.md` | normal after structure | fresh_chat_recommended | sequential_prose | no default |
 | 100 | `читатель` | `prompts/100-читатель--reader-simulator--симулятор-читателя.md` | normal review | fresh_chat_recommended | diagnosis | yes |
@@ -79,7 +83,8 @@ Conditional checkpoints:
 
 - `015`: when materially different surviving rules require author selection;
 - `135`: when high-risk overlap requires premise-, structure-, or ending-level changes;
-- `003`: when route choices conflict or author preference is required.
+- `003`: when route choices conflict or author preference is required;
+- `070`: voice calibration options, unless the pre-draft brief already has an approved voice contract.
 
 ## Story workspace operational files
 
@@ -96,6 +101,10 @@ Every active story should converge toward:
 06-agent-queue/story-status.md
 ```
 
+From `060` on, `01-canonical/pre-draft-brief.md` (template `prompts/00-pre-draft-brief-template.md`) is the single input package for `070`.
+
+Cross-story author preferences live in `../knigi-content-private/author/author-profile.md` (template `prompts/00-author-profile-template.md`). Agents propose updates; the author confirms.
+
 The status file is a derived operational snapshot, not a replacement for canonical state or the queue.
 
 ## Integrity rule
@@ -110,6 +119,7 @@ The following must agree with this manifest:
 - `docs/feedback-and-session-boundaries.md`;
 - `docs/agent-queue.md`;
 - `stories/_template/`;
-- every canonical prompt filename referenced here.
+- every canonical prompt filename referenced here;
+- the `Chat isolation:` header of every role prompt.
 
-Use `docs/workflow-integrity-check.md` after changes.
+Use `docs/workflow-integrity-check.md` after changes. The deterministic part runs as `python3 scripts/check_integrity.py` (also in CI on every push).

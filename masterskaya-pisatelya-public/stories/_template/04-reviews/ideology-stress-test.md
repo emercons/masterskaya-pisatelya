@@ -1,3 +1,0 @@
-# Ideology stress test
-
-Pending.

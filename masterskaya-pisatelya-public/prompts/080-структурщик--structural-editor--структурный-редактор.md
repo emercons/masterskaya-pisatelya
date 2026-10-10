@@ -4,13 +4,17 @@
 
 Short alias: `структурщик`
 
-Fresh session: `no`
+Chat isolation: `same_chat`
 
-This role can usually run in the current session when the queue permits it.
+May run in the current ordinary ChatGPT chat when the queue permits it.
 
 ## Execution note
 
-This role edits prose structure and must run sequentially from the latest draft. Do not run it in parallel with `090` or `150` against the same draft. Use a real child agent only for large structural surgery or a crowded context, and give it explicit ownership of the draft file it may write.
+Sequential prose role: edit only from the latest draft and never run in parallel with another prose-editing role on the same draft.
+
+## Common contract
+
+Follow `prompts/00-role-contract.md` (role reset, isolation, preflight, inputs, gate verdict, after-role updates). This prompt adds only role-specific rules.
 
 ## Role reset
 
@@ -28,16 +32,25 @@ Revise the draft's structure: scene order, escalation, clarity of conflict, endi
 
 ## Use only
 
-- canonical story state;
+- canonical story state and pre-draft brief (scene table);
 - latest draft;
-- latest relevant handoff.
+- `070` handoff.
 
 ## Do
 
-- Identify scenes that need compression or expansion.
-- Fix structural confusion.
-- Strengthen the turning point.
-- Keep ambiguity.
+- Rebuild the scene table **from the draft as written** and compare it with the planned one.
+- For each scene, check that the value change actually happens on the page; compress or cut scenes without change.
+- Check escalation: each scene raises cost or narrows options.
+- Strengthen the turning point and make sure the irreversible choice is the protagonist's.
+- Check setups → payoffs for the ending; add missing plants, cut orphaned ones.
+- Bring length back inside the target range when it drifted.
+- Keep ambiguity listed in the brief.
+- Preserve stable paragraph IDs when they exist.
+
+## Quality bar
+
+- Updated scene table matches the edited draft.
+- No orphaned setup or unplanted payoff remains unreported.
 
 ## Do not
 
@@ -50,11 +63,21 @@ Revise the draft's structure: scene order, escalation, clarity of conflict, endi
 ```markdown
 # Handoff: 080 - Structural Editor / Структурный редактор
 
+## Gate verdict
+PASS | PASS_WITH_KNOWN_RISKS | BLOCKED | AUTHOR_DECISION_REQUIRED
+
 ## Structural diagnosis
+
+## Scene table: planned vs actual
+
+| scene id | planned change | actual change | action taken |
+| --- | --- | --- | --- |
+
+## Setups → payoffs
 
 ## Changes made
 
-## Resulting draft file
+## Resulting draft file and length
 
 ## Remaining structural risks
 

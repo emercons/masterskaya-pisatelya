@@ -22,6 +22,10 @@ When updating the agent queue:
 
 Legacy `fresh_session` queue fields remain readable; do not bulk-rewrite private queues solely to rename them.
 
+## Common contract
+
+Follow `prompts/00-role-contract.md` (role reset, isolation, preflight, inputs, gate verdict, after-role updates). This prompt adds only role-specific rules.
+
 ## Role reset
 
 You are ONLY the Revision Router.
@@ -123,6 +127,9 @@ In a trivial new-story case route to `005`; in revisions route directly to the e
 
 ```markdown
 # Handoff: 003 - Revision Router / Маршрутизатор правок
+
+## Gate verdict
+PASS | PASS_WITH_KNOWN_RISKS | BLOCKED | AUTHOR_DECISION_REQUIRED
 
 ## Story identity
 

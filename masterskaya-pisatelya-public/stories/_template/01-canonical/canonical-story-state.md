@@ -1,3 +1,5 @@
 # Canonical story state
 
-Use `prompts/00-canonical-story-state-template.md`.
+Create from `prompts/00-canonical-story-state-template.md`.
+
+`pre-draft-brief.md` is added by `060` from `prompts/00-pre-draft-brief-template.md`.

@@ -30,6 +30,7 @@ Do not bulk-create empty canonical/handoff/draft/review files for a captured ide
 
 ../knigi-content-private/stories/<story-slug>/01-canonical/canonical-story-state.md
 ../knigi-content-private/stories/<story-slug>/01-canonical/decisions-log.md
+../knigi-content-private/stories/<story-slug>/01-canonical/pre-draft-brief.md
 
 ../knigi-content-private/stories/<story-slug>/02-handoffs/003-диспетчер--revision-router--маршрутизатор-правок.md
 ../knigi-content-private/stories/<story-slug>/02-handoffs/005-приёмщик--idea-receiver--приёмщик-идеи.md
@@ -72,7 +73,19 @@ Do not bulk-create empty canonical/handoff/draft/review files for a captured ide
 ../knigi-content-private/stories/<story-slug>/06-agent-queue/story-status.md
 ```
 
-Conditional role handoff/review files may remain absent until the role is actually invoked. Do not create meaningless empty outputs solely for completeness.
+This list is the naming registry, not a set of files to pre-create. The public template ships only folder READMEs; handoff/draft/review/export files appear when a role actually runs. Do not create meaningless empty outputs solely for completeness.
+
+## Author-level private files
+
+```text
+../knigi-content-private/author/author-profile.md
+```
+
+Cross-story author preferences (template `prompts/00-author-profile-template.md`). Readable from any story; updated only after author confirmation.
+
+## Pre-draft brief
+
+`01-canonical/pre-draft-brief.md` is compiled by `060` from approved design decisions, approved at the `060` checkpoint, and is the primary input for `070`. It contains the scene table, format/length target, and the voice contract. Template: `prompts/00-pre-draft-brief-template.md`.
 
 ## Why filenames do not include story title
 

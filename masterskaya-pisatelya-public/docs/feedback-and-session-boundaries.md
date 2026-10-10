@@ -10,7 +10,8 @@ Ask for author feedback at these points unless the author already explicitly ask
 
 - After `005-приёмщик`: answer essential intake questions or explicitly allow marked assumptions.
 - After `020-критик`: confirm which risks matter and whether the premise should survive.
-- After `060-тематик`: confirm premise, structure direction, theme, tone, and forbidden flattening before prose drafting.
+- After `060-тематик`: confirm premise, structure direction, theme, tone, forbidden flattening, and the compiled `01-canonical/pre-draft-brief.md` before prose drafting.
+- During `070-черновик`: choose one of the voice calibration options (`V1`/`V2`/`V3`) unless the brief already has an approved voice contract.
 - After `100-читатель`: decide whether to revise immediately, run advanced reviews, or accept the candidate.
 - After `140-сверщик`: choose which review pressures win before final editing.
 - After `150-финред`: stop for author review before marking `manuscript_complete` or starting another major rewrite.

@@ -22,6 +22,16 @@ docs/workflow-manifest.md
 
 Do not infer the canonical role list from README or from directory order.
 
+## Deterministic pre-check
+
+Mechanical checks (prompt files vs manifest, `Chat isolation` headers, contract reference, gate verdicts, role-map/feedback-doc agreement, template layout, internal doc links) run as:
+
+```text
+python3 scripts/check_integrity.py
+```
+
+The script runs in GitHub Actions on every push and pull request, so a mobile chat can read its result from the Actions tab instead of re-checking mechanically. The semantic checks below still need an LLM pass.
+
 ## Checks
 
 ### 1. Prompt existence
@@ -63,14 +73,14 @@ Check `stories/_template/` against `docs/story-project-structure.md` and manifes
 At minimum verify:
 
 - canonical state files;
-- handoff namespace includes current conditional roles `015` and `135` where placeholders are enumerated;
+- subfolder READMEs list naming for handoffs/drafts/reviews/exports (no empty role placeholders);
 - `06-agent-queue/agent-queue.md` exists;
 - `06-agent-queue/story-status.md` exists;
 - README references current runtime/status docs.
 
 ### 5. Quality-gate wiring
 
-Verify `docs/quality-gates.md` exists and that roles `015`, `020`, `050`, `100`, `135`, and `140` either embed or explicitly reference their gate.
+Verify `docs/quality-gates.md` has a gate (compact or detailed) for every manifest role and that every role prompt references `prompts/00-role-contract.md` and ends its output with `Gate verdict`.
 
 Verify `150` does not equate literary final edit with route-specific publication readiness.
 

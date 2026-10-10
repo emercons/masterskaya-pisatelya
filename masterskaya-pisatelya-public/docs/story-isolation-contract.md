@@ -23,6 +23,16 @@ emercons/knigi-content-private/stories/<story-slug>/
 
 Do not read sibling story folders merely because they exist.
 
+## Author-level shared files
+
+The following private files are not story workspaces and may be read from any story:
+
+```text
+emercons/knigi-content-private/author/author-profile.md
+```
+
+They hold cross-story author preferences only and must not contain story-specific canon. Write to them only after the author confirms a proposed change.
+
 ## Allowed cross-story access
 
 Cross-story access is allowed only when the current task explicitly requires one of these:

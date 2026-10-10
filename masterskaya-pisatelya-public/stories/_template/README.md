@@ -14,6 +14,8 @@ The canonical workflow is defined by:
 - `docs/agent-queue.md`
 - `docs/stable-paragraph-ids.md`
 - `prompts/00-workflow.md`
+- `prompts/00-role-contract.md`
+- `prompts/00-pre-draft-brief-template.md`
 - `prompts/00-handoff-template.md`
 - `prompts/00-canonical-story-state-template.md`
 
@@ -23,7 +25,9 @@ Story state belongs in `01-canonical/`; prose versions in `03-drafts/`; role out
 
 `06-agent-queue/story-status.md` is the short resume snapshot for the author/new mobile ChatGPT chat. `agent-queue.md` remains the durable route.
 
-Conditional roles `015` and `135` have template placeholders but need not produce real story outputs unless invoked.
+The template carries no empty role outputs. Handoffs, drafts, reviews, and exports are created when a role actually runs; each subfolder README lists the expected filenames. `01-canonical/pre-draft-brief.md` is added by `060`.
+
+Cross-story author preferences are not stored per story: see `../knigi-content-private/author/author-profile.md` (template `prompts/00-author-profile-template.md`).
 
 Full-draft exports use versioned names such as `full-draft-v6-05-07.md`. Author-review exports use stable paragraph IDs from `docs/stable-paragraph-ids.md`; global renumbering requires explicit author consent.
 

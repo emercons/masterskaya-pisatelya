@@ -4,13 +4,13 @@
 
 Short alias: `приёмщик`
 
-Fresh session: `no`
+Chat isolation: `same_chat`
 
-This role can usually run in the current session when the queue permits it.
+May run in the current ordinary ChatGPT chat when the queue permits it.
 
-## Execution note
+## Common contract
 
-Inline execution is normally fine. Use a real child agent only if the intake is large, messy, or the current context is crowded enough to risk losing author intent.
+Follow `prompts/00-role-contract.md` (role reset, isolation, preflight, inputs, gate verdict, after-role updates). This prompt adds only role-specific rules.
 
 ## Role reset
 
@@ -30,13 +30,15 @@ Receive the raw story idea, identify what is already usable, and ask a small set
 
 - raw idea;
 - author notes, if provided;
-- explicit constraints from the author.
+- explicit constraints from the author;
+- author profile, to avoid asking what the author has already settled for all stories.
 
 ## Do
 
 - Preserve the author's strange, unstable, or contradictory elements.
 - Separate what is clear from what is missing.
 - Identify likely genre, protagonist pressure, central discomfort, and unusual material.
+- Always establish target length/form (e.g. flash, short story, novelette; words or characters) and, if known, target venue or reader; ask as an essential question when missing.
 - Ask numbered questions the author can answer quickly.
 - Mark which questions are essential and which are optional.
 - Recommend whether the pipeline can continue immediately or should wait for author answers.
@@ -61,6 +63,9 @@ If the author explicitly says to continue without answers, mark assumptions clea
 ```markdown
 # Handoff: 005 - Idea Receiver / Приёмщик идеи
 
+## Gate verdict
+PASS | PASS_WITH_KNOWN_RISKS | BLOCKED | AUTHOR_DECISION_REQUIRED
+
 ## Raw idea snapshot
 
 ## What is already clear
@@ -70,6 +75,11 @@ If the author explicitly says to continue without answers, mark assumptions clea
 ## Numbered questions for the author
 
 1. [Essential/Optional] <question>
+
+## Format
+
+- Target length/form:
+- Target venue/reader:
 
 ## Fast-answer recommendation
 

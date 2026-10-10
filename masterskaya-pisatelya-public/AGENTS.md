@@ -23,6 +23,18 @@ Do not save story content in this repository. Use this repository to improve the
 
 ## Canonical sources
 
+New-chat launch card (read first in story chats):
+
+```text
+START.md
+```
+
+Rules shared by every role:
+
+```text
+prompts/00-role-contract.md
+```
+
 Role/runtime inventory source of truth:
 
 ```text
@@ -59,13 +71,7 @@ After changing role/runtime semantics, use:
 docs/workflow-integrity-check.md
 ```
 
-Optional Gas City execution (with the Gastown pack) must follow:
-
-```text
-docs/gastown-rig-contract.md
-```
-
-Gas City may maintain this public workflow repository as an isolated RIG, but it is not part of the baseline literary runtime and does not authorize access to private story content. Proposed private-story artels have additional, review-only preparation rules in `docs/gas-city-story-rig-preparation.md`; that document does not authorize execution.
+Optional Gas City maintenance (not part of story work, no access to private content): `docs/gastown-rig-contract.md`, `docs/gas-city-story-rig-preparation.md`.
 
 ## Primary runtime: ordinary ChatGPT
 
@@ -144,15 +150,17 @@ These shell checks are optional-runtime safety advice, not requirements for mobi
 ## Priority order
 
 1. `docs/workflow-manifest.md`
-2. `prompts/00-workflow.md`
-3. `prompts/003-диспетчер--revision-router--маршрутизатор-правок.md` when starting, resuming, or revising a route
-4. `docs/role-map.md` when resolving a short agent alias
-5. Current numbered bilingual specialist prompt in `prompts/`
-6. Current story's `../knigi-content-private/stories/<story-slug>/06-agent-queue/story-status.md`, if present
-7. Current story's `../knigi-content-private/stories/<story-slug>/06-agent-queue/agent-queue.md`, if present
-8. Current story's `../knigi-content-private/stories/<story-slug>/01-canonical/canonical-story-state.md`
-9. Latest relevant handoff in `02-handoffs/`
-10. Relevant draft/review fragment
+2. `prompts/00-role-contract.md`
+3. `prompts/00-workflow.md`
+4. `prompts/003-диспетчер--revision-router--маршрутизатор-правок.md` when starting, resuming, or revising a route
+5. `docs/role-map.md` when resolving a short agent alias
+6. Current numbered bilingual specialist prompt in `prompts/`
+7. Current story's `../knigi-content-private/stories/<story-slug>/06-agent-queue/story-status.md`, if present
+8. Current story's `../knigi-content-private/stories/<story-slug>/06-agent-queue/agent-queue.md`, if present
+9. Current story's `../knigi-content-private/stories/<story-slug>/01-canonical/canonical-story-state.md` (+ `pre-draft-brief.md` from `070` on)
+10. `../knigi-content-private/author/author-profile.md` for prose/voice roles
+11. Latest relevant handoff in `02-handoffs/`
+12. Relevant draft/review fragment
 
 For cross-story orientation or ambiguous `story-slug`, read `../knigi-content-private/inventory/story-index.md` before opening individual story folders.
 
@@ -172,15 +180,7 @@ Do not use non-bilingual role prompt filenames or unregistered prompt files as c
 
 ## Role reset
 
-Before every specialist role:
-
-```text
-You are ONLY the currently assigned specialist.
-Forget previous specialist roles.
-Do not continue previous analytical styles.
-Do not behave as a general assistant.
-Your scope is intentionally narrow.
-```
+See `prompts/00-role-contract.md` §1. It applies before every specialist role.
 
 ## Fresh-chat isolation
 
@@ -229,14 +229,7 @@ See `docs/stable-paragraph-ids.md`.
 
 ## Handoff and status rule
 
-After every role:
-
-- save compact output under `../knigi-content-private/stories/<story-slug>/02-handoffs/`;
-- update canonical story state only when durable decisions changed;
-- update draft/review files only when the role is allowed to;
-- update the story-specific agent queue when running a queued route;
-- update `06-agent-queue/story-status.md` when current/next role, checkpoint, latest draft/review, fresh-chat requirement, or manuscript state changed;
-- carry forward a short summary, not the whole prior conversation.
+After every role, follow `prompts/00-role-contract.md` §7: compact handoff, canon only for durable decisions, queue and `story-status.md` updates with `Next launch`.
 
 ## Quality gates
 
@@ -251,6 +244,10 @@ Blocking failures must reroute or stop downstream work rather than being buried 
 Use `docs/feedback-and-session-boundaries.md` for author checkpoints and high-conflict transitions.
 
 After complex author feedback, or when resuming a partial pipeline in a new session, run `003` before rewriting. Skip it only for narrow obvious fixes.
+
+## Author profile
+
+Cross-story author preferences live in `../knigi-content-private/author/author-profile.md` (template `prompts/00-author-profile-template.md`). Prose/voice roles read it. Agents propose updates in handoffs; only the author confirms them. It never holds story canon.
 
 ## Framework feedback loop
 
@@ -275,7 +272,7 @@ Publishing/submission and promotion are future sibling frameworks described in `
 - place story content in public tracked folders;
 - read sibling stories without a task-specific reason;
 - flatten strange/conflicting elements into generic LLM prose;
-- make AI jargon the whole story;
+- let the story's subject-matter jargon become the whole story;
 - require unavailable child agents/VMs/background execution for baseline operation;
 - equate `manuscript_complete` with publication readiness.
 - let an external orchestrator replace the manifest, story queue, status, canonical state, or human checkpoints.

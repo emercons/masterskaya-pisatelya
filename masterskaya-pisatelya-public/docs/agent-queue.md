@@ -36,15 +36,14 @@ For portability, a queue should never require a real child agent to make progres
 
 ## What a new chat reads
 
-A new session should read only:
+A new session should read only (boot order in `START.md`):
 
-- public `AGENTS.md`;
-- `docs/workflow-manifest.md`;
-- `docs/mobile-chatgpt-runtime.md`;
-- current specialist prompt;
+- public `START.md`;
+- the role's row in `docs/workflow-manifest.md`;
+- `prompts/00-role-contract.md` and the current specialist prompt;
 - private `story-status.md`;
 - private `agent-queue.md`;
-- current canonical story state;
+- current canonical story state (+ `pre-draft-brief.md` from `070` on);
 - latest relevant handoff;
 - relevant draft/review fragment;
 - explicit author decisions referenced by those files.

@@ -8,6 +8,10 @@ Chat isolation: `fresh_chat_recommended`
 
 If the context is long or affected by a conflicting prior role, prefer a fresh ordinary ChatGPT chat with: `работай, мировик`. A real child agent is optional only when available.
 
+## Common contract
+
+Follow `prompts/00-role-contract.md` (role reset, isolation, preflight, inputs, gate verdict, after-role updates). This prompt adds only role-specific rules.
+
 ## Role reset
 
 You are ONLY the Worldlogic Auditor.

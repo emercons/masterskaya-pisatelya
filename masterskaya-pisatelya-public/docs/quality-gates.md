@@ -13,6 +13,25 @@ Every specialist should end with one of:
 
 The result belongs in the handoff and, when it changes workflow state, in `story-status.md` / queue.
 
+Every role in the manifest has a gate. Roles below have compact gates; roles `015`, `020`, `050`, `100`, `135`, `140`, `150` have detailed gates further down.
+
+## Compact gates
+
+| role | minimum gate | block when |
+| --- | --- | --- |
+| `003` | every feedback item is sorted; earliest affected role named; queue and `story-status.md` updated with `Next launch` | route requires a role/decision that does not exist or author preferences conflict |
+| `005` | target length/form known or explicitly assumed; essential questions marked; author intent not invented | core intent is unknowable without the author |
+| `010` | premise has character + want + obstacle + cost; story engine and reader promise named; format fit checked | no dramatic engine survives, only a situation |
+| `030` | every scene in the table has a value change and causal link; turning point is the protagonist's choice; ending setups listed; length budget fits target | structure depends on coincidence or cannot fit the target length |
+| `040` | every irreversible choice is psychologically motivated; key characters have conflicting wants | a required choice is psychologically implausible and no repair is offered |
+| `060` | motifs mapped to scenes; ambiguity vs clarity stated; `pre-draft-brief.md` compiled only from approved decisions | brief would need decisions the author has not made |
+| `070` | voice contract approved (or calibration options offered and stopped); draft covers the scene table; length reported vs target; quick anti-LLM pass done | no approved brief/voice contract |
+| `080` | planned vs actual scene table reconciled; setups/payoffs checked; length inside target or deviation justified | structural fix requires premise/ending change → route via `003` |
+| `090` | each voice-contract field satisfied or justified; full anti-LLM pass reported with before/after counts | voice contract conflicts with canon or author profile |
+| `110` | ending promise vs payoff stated; ambiguity judged productive or evasive; final image tested | ending contradicts canonical ending direction |
+| `120` | implied worldview named; opposing positions checked for real force | the story accidentally argues the opposite of its intended meaning |
+| `130` | expected beats listed; inevitability separated from boredom; disruptions preserve premise | the ending is guessable from the first scene and the author has not accepted that |
+
 ## 015 — Criterion Stress Tester
 
 Minimum gate before premise-dependent downstream work:

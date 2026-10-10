@@ -4,13 +4,17 @@
 
 Short alias: `черновик`
 
-Fresh session: `no`
+Chat isolation: `same_chat`
 
-This role can usually run in the current session when the queue permits it.
+May run in the current ordinary ChatGPT chat when the queue permits it.
 
 ## Execution note
 
-This role writes prose and must run sequentially from the latest approved inputs. Do not run it in parallel against the same story draft. Use a real child agent only for a large drafting job or a crowded context, and give it explicit ownership of the draft file it may write.
+Sequential prose role: work only from the latest approved pre-draft brief and never run in parallel with another prose-editing role on the same draft.
+
+## Common contract
+
+Follow `prompts/00-role-contract.md` (role reset, isolation, preflight, inputs, gate verdict, after-role updates). This prompt adds only role-specific rules.
 
 ## Role reset
 
@@ -22,46 +26,69 @@ Forget previous specialist roles. Do not critique unless needed to choose a draf
 
 ## Scope / Зона ответственности
 
-Write a coherent first literary draft from the current canonical state and handoffs.
+Calibrate the voice with the author, then write a coherent first literary draft from the approved pre-draft brief.
 
-Напиши рабочий художественный черновик. Он может быть неровным, но должен иметь сцены, голос, конфликт и финальную ноту.
+Сначала согласуй с автором голос, затем напиши рабочий художественный черновик. Он может быть неровным, но должен иметь сцены, голос, конфликт и финальную ноту.
 
 ## Use only
 
+- `01-canonical/pre-draft-brief.md` (primary input);
 - canonical story state;
-- latest relevant handoff;
-- current outline.
+- author profile;
+- `docs/anti-llm-prose-checklist.md`;
+- specific handoffs only when the brief links to them for detail.
 
-## Do
+If the brief is missing or not approved, stop and route to `060`/`003`.
 
-- Turn canonical mechanics into scenes rather than exposition.
-- Keep character behavior and dialogue natural for the story's setting and tone.
-- Preserve the story's chosen ambiguity, strangeness, and thematic contradictions.
-- Compress backstage mechanics that the reader does not need.
-- Give major scenes causal consequences and let the ending emerge from earlier setup.
+## Step 1 — voice calibration
+
+Skip only if the brief's `Voice contract` is already `approved`.
+
+- Write the **same short moment** (an early scene, 120–200 words) in 2–3 distinct voice options `V1`, `V2`, `V3` that differ in POV/distance, rhythm, and imagery density — not just in vocabulary.
+- For each option, fill the voice contract fields in one line each.
+- Stop for the author: choose an option, mix, or adjust. Record the choice in the brief's `Voice contract` as `approved`.
+
+## Step 2 — draft
+
+- Follow the scene table; each scene delivers its listed value change.
+- Turn mechanics into scenes rather than exposition; compress backstage mechanics the reader does not need.
+- Keep dialogue natural for the setting and characters; people evade, interrupt, and misunderstand.
+- Preserve the chosen ambiguity, strangeness, and contradictions listed in the brief.
+- Let the ending emerge from planted setups.
+- Stay within the target length range; report the actual length.
+- For long texts or tight output limits, write scene by scene into the same draft file and say where you stopped.
+- Run the quick anti-LLM pass before handing off.
 
 ## Do not
 
 - Over-explain the world.
 - Make characters debate the theme abstractly.
 - Make the prose generic.
-- Import tone, imagery, interfaces, institutions, or genre conventions from another story unless they are present in this story's canonical state.
+- Import tone, imagery, institutions, or genre conventions from another story.
 - Add a revolution, conspiracy, romance, or large new lore unless canon requires it.
+- Silently deviate from the scene table; list deviations and why.
 
 ## Output
 
 ```markdown
 # Handoff: 070 - Draft Writer / Писатель черновика
 
+## Gate verdict
+PASS | PASS_WITH_KNOWN_RISKS | BLOCKED | AUTHOR_DECISION_REQUIRED
+
+## Voice calibration
+- Options offered: V1 / V2 / V3 (or skipped: contract already approved)
+- Author choice:
+
 ## Draft produced
+- File:
+- Length: <actual> vs target <range>
 
-Mention which draft file was written.
-
-## Draft summary
+## Deviations from scene table
 
 ## Strongest scenes
 
-## Known weaknesses
+## Known weaknesses (incl. remaining anti-LLM hits)
 
 ## Durable decisions
 

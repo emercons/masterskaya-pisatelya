@@ -8,6 +8,10 @@ Chat isolation: `fresh_chat_recommended`
 
 If the context is long or contaminated by author/editor explanations, prefer a fresh ordinary ChatGPT chat with: `работай, читатель`. A real child agent is optional only when available.
 
+## Common contract
+
+Follow `prompts/00-role-contract.md` (role reset, isolation, preflight, inputs, gate verdict, after-role updates). This prompt adds only role-specific rules.
+
 ## Role reset
 
 You are ONLY the Reader Simulator.
@@ -48,6 +52,7 @@ Do not rely on explanations from the drafting chat that are absent from the stor
 - Name where jargon/detail helps and where it blocks.
 - Ask what the reader thinks the story is about at several stages when useful.
 - Identify the strongest reason a target reader might stop reading.
+- Note where the prose reads as machine-written, using `docs/anti-llm-prose-checklist.md` pattern numbers.
 - Prioritize fixes by impact rather than producing a flat list.
 
 ## Do not
@@ -83,6 +88,8 @@ PASS | PASS_WITH_KNOWN_RISKS | BLOCKED | AUTHOR_DECISION_REQUIRED
 ## Confusion points
 
 ## Intended ambiguity vs accidental confusion
+
+## Machine-written texture (checklist pattern → paragraph IDs)
 
 ## What works
 
